@@ -15,6 +15,7 @@
             color: #fff;
             overflow-x: hidden;
             position: relative;
+            scroll-behavior: smooth; /* Added for smooth scrolling */
         }
         body::before {
             content: '';
@@ -29,7 +30,7 @@
         header {
             position: relative;
             height: 100vh;
-            background: url('Space1.jpg') no-repeat center center/cover; /* Replaced with Space1.jpg from repository */
+            background: url('images/Space1.jpg') no-repeat center center/cover; /* Updated path if in images folder */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -39,6 +40,7 @@
             border-bottom-left-radius: 50% 10%; /* Oval/curved bottom left for flow */
             border-bottom-right-radius: 50% 10%; /* Oval/curved bottom right for flow */
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Soft shadow for connection */
+            transition: background 0.5s ease; /* Added for smoother background load */
         }
         header::before {
             content: '';
