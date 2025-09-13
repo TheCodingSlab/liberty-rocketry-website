@@ -3,545 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liberty University Rocketry Team</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp9436943.jpg&f=1&nofb=1&ipt=7c0bf9b303482001bb0e9ba9517a2c72fab2f85be559ae88a153b0d700f1393c') no-repeat center center fixed; /* Starry space background */
-            background-size: cover;
-            background-color: #000; /* Fallback */
-            color: #fff;
-            overflow-x: hidden;
-            position: relative;
-            scroll-behavior: smooth; /* Added for smooth scrolling */
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Overlay for readability */
-            z-index: -1;
-        }
-        header {
-            position: relative;
-            height: 100vh;
-            background: url('images/Space1.jpg') no-repeat center center/cover; /* Updated path if in images folder */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            border-bottom-left-radius: 50% 10%; /* Oval/curved bottom left for flow */
-            border-bottom-right-radius: 50% 10%; /* Oval/curved bottom right for flow */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Soft shadow for connection */
-            transition: background 0.5s ease; /* Added for smoother background load */
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.8) 100%); /* Gradient fade to blend into body */
-        }
-        header h1 {
-            font-size: 5rem; /* Larger for expanded look */
-            z-index: 1;
-            animation: fadeIn 2s ease-in;
-        }
-        header p {
-            font-size: 1.8rem; /* Larger */
-            z-index: 1;
-            animation: fadeIn 2s ease-in 0.5s;
-        }
-        header .quote {
-            font-size: 1.4rem;
-            font-style: italic;
-            max-width: 900px;
-            margin: 20px auto;
-            z-index: 1;
-            animation: fadeIn 2s ease-in 1s; /* Added fade-in animation with delay */
-        }
-        .logo-placeholder {
-            position: absolute;
-            top: 60px; /* Shifted down for visibility */
-            left: 20px; /* Moved to left side */
-            width: 480px; /* Decreased by 20% from 600px */
-            height: auto;
-            z-index: 2;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 15px 0;
-            text-align: center;
-            z-index: 10;
-            transition: background 0.3s;
-        }
-        nav.scrolled {
-            background-color: #000;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover {
-            color: #ff0000;
-        }
-        section {
-            padding: 80px 40px; /* Expanded padding */
-            max-width: 1600px; /* Expanded width */
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s, transform 1s;
-            background-color: rgba(17, 17, 17, 0.7);
-            border-radius: 20px;
-            margin-top: -50px;
-            position: relative;
-            z-index: 1;
-        }
-        section h2 {
-            font-size: 3rem; /* Larger headings */
-        }
-        section p {
-            font-size: 1.2rem; /* Larger text */
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #home {
-            background-color: rgba(17, 17, 17, 0.7);
-        }
-        .news-post {
-            background: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(255,255,255,0.1);
-        }
-        .news-post img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .project {
-            background: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .project img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .members-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .member {
-            text-align: center;
-            background: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .member img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ff0000;
-        }
-        .sponsors {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
-        .sponsor img {
-            max-width: 250px;
-            filter: grayscale(100%);
-            transition: filter 0.3s;
-        }
-        .sponsor img:hover {
-            filter: grayscale(0%);
-        }
-        footer {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #333;
-        }
-        /* Hide sections initially for SPA */
-        section:not(#home) {
-            display: none;
-        }
-        .download-btn {
-            color: #fff;
-            background-color: #ff0000;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        .download-btn:hover {
-            background-color: #cc0000;
-        }
-        #images-section {
-            background-color: #111; /* Solid dark color */
-            margin-top: 40px;
-            padding: 40px;
-            border-radius: 0;
-        }
-        .images-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns for three over three layout */
-            gap: 20px;
-        }
-        .image-placeholder {
-            background-color: #333;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            font-style: italic;
-            border: 1px dashed #fff;
-        }
-        .image-desc {
-            margin-top: 10px;
-            text-align: center;
-        }
-        #about-section {
-            background-color: rgba(17, 17, 17, 0.7);
-            margin-top: 40px;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        #about-section img {
-            max-width: 400px;
-            height: auto;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
-        #newsletter-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        #newsletter-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        #newsletter-section p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-        #newsletter-form {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        #newsletter-form input {
-            padding: 15px;
-            width: 70%;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            font-size: 1rem;
-        }
-        #newsletter-form button {
-            padding: 15px 30px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        #newsletter-form button:hover {
-            background-color: #cc0000;
-        }
-        .privacy-note {
-            font-size: 0.9rem;
-            color: #ccc;
-            margin-top: 10px;
-        }
-        #contact-bottom {
-            text-align: center;
-            margin-top: 60px;
-        }
-        #contact-bottom button {
-            padding: 15px 40px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        #contact-bottom button:hover {
-            background-color: #cc0000;
-        }
-    </style>
+    <title>Gerald Weaver - Industrial and Systems Engineering Student</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=EB+Garamond&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <a href="#home" onclick="showSection('home')">Home</a>
-        <a href="#projects" onclick="showSection('projects')">Missions & Projects</a>
-        <a href="#members" onclick="showSection('members')">Team</a>
-        <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
-        <a href="#technical-reports" onclick="showSection('technical-reports')">Technical Reports</a>
-        <a href="#resume-book" onclick="showSection('resume-book')">Resume Book</a>
-        <a href="#contact" onclick="showSection('contact')">Contact</a>
-    </nav>
-
     <header>
-        <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder">
-        <h1>Liberty University Rocketry Team</h1>
-        <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
-        <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
+        <nav>
+            <div class="nav-container">
+                <h1 class="title-font"><a href="#home">Gerald Weaver</a></h1>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <section id="home">
-        <!-- Improved Newsletter Section modeled after NASA -->
-        <div id="newsletter-section">
-            <h2>Explore Rocketry from Your Inbox</h2>
-            <p>Sign up for our newsletter to receive the latest updates on our projects, launches, and team achievements.</p>
-            <form id="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="button" onclick="subscribe()">Sign Up</button>
-            </form>
-            <p class="privacy-note">We will never share your email address.</p>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="profile.jpg" alt="Gerald Weaver Profile" class="profile-img">
+            <h2 class="title-font">Industrial and Systems Engineering Student at Liberty University</h2>
+            <p>Optimizing systems, leading teams, and driving innovation in engineering. Passionate about logistics, software development, and humanitarian service.</p>
+            <a href="https://www.linkedin.com/in/geraldaweaver/" target="_blank" class="btn">LinkedIn</a>
+            <a href="resume.pdf" download class="btn">Download Resume</a>
         </div>
+    </section>
 
-        <!-- Images section with solid background and six placeholders -->
-        <div id="images-section">
-            <h2>Featured Images</h2>
-            <div class="images-grid">
-                <div>
-                    <div class="image-placeholder">Image Placeholder 1</div>
-                    <p class="image-desc">Description for image 1: A snapshot of our latest rocket prototype in assembly.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 2</div>
-                    <p class="image-desc">Description for image 2: Team members collaborating on engine design.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 3</div>
-                    <p class="image-desc">Description for image 3: Successful test launch from last semester.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 4</div>
-                    <p class="image-desc">Description for image 4: Workshop manufacturing in progress.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 5</div>
-                    <p class="image-desc">Description for image 5: Team meeting and planning session.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 6</div>
-                    <p class="image-desc">Description for image 6: Rocket components under testing.</p>
-                </div>
+    <section id="about" class="section fade-section">
+        <h2 class="title-font">About Me</h2>
+        <div class="content-grid">
+            <div>
+                <h3 class="subtitle-font">Education</h3>
+                <p><strong>Liberty University</strong><br>B.S. in Industrial and Systems Engineering<br>August 2023 - May 2027<br>GPA: 3.74<br>Dean's List (August 2023 - Present)<br>Alpha Lambda Delta Honor Society (August 2023 - Present)</p>
+                <p><strong>Relevant Coursework:</strong> Analog and Digital Design, Economic Analysis, Database Analysis and Development</p>
+            </div>
+            <div>
+                <h3 class="subtitle-font">Leadership & Organizations</h3>
+                <ul>
+                    <li><strong>Eagle Scout</strong> - Boy Scouts of America (September 2023): Bel Air, MD.</li>
+                    <li><strong>Engineering Missions & Research Club</strong> - Project Leader (January 2024 - Present): Lynchburg, VA. Combining engineering skills with research and humanitarian service.</li>
+                    <li><strong>Institute of Industrial & Systems Engineers (IISE/ASSP)</strong> - Director of Recruitment (January 2025 - Present): Lynchburg, VA. Supporting professional development and community engagement.</li>
+                    <li><strong>Human Powered Rover Competition Team</strong> - Previous Safety Lead (August 2023 - December 2023): Focused on designing, building, and racing human-powered vehicles for ASME national competition.</li>
+                    <li><strong>Liberty University Rocketry</strong> - Avionics Software & Systems Engineer / Administrative Coordinator (May 2025 - Present): Lynchburg, VA. Developing and testing software for rocket avionics, managing project timelines, and optimizing team collaboration for national competitions. <a href="rocketry.html" class="btn">Explore Liberty Rocketry</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="subtitle-font">Community Service</h3>
+                <ul>
+                    <li><strong>Mount Christian United Methodist Food Drive</strong> - Volunteer (2018-2022): Assisted with monthly food drive, organizing and distributing food to those in need.</li>
+                    <li><strong>World Help Volunteer</strong> - Lynchburg, VA (2024): Assisted with packing and sorting clothing donations for global humanitarian efforts in third-world countries.</li>
+                </ul>
             </div>
         </div>
-
-        <!-- Bottom about section with one image placeholder -->
-        <div id="about-section">
-            <img src="teamphoto1.png" alt="Team Photo">
-            <h2>About Us</h2>
-            <h3>Our Team</h3>
-            <p>Placeholder for team information: We are a group of passionate students and faculty dedicated to rocketry.</p>
-            <h3>Our Mission</h3>
-            <p>Placeholder for mission: To advance rocketry education and innovation at Liberty University.</p>
-            <h3>Our Members</h3>
-            <p>Placeholder for members: Meet our diverse team of engineers, designers, and enthusiasts.</p>
-        </div>
-
-        <!-- Contact Us at the bottom -->
-        <div id="contact-bottom">
-            <h2>Contact Us</h2>
-            <p>Have questions or want to get involved? Reach out today!</p>
-            <button onclick="showSection('contact')">Get in Touch</button>
-        </div>
     </section>
 
-    <section id="projects">
-        <h2>Current Missions & Projects</h2>
-        <p>Explore our ongoing endeavors, from high-altitude rockets to liquid engine development, with real-time progress tracking.</p>
-        <div class="projects-grid" id="projects-container">
-            <!-- Dynamic projects -->
-        </div>
-    </section>
-
-    <section id="members">
-        <h2>Our Team of Innovators</h2>
-        <p>Meet the dedicated students and faculty pushing the boundaries of rocketry.</p>
-        <div class="members-grid" id="members-container">
-            <!-- Members -->
-        </div>
-    </section>
-
-    <section id="sponsors">
-        <h2>Our Partners in Exploration</h2>
-        <p>Thanks to our sponsors for fueling our journey. Join them in supporting the next generation of space engineers.</p>
-        <div class="sponsors" id="sponsors-container">
-            <!-- Sponsors -->
+    <section id="experience" class="section fade-section">
+        <h2 class="title-font">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Administrative Coordinator & Operations and Communications Coordinator</h3>
+                <p><strong>Liberty University Rocketry - Lynchburg, VA</strong> (May 2025 - Present) <a href="rocketry.html" class="btn">Learn More</a></p>
+                <p>Optimized project timelines and team logistics using industrial systems engineering principles, ensuring efficient task completion and streamlined workflows. Facilitated clear communication and precise resource allocation, while maintaining the Master Schedule and Budget with purchase order submissions and adjustments. Supported test launches, driving rocketry innovation in national competitions through process improvement.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Avionics Systems & Software Development Engineer</h3>
+                <p><strong>Liberty University Rocketry - Lynchburg, VA</strong> (May 2025 - Present) <a href="rocketry.html" class="btn">Learn More</a></p>
+                <p>Developed and rigorously tested software for rocket avionics systems, ensuring precise data collection and robust system control for mission-critical operations. Collaborated with a multidisciplinary team to design, debug, and optimize code, integrating hardware and software to enhance the performance of sensors and control mechanisms. Conducted extensive system testing to ensure reliability.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Director of Recruitment</h3>
+                <p><strong>Liberty University IISE/ASSP - Lynchburg, VA</strong> (January 2025 - Present)</p>
+                <p>Directed recruitment for Liberty University's IISE/ASSP chapter, organizing membership drives, events, and outreach to attract over 50 new members and enhance engagement. Created data-driven promotional strategies, collaborated with executives on professional development goals, and coordinated workshops/guest sessions to foster inclusive involvement in industrial systems and safety initiatives.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Software Engineering & Financial Data Analyst Intern</h3>
+                <p><strong>Smiths Detection - Edgewood, MD</strong> (June - August 2025)</p>
+                <p>Developed software solutions and analyzed pricing/cost data using Python, SQL, and Excel to support service contracts and improve margins. Conducted competitor pricing research, created visualizations, and presented insights to stakeholders. Collaborated with the pricing team to optimize processes and integrate data-driven solutions, enhancing system efficiency and strategic decision-making.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Houseman Intern</h3>
+                <p><strong>Contemporary Hotel at Walt Disney World - Orlando, FL</strong> (June - September 2024)</p>
+                <p>Gained experience with Disney’s engineering department, learning their operational duties. Maintained cleanliness at Walt Disney World’s premier resort by assisting housekeeping with stripping rooms and ensuring public area cleanliness, while ensuring guest room standards were consistently met.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Senior Customer Service Associate</h3>
+                <p><strong>Walgreens - Bel Air, MD</strong> (August 2022 - August 2023)</p>
+                <p>Processed returns and exchanges, resolved customer issues, and operated a cash register for accurate transactions. Also assisted in training colleagues, instructed new hires, and managed inventory by stocking shelves and reporting levels to management.</p>
+            </div>
+            <div class="timeline-item">
+                <h3 class="subtitle-font">Sales Associate, Cook</h3>
+                <p><strong>Way Back Burgers - Bel Air, MD</strong> (February 2020 - June 2022)</p>
+                <p>Resolved customer issues over the phone, ensured satisfaction by providing menu information, and managed finances with rapid calculations during closing procedures.</p>
+            </div>
         </div>
     </section>
 
-    <section id="technical-reports">
-        <h2>Technical Reports & Publications</h2>
-        <p>Dive into our detailed analyses and findings from past and current projects.</p>
-        <ul id="reports-container">
-            <!-- Reports -->
-        </ul>
+    <section id="projects" class="section fade-section">
+        <h2 class="title-font">Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3 class="subtitle-font">AI-Driven Warehouse Route Optimization</h3>
+                <p><strong>What:</strong> Built a Python simulation (August 2025) to optimize warehouse routes in a 10x10 factory layout with 50 randomized shelves, cutting travel distance by 26.47% using a greedy algorithm (NumPy, Matplotlib, Pandas). Engineered a realistic warehouse model with labeled shelves (S1-S50) and cross-shaped aisles, analyzed with Pandas.</p>
+                <p><strong>Why:</strong> Demonstrates ISE logistics optimization, delivering 26.47% efficiency gains in a simulated factory setting, relevant for e-commerce. Offers a data-driven approach applicable to manufacturing industries.</p>
+                <p><strong>Future:</strong> Plan to integrate genetic algorithms by late 2025 to optimize shelf placement and routes, enhancing overall efficiency. Intend to expand to multi-picker scenarios and dynamic order batching with clustering techniques in 2026, enabling scalability for larger warehouses.</p>
+                <img src="warehouse-plot.png" alt="Warehouse Route Visualization" class="project-img">
+                <a href="portfolio.pdf" download class="btn">View Portfolio PDF</a>
+            </div>
+        </div>
     </section>
 
-    <section id="resume-book">
-        <h2>Team Resume Book</h2>
-        <p>Showcasing the expertise and accomplishments of our members for potential collaborators and employers.</p>
-        <a href="https://drive.google.com/uc?export=download&id=1HEPYRkpenekUk3X30krhUaJ5xjXOZ0-B" download class="download-btn">Download Resume Book (PDF)</a>
+    <section id="skills" class="section fade-section">
+        <h2 class="title-font">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="subtitle-font">Systems & Design</h3>
+                <p>System & Facilities Design, Data Analysis, OnShape 3D Modeling</p>
+            </div>
+            <div class="skill-category">
+                <h3 class="subtitle-font">Programming</h3>
+                <p>Python | Circuit Python, C++ | C#, JavaScript, VBA</p>
+            </div>
+            <div class="skill-category">
+                <h3 class="subtitle-font">Data & Tools</h3>
+                <p>Linux, MATLAB, Microsoft Power Apps | Excel, SQL Server Management</p>
+            </div>
+        </div>
     </section>
 
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <p>Reach out for sponsorships, membership, or collaborations.</p>
-        <p>Email: rocketry@liberty.edu | Phone: (123) 456-7890 | Address: Liberty University, Lynchburg, VA</p>
-        <form id="contact-form">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message" required></textarea>
-            <button type="button" onclick="sendMessage()">Send Mission</button>
+    <section id="contact" class="section fade-section">
+        <h2 class="title-font">Contact</h2>
+        <p>Email: <a href="mailto:gaweaver3@liberty.edu">gaweaver3@liberty.edu</a> | Phone: 443-206-6200</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
         </form>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/geraldaweaver/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
     </section>
 
     <footer>
-        &copy; 2025 Liberty University Rocketry Team | Inspired by SpaceX, MIT, and NASA | Background images courtesy of NASA and public domain sources.
+        <p>&copy; 2025 Gerald Weaver. Built with ❤️ for Industrial Engineering.</p>
     </footer>
 
-    <script>
-        // SPA navigation and other scripts remain the same...
-        function showSection(sectionId) {
-            document.querySelectorAll('section').forEach(sec => {
-                sec.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-            setTimeout(() => {
-                document.getElementById(sectionId).classList.add('visible');
-            }, 100);
-        }
-        showSection('home');
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
-        // Render functions for data...
-        const newsData = [
-            { title: "Launch Prep Update", content: "Week 1: Engine tests complete. See pics from the lab.", image: "path/to/update.jpg", date: "2025-09-05" },
-        ];
-        function renderNews() {
-            const container = document.getElementById('news-container');
-            newsData.forEach(post => {
-                const div = document.createElement('div');
-                div.classList.add('news-post');
-                div.innerHTML = `<h3>${post.title}</h3><p>${post.date}</p><p>${post.content}</p>${post.image ? `<img src="${post.image}">` : ''}`;
-                container.appendChild(div);
-            });
-        }
-        renderNews();
-
-        const projectsData = [
-            { name: "High-Altitude Mission", description: "Targeting 30K ft. Progress: 70%", image: "path/to/project.jpg", progress: 70 },
-            // Add more
-        ];
-
-        function renderProjects() {
-            const container = document.getElementById('projects-container');
-            projectsData.forEach(proj => {
-                const div = document.createElement('div');
-                div.classList.add('project');
-                div.innerHTML = `<img src="${proj.image || ''}" alt="${proj.name}"><h3>${proj.name}</h3><p>${proj.description}</p><progress value="${proj.progress}" max="100"></progress>`;
-                container.appendChild(div);
-            });
-        }
-        renderProjects();
-
-        const membersData = [
-            // Add data
-        ];
-        function renderMembers() {
-            const container = document.getElementById('members-container');
-            membersData.forEach(member => {
-                const div = document.createElement('div');
-                div.classList.add('member');
-                div.innerHTML = `<img src="${member.image}" alt="${member.name}"><h4>${member.name}</h4><p>${member.role}</p>`;
-                container.appendChild(div);
-            });
-        }
-        renderMembers();
-
-        const sponsorsData = [
-            // Add data
-        ];
-        function renderSponsors() {
-            const container = document.getElementById('sponsors-container');
-            sponsorsData.forEach(sponsor => {
-                const div = document.createElement('div');
-                div.classList.add('sponsor');
-                div.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
-                container.appendChild(div);
-            });
-        }
-        renderSponsors();
-
-        const reportsData = [
-            { title: "Technical Report 1", link: "https://drive.google.com/uc?export=download&id=1wvivtWYC7HQr0p5Elisd1lpVeen0nzEF" },
-            // Add more if needed
-        ];
-        function renderReports() {
-            const container = document.getElementById('reports-container');
-            reportsData.forEach(report => {
-                const li = document.createElement('li');
-                li.innerHTML = `<a href="${report.link}" target="_blank" download>${report.title}</a>`;
-                container.appendChild(li);
-            });
-        }
-        renderReports();
-
-        function subscribe() { alert('Subscribed! (Placeholder)'); }
-        function sendMessage() { alert('Message sent! (Placeholder)'); }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
