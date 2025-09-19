@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liberty University Rocketry Team</title>
     <style>
+        * {
+            box-sizing: border-box; /* Ensure consistent box model */
+        }
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
@@ -93,19 +96,22 @@
             border-radius: 20px;
         }
         .hero-section {
-            position: relative;
+            position: absolute; /* Changed to absolute to ensure edge-to-edge */
+            top: 0;
+            left: 0;
+            right: 0;
             width: 100vw; /* Full viewport width */
             height: 100vh; /* Full viewport height */
             margin: 0; /* No margins to ensure edge-to-edge */
             padding: 0; /* No padding to ensure edge-to-edge */
-            background: url('images/Genesis Test Launch.png') no-repeat left center/cover; /* Shifted to left to stretch fully right */
+            background: url('images/Genesis Test Launch.png') no-repeat 0 center/cover; /* Anchor to left edge */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             overflow: hidden;
-            margin-bottom: 20px; /* Space after hero */
+            z-index: 0; /* Below nav but above body */
         }
         .hero-section h1 {
             font-size: 5rem; /* Larger for expanded look */
