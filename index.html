@@ -29,7 +29,7 @@
         header {
             position: relative;
             height: 100vh;
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Launch photo as background */
+            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Launch photo as background - only for home */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -118,6 +118,17 @@
             position: relative;
             z-index: 1;
         }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Overlay for readability on unique backgrounds */
+            z-index: -1;
+            border-radius: 20px;
+        }
         section h2 {
             font-size: 3rem; /* Larger headings */
         }
@@ -128,8 +139,27 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Unique backgrounds for each section */
         #home {
-            background-color: rgba(17, 17, 17, 0.7);
+            background: url('images/genesis-launch-bg.jpg') no-repeat center center/cover; /* Reuse or variant of Genesis launch for home */
+        }
+        #projects {
+            background: url('images/projects-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., rocket assembly or mission image */
+        }
+        #members {
+            background: url('images/team-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., group photo or workshop scene */
+        }
+        #sponsors {
+            background: url('images/sponsors-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., partnership or logo collage */
+        }
+        #technical-reports {
+            background: url('images/reports-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., documents or data graphs */
+        }
+        #resume-book {
+            background: url('images/resume-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., professional headshots or career-themed */
+        }
+        #contact {
+            background: url('images/contact-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., communication or outreach image */
         }
         .news-post {
             background: rgba(34, 34, 34, 0.9);
@@ -455,6 +485,8 @@
                 sec.style.display = 'none';
             });
             document.getElementById(sectionId).style.display = 'block';
+            // Hide header except on home
+            document.querySelector('header').style.display = sectionId === 'home' ? 'flex' : 'none';
             setTimeout(() => {
                 document.getElementById(sectionId).classList.add('visible');
             }, 100);
