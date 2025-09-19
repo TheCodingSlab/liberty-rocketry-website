@@ -32,7 +32,7 @@
         }
         .logo-placeholder {
             position: absolute;
-            top: 50px; /* Moved down further to avoid overlap with home tab */
+            top: 50px; /* Kept down to avoid overlap with home tab */
             left: 40px; /* Kept right shift */
             width: 300px; /* Base width */
             height: auto;
@@ -94,11 +94,11 @@
         }
         .hero-section {
             position: relative;
-            width: 120vw; /* Full viewport width */
-            height: 120vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
             margin: 0; /* No margins to ensure edge-to-edge */
             padding: 0; /* No padding to ensure edge-to-edge */
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch filling the hero section */
+            background: url('images/Genesis Test Launch.png') no-repeat left center/cover; /* Shifted to left to stretch fully right */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -517,4 +517,3 @@
     </script>
 </body>
 </html>
-
