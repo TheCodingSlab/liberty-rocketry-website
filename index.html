@@ -39,6 +39,7 @@
             border-bottom-left-radius: 50% 10%; /* Oval/curved bottom left for flow */
             border-bottom-right-radius: 50% 10%; /* Oval/curved bottom right for flow */
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Soft shadow for connection */
+            margin-bottom: 20px; /* Add some space after header inside home section */
         }
         header::before {
             content: '';
@@ -117,6 +118,10 @@
             margin-top: -50px;
             position: relative;
             z-index: 1;
+        }
+        #home {
+            padding-top: 0; /* Remove top padding for home to start flush after nav/header */
+            margin-top: 0;
         }
         section::before {
             content: '';
@@ -283,6 +288,7 @@
         #newsletter-section {
             text-align: center;
             margin-bottom: 60px;
+            padding-top: 40px; /* Add padding after header */
         }
         #newsletter-section h2 {
             font-size: 2.5rem;
@@ -354,14 +360,14 @@
         <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
 
-    <header>
-        <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder">
-        <h1>Liberty University Rocketry Team</h1>
-        <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
-        <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
-    </header>
-
     <section id="home">
+        <header>
+            <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder">
+            <h1>Liberty University Rocketry Team</h1>
+            <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
+            <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
+        </header>
+
         <!-- Improved Newsletter Section modeled after NASA -->
         <div id="newsletter-section">
             <h2>Explore Rocketry from Your Inbox</h2>
@@ -485,8 +491,6 @@
                 sec.style.display = 'none';
             });
             document.getElementById(sectionId).style.display = 'block';
-            // Hide header except on home
-            document.querySelector('header').style.display = sectionId === 'home' ? 'flex' : 'none';
             setTimeout(() => {
                 document.getElementById(sectionId).classList.add('visible');
             }, 100);
