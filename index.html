@@ -32,8 +32,8 @@
         }
         .logo-placeholder {
             position: absolute;
-            top: 20px; /* Shifted down */
-            left: 20px;
+            top: 30px; /* Moved down further */
+            left: 40px; /* Moved right from 20px */
             width: 300px; /* Base width */
             height: auto;
             z-index: 11;
@@ -43,11 +43,15 @@
         @media (max-width: 768px) {
             .logo-placeholder {
                 width: 150px; /* Halve size on mobile/tablet */
+                top: 20px; /* Slightly less movement on smaller screens */
+                left: 20px;
             }
         }
         @media (max-width: 480px) {
             .logo-placeholder {
                 width: 120px; /* Further minimize on small screens */
+                top: 15px;
+                left: 15px;
             }
         }
         nav a {
@@ -91,14 +95,17 @@
         .hero-section {
             position: relative;
             height: 100vh;
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch filling the hero section behind title */
+            width: 100vw; /* Ensure it spans full viewport width */
+            margin: 0; /* Remove any margins to reach edges */
+            padding: 0; /* Remove padding to ensure edge-to-edge */
+            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch filling the hero section */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             overflow: hidden;
-            margin-bottom: 20px; /* Add some space after hero inside home section */
+            margin-bottom: 20px; /* Space after hero */
         }
         .hero-section h1 {
             font-size: 5rem; /* Larger for expanded look */
