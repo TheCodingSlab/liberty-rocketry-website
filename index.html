@@ -12,7 +12,7 @@
             background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp9436943.jpg&f=1&nofb=1&ipt=7c0bf9b303482001bb0e9ba9517a2c72fab2f85be559ae88a153b0d700f1393c') no-repeat center center fixed; /* Starry space background */
             background-size: cover;
             background-color: #000; /* Fallback */
-            color: #fff;
+            color: #ccc; /* Light grey text */
             overflow-x: hidden;
             position: relative;
         }
@@ -44,12 +44,24 @@
             position: absolute;
             top: 10px; /* Adjusted for nav */
             left: 20px;
-            width: 300px; /* Shrunk as requested */
+            width: 300px; /* Base width */
             height: auto;
             z-index: 11;
+            transition: width 0.3s ease; /* Smooth scaling */
+        }
+        /* Responsive logo: minimize on smaller screens */
+        @media (max-width: 768px) {
+            .logo-placeholder {
+                width: 150px; /* Halve size on mobile/tablet */
+            }
+        }
+        @media (max-width: 480px) {
+            .logo-placeholder {
+                width: 120px; /* Further minimize on small screens */
+            }
         }
         nav a {
-            color: #fff;
+            color: #ccc; /* Light grey for consistency */
             margin: 0 20px;
             text-decoration: none;
             font-weight: bold;
@@ -88,8 +100,8 @@
         }
         header {
             position: relative;
-            height: 100vh;
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch solely behind title, filling the viewport */
+            min-height: 100vh; /* Ensure it fills at least the viewport */
+            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch filling the entire header area */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -106,13 +118,13 @@
             font-size: 5rem; /* Larger for expanded look */
             z-index: 1;
             animation: fadeIn 2s ease-in;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline for readability */
+            /* Removed text-shadow outline */
         }
         header p {
             font-size: 1.8rem; /* Larger */
             z-index: 1;
             animation: fadeIn 2s ease-in 0.5s;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline for readability */
+            /* Removed text-shadow outline */
         }
         header .quote {
             font-size: 1.4rem;
@@ -121,7 +133,7 @@
             margin: 20px auto;
             z-index: 1;
             animation: fadeIn 2s ease-in 1s; /* Added fade-in animation with delay */
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline for readability */
+            /* Removed text-shadow outline */
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -218,7 +230,7 @@
         }
         footer {
             background-color: #000;
-            color: #fff;
+            color: #ccc; /* Light grey for consistency */
             text-align: center;
             padding: 20px;
             border-top: 1px solid #333;
