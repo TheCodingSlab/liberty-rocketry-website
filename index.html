@@ -84,6 +84,20 @@
             padding-top: 0; /* Remove top padding for home to start flush after nav/hero */
             margin-top: 0;
         }
+        section:not(#home) {
+            padding-top: 200px; /* Increased top padding for non-home sections to shift content down and avoid logo overlap */
+        }
+        /* Adjust padding in responsive media queries to match logo scaling */
+        @media (max-width: 768px) {
+            section:not(#home) {
+                padding-top: 150px; /* Reduced for smaller logo */
+            }
+        }
+        @media (max-width: 480px) {
+            section:not(#home) {
+                padding-top: 120px; /* Further reduced for smallest logo */
+            }
+        }
         section::before {
             content: '';
             position: absolute;
