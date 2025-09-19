@@ -9,45 +9,21 @@
             font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp9436943.jpg&f=1&nofb=1&ipt=7c0bf9b303482001bb0e9ba9517a2c72fab2f85be559ae88a153b0d700f1393c') no-repeat center center fixed; /* Starry space background */
-            background-size: cover;
-            background-color: #000; /* Fallback */
+            background-color: #333; /* Gray background for everything else */
             color: #fff;
             overflow-x: hidden;
             position: relative;
         }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Overlay for readability */
-            z-index: -1;
-        }
         header {
             position: relative;
             height: 100vh;
-            background: url('Space1.jpg') no-repeat center center/cover; /* Replaced with Space1.jpg from repository */
+            background: url('Genesis Test Launch.png') no-repeat center center/cover; /* Kept as background for title section, no curves or shaders */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             overflow: hidden;
-            border-bottom-left-radius: 50% 10%; /* Oval/curved bottom left for flow */
-            border-bottom-right-radius: 50% 10%; /* Oval/curved bottom right for flow */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Soft shadow for connection */
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0.8) 100%); /* Gradient fade to blend into body */
         }
         header h1 {
             font-size: 5rem; /* Larger for expanded look */
@@ -71,7 +47,7 @@
             position: absolute;
             top: 60px; /* Shifted down for visibility */
             left: 20px; /* Moved to left side */
-            width: 300px; /* Shrunk from 480px */
+            width: 300px; /* Shrunk as requested */
             height: auto;
             z-index: 2;
         }
