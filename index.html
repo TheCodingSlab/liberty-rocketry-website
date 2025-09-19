@@ -96,15 +96,11 @@
             border-radius: 20px;
         }
         .hero-section {
-            position: absolute; /* Changed to absolute to ensure edge-to-edge */
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100vw; /* Full viewport width */
+            position: relative; /* Changed to relative to keep it in the document flow */
             height: 100vh; /* Full viewport height */
-            margin: 0; /* No margins to ensure edge-to-edge */
+            margin: 0 -40px; /* Extend to full width by negating section padding */
             padding: 0; /* No padding to ensure edge-to-edge */
-            background: url('images/Genesis Test Launch.png') no-repeat 0 center/cover; /* Anchor to left edge */
+            background: url('images/Genesis Test Launch.png') no-repeat left center/cover; /* Anchor to left edge */
             display: flex;
             flex-direction: column;
             justify-content: center;
