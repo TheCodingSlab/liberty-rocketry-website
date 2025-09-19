@@ -15,17 +15,6 @@
             color: #ccc; /* Light grey text */
             overflow-x: hidden;
             position: relative;
-            transition: background-image 0.5s ease; /* Smooth transition for background changes */
-        }
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Overlay for readability */
-            z-index: -1;
         }
         nav {
             position: fixed;
@@ -43,7 +32,7 @@
         }
         .logo-placeholder {
             position: absolute;
-            top: 20px; /* Shifted down from 10px */
+            top: 20px; /* Shifted down */
             left: 20px;
             width: 300px; /* Base width */
             height: auto;
@@ -78,14 +67,14 @@
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 1s, transform 1s;
-            background-color: rgba(17, 17, 17, 0.7);
+            background-color: #000; /* Black background for all sections */
             border-radius: 20px;
             margin-top: -50px;
             position: relative;
             z-index: 1;
         }
         #home {
-            padding-top: 0; /* Remove top padding for home to start flush after nav/header */
+            padding-top: 0; /* Remove top padding for home to start flush after nav/hero */
             margin-top: 0;
         }
         section::before {
@@ -99,41 +88,35 @@
             z-index: -1;
             border-radius: 20px;
         }
-        header {
+        .hero-section {
             position: relative;
-            min-height: 100vh; /* Ensure it fills at least the viewport */
-            background: none; /* Transparent to let body background show through */
+            height: 100vh;
+            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch filling the hero section behind title */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             overflow: hidden;
-            border-bottom-left-radius: 50% 10%; /* Oval/curved bottom left for flow */
-            border-bottom-right-radius: 50% 10%; /* Oval/curved bottom right for flow */
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Soft shadow for connection */
-            margin-bottom: 20px; /* Add some space after header inside home section */
+            margin-bottom: 20px; /* Add some space after hero inside home section */
         }
-        header h1 {
+        .hero-section h1 {
             font-size: 5rem; /* Larger for expanded look */
             z-index: 1;
             animation: fadeIn 2s ease-in;
-            /* Removed text-shadow outline */
         }
-        header p {
+        .hero-section p {
             font-size: 1.8rem; /* Larger */
             z-index: 1;
             animation: fadeIn 2s ease-in 0.5s;
-            /* Removed text-shadow outline */
         }
-        header .quote {
+        .hero-section .quote {
             font-size: 1.4rem;
             font-style: italic;
             max-width: 900px;
             margin: 20px auto;
             z-index: 1;
             animation: fadeIn 2s ease-in 1s; /* Added fade-in animation with delay */
-            /* Removed text-shadow outline */
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -319,11 +302,11 @@
     </nav>
 
     <section id="home">
-        <header>
+        <div class="hero-section">
             <h1>Liberty University Rocketry Team</h1>
             <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
             <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
-        </header>
+        </div>
 
         <!-- Images section with solid background and six placeholders -->
         <div id="images-section">
@@ -437,20 +420,6 @@
                 sec.style.display = 'none';
             });
             document.getElementById(sectionId).style.display = 'block';
-            // Dynamically set body background for home to Genesis photo, filling entire page
-            if (sectionId === 'home') {
-                document.body.style.backgroundImage = "url('images/Genesis Test Launch.png')";
-                document.body.style.backgroundSize = 'cover';
-                document.body.style.backgroundPosition = 'center center';
-                document.body.style.backgroundRepeat = 'no-repeat';
-                document.body.style.backgroundAttachment = 'fixed';
-            } else {
-                document.body.style.backgroundImage = "url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp9436943.jpg&f=1&nofb=1&ipt=7c0bf9b303482001bb0e9ba9517a2c72fab2f85be559ae88a153b0d700f1393c')";
-                document.body.style.backgroundSize = 'cover';
-                document.body.style.backgroundPosition = 'center center';
-                document.body.style.backgroundRepeat = 'no-repeat';
-                document.body.style.backgroundAttachment = 'fixed';
-            }
             setTimeout(() => {
                 document.getElementById(sectionId).classList.add('visible');
             }, 100);
