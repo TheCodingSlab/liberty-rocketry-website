@@ -198,22 +198,48 @@
             max-width: 100%;
             border-radius: 8px;
         }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .project {
-            background: rgba(34, 34, 34, 0.9);
+        .project-box {
+            position: relative;
+            margin: 20px -40px; /* Extend to full width */
             padding: 20px;
-            border-radius: 8px;
-            text-align: center;
+            background: rgba(34, 34, 34, 0.9);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
         }
-        .project img {
-            width: 100%;
+        .project-image-placeholder {
+            background-color: #333;
+            width: 300px;
             height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border: 1px dashed #fff;
+            flex-shrink: 0;
+        }
+        .project-text {
+            flex: 1;
+        }
+        .project-text h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 2rem;
+        }
+        .project-text p {
+            margin: 0;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .project-box {
+                flex-direction: column;
+                align-items: center;
+            }
+            .project-image-placeholder {
+                width: 100%;
+                height: auto;
+            }
         }
         .members-grid {
             display: grid;
@@ -329,7 +355,7 @@
     <nav>
         <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder">
         <a href="#home" onclick="showSection('home')">Home</a>
-        <a href="#projects" onclick="showSection('projects')">Projects</a>
+        <a href="#projects" onclick="showSection('projects')">Missions & Projects</a>
         <a href="#members" onclick="showSection('members')">Team</a>
         <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
         <a href="#technical-reports" onclick="showSection('technical-reports')">Technical Reports</a>
@@ -395,10 +421,35 @@
     </section>
 
     <section id="projects">
-        <h2>Projects</h2>
+        <h2>Current Missions & Projects</h2>
         <p>Explore our ongoing endeavors, from high-altitude rockets to liquid engine development, with real-time progress tracking.</p>
-        <div class="projects-grid" id="projects-container">
-            <!-- Dynamic projects -->
+        <div class="project-box">
+            <div class="project-image-placeholder">Project Genesis Image</div>
+            <div class="project-text">
+                <h3>Project Genesis</h3>
+                <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike as the highest-placing first-year team. Performing phenomenally as our first entry in the Spaceport America Cup, Genesis provided our team exceptional experience and a solid foundation to begin our legacy of engineering excellence.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Project Waymaker Image</div>
+            <div class="project-text">
+                <h3>Project Waymaker</h3>
+                <p>In 2024, Liberty Rocketry took the competition by storm, placing 9th overall, 5th in our division, and 4th in the country, placing above some the biggest names in engineering like Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&M, Rice, and Embry-Riddle, becoming one of the most elite collegiate rocketry teams in the world in only our second year competing.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Project Trinity Image</div>
+            <div class="project-text">
+                <h3>Project Trinity</h3>
+                <p>In 2025, Liberty Rocketry competed for the third time, placing 9th in technical performance and launch results, staying consistent through a quickly evolving high-powered-rocketry competition. Due to a late technical report, the official standing for Trinity unfortunately dropped down to 57th internationally. This has led to improved team structure changes, management improvements across the board, in an effort to solve the administrative issues holding us back from a top 10 placement.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Project Omega Image</div>
+            <div class="project-text">
+                <h3>Project Omega</h3>
+                <p>With our engineering ability proven twice over, and new organizational improvements in effect, Liberty Rocketry is sure to come back stronger than ever, with our fourth high-powered rocket system - Omega. From further developing an unmatched in-house avionics and ground station system to manufacturing experimental airbrake systems and fuel mixtures, we are not only aiming for the top of the International Rocket Engineering Competition, but also developing technology never before used by another team - and we need your help! By sponsoring Liberty Rocketry, you will be supporting some of the best and brightest minds in the next generation of engineers and aerospace professionals. A team of ambitious, hard-working engineering students committed to pushing the limits of student-led rocketry design, and with your support, we can make this goal a reality!</p>
+            </div>
         </div>
     </section>
 
@@ -477,22 +528,6 @@
         }
         renderNews();
 
-        const projectsData = [
-            { name: "High-Altitude Mission", description: "Targeting 30K ft. Progress: 70%", image: "path/to/project.jpg", progress: 70 },
-            // Add more
-        ];
-
-        function renderProjects() {
-            const container = document.getElementById('projects-container');
-            projectsData.forEach(proj => {
-                const div = document.createElement('div');
-                div.classList.add('project');
-                div.innerHTML = `<img src="${proj.image || ''}" alt="${proj.name}"><h3>${proj.name}</h3><p>${proj.description}</p><progress value="${proj.progress}" max="100"></progress>`;
-                container.appendChild(div);
-            });
-        }
-        renderProjects();
-
         const membersData = [
             // Add data
         ];
@@ -539,5 +574,3 @@
     </script>
 </body>
 </html>
-
-
