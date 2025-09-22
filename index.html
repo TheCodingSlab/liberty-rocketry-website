@@ -363,8 +363,10 @@
         #about-section img {
             max-width: 500px; /* Expanded height indirectly by increasing max-width (height auto scales) */
             height: auto;
-            margin-bottom: 20px;
+            margin: 0 auto 20px auto;
             border-radius: 8px;
+            display: block;
+            box-shadow: 0 4px 8px rgba(255,255,255,0.1);
         }
         #contact-bottom {
             text-align: center;
@@ -437,7 +439,7 @@
 
         <!-- Bottom about section with one image placeholder -->
         <div id="about-section">
-            <div class="image-placeholder">Placeholder for 20240319_5877KT.jpg</div>
+            <img src="20240319_5877KT.jpg" alt="About Us Image">
             <h2>About Us</h2>
             <h3>Our Team</h3>
             <p>Placeholder for team information: We are a group of passionate students and faculty dedicated to rocketry.</p>
