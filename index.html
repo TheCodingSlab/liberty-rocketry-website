@@ -29,6 +29,10 @@
             z-index: 10;
             transition: background 0.3s;
             position: relative; /* For logo positioning */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
         }
         nav.scrolled {
             background-color: #000;
@@ -92,10 +96,40 @@
             section:not(#home) {
                 padding-top: 150px; /* Reduced for smaller logo */
             }
+            section {
+                padding: 80px 20px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero-section {
+                margin: 0 -20px;
+            }
+            .project-box {
+                margin: 20px -20px;
+            }
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+            .hero-section .quote {
+                font-size: 1rem;
+            }
+            section h2 {
+                font-size: 2rem;
+            }
+            .images-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         @media (max-width: 480px) {
             section:not(#home) {
                 padding-top: 120px; /* Further reduced for smallest logo */
+            }
+            .images-grid {
+                grid-template-columns: 1fr;
             }
         }
         section::before {
@@ -186,9 +220,6 @@
         }
         #contact {
             background: url('images/contact-bg.jpg') no-repeat center center/cover; /* Placeholder: e.g., communication or outreach image */
-        }
-        #merchandise {
-            background: url('images/merch-bg.jpg') no-repeat center center/cover; /* Placeholder for merchandise background */
         }
         .news-post {
             background: rgba(34, 34, 34, 0.9);
@@ -362,7 +393,6 @@
         <a href="#members" onclick="showSection('members')">Team</a>
         <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
         <a href="#technical-reports" onclick="showSection('technical-reports')">Technical Reports</a>
-        <a href="#merchandise" onclick="showSection('merchandise')">Merchandise</a>
         <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
 
@@ -479,20 +509,6 @@
         <ul id="reports-container">
             <!-- Reports -->
         </ul>
-    </section>
-
-    <section id="merchandise">
-        <h2>Merchandise Store</h2>
-        <p>Browse our collection of Liberty University Rocketry merchandise!</p>
-        <!-- To set up the store:
-        1. Sign up for Shopify (or similar service like Snipcart) and add your products.
-        2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button).
-        3. Paste the <script> code (the initialization script) once in the <head> of this HTML file.
-        4. Paste the <div> elements for each button below to display products.
-        Example embed for a product (replace with your generated code):
-        <div id='product-component-your-id-here'></div>
-        -->
-        <!-- Add your product embeds here -->
     </section>
 
     <section id="contact">
