@@ -409,9 +409,12 @@
             transform: scale(1.05);
         }
         #merchandise {
-            background-color: #000;
+            background-color: transparent; /* Remove black background */
             padding: 80px 40px;
             border-radius: 20px;
+        }
+        #merchandise::before {
+            display: none; /* Optional: Remove dark overlay if desired */
         }
         #contact-form {
             display: flex;
