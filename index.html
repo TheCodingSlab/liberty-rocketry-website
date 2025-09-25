@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liberty University Rocketry</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box; /* Ensure consistent box model */
         }
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
             background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp9436943.jpg&f=1&nofb=1&ipt=7c0bf9b303482001bb0e9ba9517a2c72fab2f85be559ae88a153b0d700f1393c') no-repeat center center fixed; /* Starry space background */
@@ -86,7 +85,7 @@
             z-index: 1;
         }
         #home {
-            padding-top: 100vh; /* Push content below full-height hero */
+            padding-top: 0;
             margin-top: 0;
         }
         section:not(#home) {
@@ -145,35 +144,32 @@
             border-radius: 20px;
         }
         .hero-section {
-            position: absolute; /* Absolute to make full viewport */
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            margin: 0; /* No margins to ensure edge-to-edge */
-            padding: 0; /* No padding to ensure edge-to-edge */
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Center for full cover */
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: url('images/Genesis Test Launch.png') no-repeat center center/cover; /* Genesis launch filling the hero section behind title */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             overflow: hidden;
-            z-index: 0; /* Below nav but above body */
+            border-bottom-left-radius: 50% 10%; /* Oval/curved bottom left for flow */
+            border-bottom-right-radius: 50% 10%; /* Oval/curved bottom right for flow */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Soft shadow for connection */
+            margin-bottom: 20px; /* Add some space after hero inside home section */
         }
         .hero-section h1 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 5rem; /* Larger for expanded look */
             z-index: 1;
             animation: fadeIn 2s ease-in;
-            color: #fff; /* Pure white for title */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
         }
         .hero-section p {
             font-size: 1.8rem; /* Larger */
             z-index: 1;
             animation: fadeIn 2s ease-in 0.5s;
-            color: #fff; /* Pure white */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
         }
         .hero-section .quote {
             font-size: 1.4rem;
@@ -182,16 +178,14 @@
             margin: 20px auto;
             z-index: 1;
             animation: fadeIn 2s ease-in 1s; /* Added fade-in animation with delay */
-            color: #fff; /* Pure white */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Black outline */
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         section h2 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 3rem; /* Larger headings */
-            color: #fff; /* Pure white for titles */
         }
         section p {
             font-size: 1.2rem; /* Larger text */
@@ -235,8 +229,6 @@
             display: flex;
             align-items: flex-start;
             gap: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(255,255,255,0.1);
         }
         .project-image-placeholder {
             background-color: #333;
@@ -249,7 +241,6 @@
             font-style: italic;
             border: 1px dashed #fff;
             flex-shrink: 0;
-            border-radius: 8px;
         }
         .project-text {
             flex: 1;
@@ -283,7 +274,6 @@
             background: rgba(34, 34, 34, 0.9);
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(255,255,255,0.1);
         }
         .member img {
             width: 180px;
@@ -302,7 +292,6 @@
             max-width: 250px;
             filter: grayscale(100%);
             transition: filter 0.3s;
-            border-radius: 8px;
         }
         .sponsor img:hover {
             filter: grayscale(0%);
@@ -349,7 +338,6 @@
             color: #aaa;
             font-style: italic;
             border: 1px dashed #fff;
-            border-radius: 8px;
         }
         .image-desc {
             margin-top: 10px;
@@ -384,37 +372,6 @@
         #contact-bottom button:hover {
             background-color: #cc0000;
         }
-        #merchandise {
-            background-color: #000;
-            padding: 80px 40px;
-            border-radius: 20px;
-        }
-        #contact-form {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        #contact-form input, #contact-form textarea {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            background-color: #111;
-            color: #ccc;
-        }
-        #contact-form button {
-            padding: 15px;
-            background-color: #ff0000;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        #contact-form button:hover {
-            background-color: #cc0000;
-        }
     </style>
 </head>
 <body>
@@ -429,63 +386,35 @@
         <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
 
-<section id="home">
+    <!-- ✅ HERO SECTION FIRST -->
     <div class="hero-section">
         <h1>Liberty University Rocketry</h1>
         <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
         <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
     </div>
 
-    <!-- Images section with solid background and six placeholders -->
-    <div id="images-section">
-        <h2>Featured Images</h2>
-        <div class="images-grid">
-            <div>
-                <div class="image-placeholder">Image Placeholder 1</div>
-                <p class="image-desc">Description for image 1: A snapshot of our latest rocket prototype in assembly.</p>
-            </div>
-            <div>
-                <div class="image-placeholder">Image Placeholder 2</div>
-                <p class="image-desc">Description for image 2: Team members collaborating on engine design.</p>
-            </div>
-            <div>
-                <div class="image-placeholder">Image Placeholder 3</div>
-                <p class="image-desc">Description for image 3: Successful test launch from last semester.</p>
-            </div>
-            <div>
-                <div class="image-placeholder">Image Placeholder 4</div>
-                <p class="image-desc">Description for image 4: Workshop manufacturing in progress.</p>
-            </div>
-            <div>
-                <div class="image-placeholder">Image Placeholder 5</div>
-                <p class="image-desc">Description for image 5: Team meeting and planning session.</p>
-            </div>
-            <div>
-                <div class="image-placeholder">Image Placeholder 6</div>
-                <p class="image-desc">Description for image 6: Rocket components under testing.</p>
-            </div>
+    <!-- ✅ Now Home Content starts AFTER hero -->
+    <section id="home">
+        <!-- Images section -->
+        <div id="images-section">
+            <h2>Featured Images</h2>
+            <!-- Grid of images -->
         </div>
-    </div>
 
-    <!-- Bottom about section with one image placeholder -->
-    <div id="about-section">
-        <img src="20240319_5877KT.jpg" alt="About Us Image">
-        <h2>About Us</h2>
-        <h3>Our Team</h3>
-        <p>Placeholder for team information: We are a group of passionate students and faculty dedicated to rocketry.</p>
-        <h3>Our Mission</h3>
-        <p>Placeholder for mission: To advance rocketry education and innovation at Liberty University.</p>
-        <h3>Our Members</h3>
-        <p>Placeholder for members: Meet our diverse team of engineers, designers, and enthusiasts.</p>
-    </div>
+        <!-- About Section -->
+        <div id="about-section">
+            <img src="20240319_5877KT.jpg" alt="About Us Image">
+            <h2>About Us</h2>
+            <!-- Content -->
+        </div>
 
-    <!-- Contact Us at the bottom -->
-    <div id="contact-bottom">
-        <h2>Contact Us</h2>
-        <p>Have questions or want to get involved? Reach out today!</p>
-        <button onclick="showSection('contact')">Get in Touch</button>
-    </div>
-</section>
+        <!-- Contact Bottom -->
+        <div id="contact-bottom">
+            <h2>Contact Us</h2>
+            <p>Have questions or want to get involved? Reach out today!</p>
+            <button onclick="showSection('contact')">Get in Touch</button>
+        </div>
+    </section>
 
 <section id="projects">
     <h2>Current Projects</h2>
@@ -547,14 +476,6 @@
 <section id="merchandise">
     <h2>Merchandise Store</h2>
     <p>Browse our collection of Liberty University Rocketry merchandise!</p>
-    <!-- To set up the store:
-    1. Sign up for Shopify (or similar service like Snipcart) and add your products.
-    2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button).
-    3. Paste the <script> code (the initialization script) once in the <head> of this HTML file.
-    4. Paste the <div> elements for each button below to display products.
-    Example embed for a product (replace with your generated code):
-    <div id='product-component-your-id-here'></div>
-    -->
     <!-- Add your product embeds here -->
 </section>
 
@@ -569,10 +490,6 @@
         <button type="button" onclick="sendMessage()">Send Mission</button>
     </form>
 </section>
-
-<footer>
-    &copy; 2025 Liberty University Rocketry | Inspired by SpaceX, MIT, and NASA | Background images courtesy of NASA and public domain sources.
-</footer>
 
 <script>
     // SPA navigation and other scripts remain the same...
@@ -652,5 +569,6 @@
     renderReports();
 
     function sendMessage() { alert('Message sent! (Placeholder)'); }
-</script></body>
+</script>
+</body>
 </html>
