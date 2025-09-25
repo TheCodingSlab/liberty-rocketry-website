@@ -142,9 +142,14 @@
             border-radius: 20px;
         }
         .hero-section {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             width: 100vw;
             height: 100vh;
+            margin: 0;
+            padding: 0;
             background: url('images/Genesis Test Launch.png') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -152,6 +157,7 @@
             align-items: center;
             text-align: center;
             overflow: hidden;
+            z-index: 0;
         }
         .hero-section::before {
             content: '';
@@ -162,11 +168,6 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.3); /* Overlay for text readability */
             z-index: 0;
-        }
-        .hero-section h1, .hero-section p, .hero-section .quote {
-            color: #fff;
-            z-index: 1;
-            animation: fadeIn 2s ease-in;
         }
         .hero-section h1 {
             font-family: 'Orbitron', sans-serif;
@@ -202,6 +203,10 @@
             width: 100%;
             height: 50px;
             background-color: #333; /* Grey block */
+            position: absolute;
+            top: 100vh; /* Position directly below hero-section */
+            left: 0;
+            z-index: 1;
         }
         section h2 {
             font-family: 'Orbitron', sans-serif;
@@ -469,13 +474,43 @@
         <!-- Images section -->
         <div id="images-section">
             <h2>Featured Images</h2>
-            <!-- Grid of images -->
+            <div class="images-grid">
+                <div>
+                    <div class="image-placeholder">Image Placeholder 1</div>
+                    <p class="image-desc">Description for image 1: A snapshot of our latest rocket prototype in assembly.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder">Image Placeholder 2</div>
+                    <p class="image-desc">Description for image 2: Team members collaborating on engine design.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder">Image Placeholder 3</div>
+                    <p class="image-desc">Description for image 3: Successful test launch from last semester.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder">Image Placeholder 4</div>
+                    <p class="image-desc">Description for image 4: Workshop manufacturing in progress.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder">Image Placeholder 5</div>
+                    <p class="image-desc">Description for image 5: Team meeting and planning session.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder">Image Placeholder 6</div>
+                    <p class="image-desc">Description for image 6: Rocket components under testing.</p>
+                </div>
+            </div>
         </div>
         <!-- About Section -->
         <div id="about-section">
             <img src="20240319_5877KT.jpg" alt="About Us Image">
             <h2>About Us</h2>
-            <!-- Content -->
+            <h3>Our Team</h3>
+            <p>Placeholder for team information: We are a group of passionate students and faculty dedicated to rocketry.</p>
+            <h3>Our Mission</h3>
+            <p>Placeholder for mission: To advance rocketry education and innovation at Liberty University.</p>
+            <h3>Our Members</h3>
+            <p>Placeholder for members: Meet our diverse team of engineers, designers, and enthusiasts.</p>
         </div>
         <!-- Contact Bottom -->
         <div id="contact-bottom">
@@ -604,7 +639,6 @@
             });
         }
         renderNews();
-
         const membersData = [];
         function renderMembers() {
             const container = document.getElementById('members-container');
@@ -616,7 +650,6 @@
             });
         }
         renderMembers();
-
         const sponsorsData = [];
         function renderSponsors() {
             const container = document.getElementById('sponsors-container');
@@ -628,7 +661,6 @@
             });
         }
         renderSponsors();
-
         const reportsData = [
             { title: "Technical Report 1", link: "https://drive.google.com/uc?export=download&id=1wvivtWYC7HQr0p5Elisd1lpVeen0nzEF" },
         ];
@@ -641,7 +673,6 @@
             });
         }
         renderReports();
-
         function sendMessage() { alert('Message sent! (Placeholder)'); }
     </script>
 </body>
