@@ -13,7 +13,7 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #222; /* Darker grey background */
+            background-color: #111; /* Even darker grey background */
             color: #ccc; /* Light grey text */
             overflow-x: hidden;
             position: relative;
@@ -381,12 +381,18 @@
             padding: 60px 20px;
             text-align: center;
         }
-        #about-section img {
-            max-width: 300px; /* Smaller size */
-            height: auto;
-            margin-bottom: 20px;
+        #about-section .team-photo-placeholder {
+            background-color: #333;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border: 1px dashed #fff;
             border-radius: 8px;
-            border: 2px solid #ff0000; /* Frame */
+            margin: 0 auto 20px;
         }
         #contact-bottom {
             text-align: center;
@@ -498,7 +504,7 @@
         </div>
         <!-- About Section -->
         <div id="about-section">
-            <img src="20240319_5877KT.jpg" alt="">
+            <div class="team-photo-placeholder">Team Photo Placeholder</div>
             <h2>About Us</h2>
             <h3>Our Team</h3>
             <p>Placeholder for team information: We are a group of passionate students and faculty dedicated to rocketry.</p>
