@@ -126,6 +126,7 @@
         #home {
             padding-top: calc(100vh + 50px); /* Push content below hero + grey block */
             margin-top: 0;
+            background-color: transparent; /* Fix: Make #home transparent to show body background in gaps */
         }
         section:not(#home) {
             padding-top: 200px; /* Avoid logo overlap */
@@ -140,6 +141,9 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: -1;
             border-radius: 20px;
+        }
+        #home::before {
+            display: none; /* Optional: Remove overlay for #home if you don't want darkening over the body background */
         }
         .hero-section {
             position: absolute;
@@ -452,7 +456,6 @@
         <a href="#merchandise" onclick="showSection('merchandise')">Merchandise</a>
         <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
-
     <!-- ✅ HERO SECTION FIRST -->
     <div class="hero-section">
         <h1>Liberty University Rocketry</h1>
@@ -509,7 +512,6 @@
             <button onclick="showSection('contact')">Get in Touch</button>
         </div>
     </section>
-
     <section id="projects">
         <h2>Current Projects</h2>
         <p>Browse our collection of current and past projects.</p>
@@ -542,7 +544,6 @@
             </div>
         </div>
     </section>
-
     <section id="members">
         <h2>Our Team of Innovators</h2>
         <p>Meet the dedicated students and faculty pushing the boundaries of rocketry.</p>
@@ -550,7 +551,6 @@
             <!-- Members -->
         </div>
     </section>
-
     <section id="sponsors">
         <h2>Our Partners in Exploration</h2>
         <p>Thanks to our sponsors for fueling our journey. Join them in supporting the next generation of space engineers.</p>
@@ -558,7 +558,6 @@
             <!-- Sponsors -->
         </div>
     </section>
-
     <section id="technical-reports">
         <h2>Technical Reports & Publications</h2>
         <p>Dive into our detailed analyses and findings from past and current projects.</p>
@@ -566,7 +565,6 @@
             <!-- Reports -->
         </ul>
     </section>
-
     <section id="merchandise">
         <h2>Merchandise Store</h2>
         <p>Browse our collection of Liberty University Rocketry merchandise!</p>
@@ -580,7 +578,6 @@
         -->
         <!-- Add your product embeds here -->
     </section>
-
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
@@ -592,11 +589,9 @@
             <button type="button" onclick="sendMessage()">Send Mission</button>
         </form>
     </section>
-
     <footer>
         &copy; 2025 Liberty University Rocketry | Inspired by SpaceX, MIT, and NASA | Background images courtesy of NASA and public domain sources.
     </footer>
-
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('section').forEach(sec => {
@@ -629,7 +624,6 @@
             });
         }
         renderNews();
-
         const membersData = [];
         function renderMembers() {
             const container = document.getElementById('members-container');
@@ -641,7 +635,6 @@
             });
         }
         renderMembers();
-
         const sponsorsData = [];
         function renderSponsors() {
             const container = document.getElementById('sponsors-container');
@@ -653,7 +646,6 @@
             });
         }
         renderSponsors();
-
         const reportsData = [
             { title: "Technical Report 1", link: "https://drive.google.com/uc?export=download&id=1wvivtWYC7HQr0p5Elisd1lpVeen0nzEF" },
         ];
@@ -666,7 +658,6 @@
             });
         }
         renderReports();
-
         function sendMessage() { alert('Message sent! (Placeholder)'); }
     </script>
 </body>
