@@ -601,6 +601,9 @@
             setTimeout(() => {
                 document.getElementById(sectionId).classList.add('visible');
             }, 100);
+            // Fix: Show hero only on home
+            const hero = document.querySelector('.hero-section');
+            hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
         }
         showSection('home');
         window.addEventListener('scroll', () => {
