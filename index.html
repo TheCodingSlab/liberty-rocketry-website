@@ -124,7 +124,7 @@
             z-index: 1;
         }
         #home {
-            padding-top: calc(100vh + 50px); /* Push content below hero + grey block */
+            padding-top: 0; /* Remove top padding for home to start flush after nav/hero */
             margin-top: 0;
         }
         section:not(#home) {
@@ -142,14 +142,9 @@
             border-radius: 20px;
         }
         .hero-section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            position: relative;
             width: 100vw;
             height: 100vh;
-            margin: 0;
-            padding: 0;
             background: url('images/Genesis Test Launch.png') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -157,7 +152,6 @@
             align-items: center;
             text-align: center;
             overflow: hidden;
-            z-index: 0;
         }
         .hero-section::before {
             content: '';
@@ -168,6 +162,11 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.3); /* Overlay for text readability */
             z-index: 0;
+        }
+        .hero-section h1, .hero-section p, .hero-section .quote {
+            color: #fff;
+            z-index: 1;
+            animation: fadeIn 2s ease-in;
         }
         .hero-section h1 {
             font-family: 'Orbitron', sans-serif;
@@ -203,10 +202,6 @@
             width: 100%;
             height: 50px;
             background-color: #333; /* Grey block */
-            position: absolute;
-            top: 100vh; /* Position directly below hero-section */
-            left: 0;
-            z-index: 1;
         }
         section h2 {
             font-family: 'Orbitron', sans-serif;
@@ -463,58 +458,26 @@
         <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
 
+    <!-- ✅ HERO SECTION FIRST -->
+    <div class="hero-section">
+        <h1>Liberty University Rocketry</h1>
+        <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
+        <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
+    </div>
+    <!-- ✅ Now Home Content starts AFTER hero -->
     <section id="home">
-        <div class="hero-section">
-            <h1>Liberty University Rocketry</h1>
-            <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
-            <p>Innovating the Frontiers of Space Exploration – Inspired by Pioneers Like SpaceX and NASA</p>
-        </div>
-        <div class="grey-divider"></div>
-
-        <!-- Images section with solid background and six placeholders -->
+        <!-- Images section -->
         <div id="images-section">
             <h2>Featured Images</h2>
-            <div class="images-grid">
-                <div>
-                    <div class="image-placeholder">Image Placeholder 1</div>
-                    <p class="image-desc">Description for image 1: A snapshot of our latest rocket prototype in assembly.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 2</div>
-                    <p class="image-desc">Description for image 2: Team members collaborating on engine design.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 3</div>
-                    <p class="image-desc">Description for image 3: Successful test launch from last semester.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 4</div>
-                    <p class="image-desc">Description for image 4: Workshop manufacturing in progress.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 5</div>
-                    <p class="image-desc">Description for image 5: Team meeting and planning session.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder">Image Placeholder 6</div>
-                    <p class="image-desc">Description for image 6: Rocket components under testing.</p>
-                </div>
-            </div>
+            <!-- Grid of images -->
         </div>
-
-        <!-- Bottom about section with one image placeholder -->
+        <!-- About Section -->
         <div id="about-section">
             <img src="20240319_5877KT.jpg" alt="About Us Image">
             <h2>About Us</h2>
-            <h3>Our Team</h3>
-            <p>Placeholder for team information: We are a group of passionate students and faculty dedicated to rocketry.</p>
-            <h3>Our Mission</h3>
-            <p>Placeholder for mission: To advance rocketry education and innovation at Liberty University.</p>
-            <h3>Our Members</h3>
-            <p>Placeholder for members: Meet our diverse team of engineers, designers, and enthusiasts.</p>
+            <!-- Content -->
         </div>
-
-        <!-- Contact Us at the bottom -->
+        <!-- Contact Bottom -->
         <div id="contact-bottom">
             <h2>Contact Us</h2>
             <p>Have questions or want to get involved? Reach out today!</p>
