@@ -124,7 +124,7 @@
             z-index: 1;
         }
         #home {
-            padding-top: 0; /* Remove top padding for home to start flush after nav/hero */
+            padding-top: calc(100vh + 50px); /* Push content below hero + grey block */
             margin-top: 0;
         }
         section:not(#home) {
@@ -639,6 +639,7 @@
             });
         }
         renderNews();
+
         const membersData = [];
         function renderMembers() {
             const container = document.getElementById('members-container');
@@ -650,6 +651,7 @@
             });
         }
         renderMembers();
+
         const sponsorsData = [];
         function renderSponsors() {
             const container = document.getElementById('sponsors-container');
@@ -661,6 +663,7 @@
             });
         }
         renderSponsors();
+
         const reportsData = [
             { title: "Technical Report 1", link: "https://drive.google.com/uc?export=download&id=1wvivtWYC7HQr0p5Elisd1lpVeen0nzEF" },
         ];
@@ -673,6 +676,7 @@
             });
         }
         renderReports();
+
         function sendMessage() { alert('Message sent! (Placeholder)'); }
     </script>
 </body>
