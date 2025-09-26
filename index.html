@@ -217,7 +217,6 @@
         #projects { background: url('images/projects-bg.jpg') no-repeat center center/cover; }
         #members { background: url('images/team-bg.jpg') no-repeat center center/cover; }
         #sponsors { background: url('images/sponsors-bg.jpg') no-repeat center center/cover; }
-        #technical-reports { background: url('images/reports-bg.jpg') no-repeat center center/cover; }
         #contact { background: url('images/contact-bg.jpg') no-repeat center center/cover; }
         .news-post {
             background: rgba(34, 34, 34, 0.9);
@@ -509,7 +508,6 @@
             </div>
         </div>
         <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
-        <a href="#technical-reports" onclick="showSection('technical-reports')">Technical Reports</a>
         <a href="#merchandise" onclick="showSection('merchandise')">Merchandise</a>
         <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
@@ -633,13 +631,6 @@
             <!-- Sponsors -->
         </div>
     </section>
-    <section id="technical-reports">
-        <h2>Technical Reports & Publications</h2>
-        <p>Dive into our detailed analyses and findings from past and current projects.</p>
-        <ul id="reports-container">
-            <!-- Reports -->
-        </ul>
-    </section>
     <section id="merchandise">
         <h2>Merchandise Store</h2>
         <p>Browse our collection of Liberty University Rocketry merchandise!</p>
@@ -717,18 +708,6 @@
             });
         }
         renderSponsors();
-        const reportsData = [
-            { title: "Technical Report 1", link: "https://drive.google.com/uc?export=download&id=1wvivtWYC7HQr0p5Elisd1lpVeen0nzEF" },
-        ];
-        function renderReports() {
-            const container = document.getElementById('reports-container');
-            reportsData.forEach(report => {
-                const li = document.createElement('li');
-                li.innerHTML = `<a href="${report.link}" target="_blank" download>${report.title}</a>`;
-                container.appendChild(li);
-            });
-        }
-        renderReports();
         function sendMessage() { alert('Message sent! (Placeholder)'); }
     </script>
 </body>
