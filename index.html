@@ -293,7 +293,6 @@
             padding: 20px;
             border-radius: 8px;
             transition: transform 0.3s ease;
-            position: relative; /* For absolute positioning of click icon */
         }
         .member:hover {
             transform: translateY(-5px);
@@ -303,9 +302,6 @@
             height: 250px;
             border-radius: 50%;
             object-fit: cover;
-        }
-        .member img:hover {
-            cursor: pointer;
         }
         .subteams-grid {
             display: grid;
@@ -557,17 +553,6 @@
             font-size: 1.8rem;
             font-weight: 700;
         }
-        #click-icon {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2em;
-            color: #fff;
-            pointer-events: none;
-            z-index: 2;
-        }
     </style>
 </head>
 <body>
@@ -689,8 +674,7 @@
         <h3>Subteam Leadership</h3>
         <div class="members-grid" id="subteam-leadership">
             <div class="member">
-                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely" usemap="#nose-map">
-                <div id="click-icon">🖱️</div>
+                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
                 <h4>Judah Finely</h4>
                 <p>Lead Manufacturer</p>
                 <p>"The first rule is to have fun. The second rule is safety first."</p>
@@ -801,10 +785,6 @@
     <footer>
         &copy; 2025 Liberty University Rocketry | Established 2023
     </footer>
-    <map name="nose-map">
-        <area shape="circle" coords="125,125,30" alt="Center Spot" onclick="playEasterEggSound()" onmouseover="showClickIcon()" onmouseout="hideClickIcon()">
-    </map>
-    <audio id="easter-egg-sound" src="audio/fnaf-12-3-freddys-nose-sound.mp3" preload="auto"></audio>
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('section').forEach(sec => {
@@ -856,16 +836,6 @@
         }
         renderSponsors();
         function sendMessage() { alert('Message sent! (Placeholder)'); }
-        function playEasterEggSound() {
-            var audio = document.getElementById('easter-egg-sound');
-            audio.play();
-        }
-        function showClickIcon() {
-            document.getElementById('click-icon').style.display = 'block';
-        }
-        function hideClickIcon() {
-            document.getElementById('click-icon').style.display = 'none';
-        }
     </script>
 </body>
 </html>
