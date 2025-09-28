@@ -304,6 +304,42 @@
             border-radius: 50%;
             object-fit: cover;
         }
+        .subteams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .subteam {
+            text-align: center;
+            background: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .subteam:hover {
+            transform: translateY(-5px);
+        }
+        .subteam-image-placeholder {
+            background-color: #333;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border: 1px dashed #fff;
+            border-radius: 8px;
+        }
+        .subteam h3 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+        .subteam p {
+            font-size: 1.1rem;
+        }
         .sponsors {
             display: flex;
             flex-wrap: wrap;
@@ -527,6 +563,7 @@
             <a href="#" class="dropbtn">Team</a>
             <div class="dropdown-content">
                 <a href="#members" onclick="showSection('members')">Members</a>
+                <a href="#subteams" onclick="showSection('subteams')">Subteams</a>
                 <a href="#hall-of-fame" onclick="showSection('hall-of-fame')">Hall of Fame</a>
                 <a href="#about" onclick="showSection('about')">About</a>
             </div>
@@ -644,6 +681,52 @@
                 <p>I oversee the manufacturing and production of Liberty Rocketry's high-power rockets for our team of 55 members. As manufacturing lead, I outline design processes for all components and approve plans developed by sub teams. It is my job to enforce all team and university safety standards with final say on all manufacturing methods and procedures.</p>
             </div>
             <!-- Members -->
+        </div>
+    </section>
+    <section id="subteams">
+        <h2>Our Subteams</h2>
+        <p>Our team is divided into eight technical teams: aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media.</p>
+        <div class="subteams-grid">
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Aerodynamics Image</div>
+                <h3>Aerodynamics</h3>
+                <p>Information about the Aerodynamics subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Avionics Image</div>
+                <h3>Avionics</h3>
+                <p>Information about the Avionics subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Payload Image</div>
+                <h3>Payload</h3>
+                <p>Information about the Payload subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Propulsion Image</div>
+                <h3>Propulsion</h3>
+                <p>Information about the Propulsion subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Recovery Image</div>
+                <h3>Recovery</h3>
+                <p>Information about the Recovery subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Manufacturing Image</div>
+                <h3>Manufacturing</h3>
+                <p>Information about the Manufacturing subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Project Management Image</div>
+                <h3>Project Management</h3>
+                <p>Information about the Project Management subteam.</p>
+            </div>
+            <div class="subteam">
+                <div class="subteam-image-placeholder">Media Image</div>
+                <h3>Media</h3>
+                <p>Information about the Media subteam.</p>
+            </div>
         </div>
     </section>
     <section id="hall-of-fame">
