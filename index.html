@@ -674,7 +674,10 @@
         <h3>Subteam Leadership</h3>
         <div class="members-grid" id="subteam-leadership">
             <div class="member">
-                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
+                <div style="position: relative; display: inline-block;">
+                    <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
+                    <div id="easterEggTrigger" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; cursor: pointer;"></div>
+                </div>
                 <h4>Judah Finely</h4>
                 <p>Lead Manufacturer</p>
                 <p>"The first rule is to have fun. The second rule is safety first."</p>
@@ -785,6 +788,7 @@
     <footer>
         &copy; 2025 Liberty University Rocketry | Established 2023
     </footer>
+    <audio id="easterEggSound" src="audio/fnaf-12-3-freddys-nose-sound.mp3" preload="auto"></audio>
     <script>
         function showSection(sectionId) {
             document.querySelectorAll('section').forEach(sec => {
@@ -836,6 +840,9 @@
         }
         renderSponsors();
         function sendMessage() { alert('Message sent! (Placeholder)'); }
+        document.getElementById('easterEggTrigger').addEventListener('click', function() {
+            document.getElementById('easterEggSound').play();
+        });
     </script>
 </body>
 </html>
