@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -674,7 +674,9 @@
         <h3>Subteam Leadership</h3>
         <div class="members-grid" id="subteam-leadership">
             <div class="member">
-                <img id="clickable-image" src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
+                <a onclick="document.getElementById('yourAudioTag').play();">
+                    <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
+                </a>
                 <h4>Judah Finely</h4>
                 <p>Lead Manufacturer</p>
                 <p>"The first rule is to have fun. The second rule is safety first."</p>
@@ -837,9 +839,6 @@
         }
         renderSponsors();
         function sendMessage() { alert('Message sent! (Placeholder)'); }
-        document.getElementById('clickable-image').addEventListener('click', function() {
-            document.getElementById('yourAudioTag').play();
-        });
     </script>
 </body>
 </html>
