@@ -322,6 +322,74 @@
             background-color: #333;
             width: 200px;
             height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border: 1px dashed #fff;
+            flex-shrink: 0;
+            border-radius: 8px;
+        }
+        .subteam h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 2rem;
+        }
+        .subteam p {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .project-box {
+                flex-direction: column;
+                align-items: center;
+            }
+            .project-image-placeholder {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .members-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .member {
+            text-align: center;
+            background: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .member:hover {
+            transform: translateY(-5px);
+        }
+        .member img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .subteams-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .subteam {
+            text-align: center;
+            background: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .subteam:hover {
+            transform: translateY(-5px);
+        }
+        .subteam-image-placeholder {
+            background-color: #333;
+            width: 200px;
+            height: 200px;
             margin: 0 auto 10px;
             display: flex;
             align-items: center;
@@ -690,42 +758,42 @@
             <div class="subteam">
                 <div class="subteam-image-placeholder">Aerodynamics Image</div>
                 <h3>Aerodynamics</h3>
-                <p>The primary duty of the Aerodynamics Lead is to lead the design and decision process related to the rocket’s aerostructures. Excluding other Team Leads, The Aerodynamics Lead has authority over all members contributing to their sub-system. The Aerodynamics Lead will keep their team up to date on deadlines, establish a plan to meet those deadlines, and distribute labor among their team members according to the members’ skills and preferences when possible. In addition to this, the Aerodynamics Lead is expected to: 1. Attend all team meetings and major events. 2. Report progress at the leadership meetings. 3. Coordinate major decisions with the other Leads. 4. Document all major decisions and accomplishments. 5. Validate and test airframe materials. 6. Establish and execute an airframe manufacturing process in collaboration with the Manufacturing Lead. 7. Read and understand all competition rules and team requirements related to their team.</p>
+                <p>The Aerodynamics Lead directs the design and decision-making for the rocket’s aerostructures, holding authority over sub-system members except other leads. They keep the team updated on deadlines, plan to meet them, and assign tasks based on skills and preferences. Additional duties include attending meetings, reporting progress, coordinating with other leads, documenting decisions, validating airframe materials, collaborating on manufacturing, and understanding relevant rules.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Avionics Image</div>
                 <h3>Avionics</h3>
-                <p>The primary duty of the Avionics Lead is to lead the design and decision process related to the rocket’s avionics and experimental payload. Excluding other Team Leads, The Avionics Lead has authority over all members contributing to their sub-system. The Avionics Lead will keep their team up to date on deadlines, establish a plan to meet those deadlines, and distribute labor among their team members according to the members’ skills and preferences when possible. In addition to this, the Avionics Lead is expected to: 1. Attend all team meetings and major events. 2. Report progress at the leadership meetings. 3. Coordinate major decisions with the other Leads. 4. Document all major decisions and accomplishments. 5. Validate and test the experimental payload. 6. Establish and execute a payload manufacturing process in collaboration with the Manufacturing Lead. 7. Read and understand all competition rules and team requirements related to their team.</p>
+                <p>The Avionics Lead guides the design of the rocket’s avionics and experimental payload, with authority over their sub-system members. They maintain deadlines, plan achievement strategies, and distribute work according to team capabilities. Responsibilities also encompass attending events, progress reporting, inter-lead coordination, documentation, payload validation, manufacturing collaboration, and rule comprehension.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Payload Image</div>
                 <h3>Payload</h3>
-                <p>In addition to this, the Payload Lead is expected to: 1. Attend all team meetings and major events. 2. Report progress at the leadership meetings.</p>
+                <p>The Payload Lead oversees the experimental payload's design and integration, ensuring it aligns with overall rocket systems. They manage sub-system members, set and meet deadlines, and assign tasks effectively. Key tasks include coordination with other leads, documentation, validation testing, and rule adherence for payload elements.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Propulsion Image</div>
                 <h3>Propulsion</h3>
-                <p>The primary duty of the Propulsion Lead is to lead the design and decision process related to the rocket’s motor. Excluding other Team Leads, The Propulsion Lead has authority over all members contributing to their sub-system. The Propulsion Lead will keep their team up to date on deadlines, establish a plan to meet those deadlines, and distribute labor among their team members according to the members’ skills and preferences when possible. In addition to this, the Propulsion Lead is expected to: 1. Attend all team meetings and major events. 2. Report progress at the leadership meetings. 3. Coordinate major decisions with the other Leads. 4. Document all major decisions and accomplishments. 5. Validate motor decision. 6. Establish and execute a motor integration manufacturing process in collaboration with the Manufacturing Lead. 7. Read and understand all competition rules and team requirements related to their team.</p>
+                <p>The Propulsion Lead heads the rocket’s motor design and decisions, authoritative over sub-system contributors. They update on deadlines, devise plans, and allocate labor based on expertise. Duties extend to meetings, progress updates, lead coordination, documentation, motor validation, integration manufacturing, and relevant rule knowledge.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Recovery Image</div>
                 <h3>Recovery</h3>
-                <p>The primary duty of the Recovery Lead is to lead the design and decision process related to the rocket’s recovery systems. Excluding other Team Leads, The Recovery Lead has authority over all members contributing to their sub-system. The Recovery Lead will keep their team up to date on deadlines, establish a plan to meet those deadlines, and distribute labor among their team members according to the members’ skills and preferences when possible. In addition to this, the Recovery Lead is expected to: 1. Attend all team meetings and major events. 2. Report progress at the leadership meetings. 3. Coordinate major decisions with the other Leads. 4. Document all major decisions and accomplishments. 5. Validate and test recovery systems. 6. Establish and execute the recovery system manufacturing process in collaboration with the Manufacturing Lead. 7. Read and understand all competition rules and team requirements related to their team.</p>
+                <p>The Recovery Lead manages the design of the rocket’s recovery systems, with control over their sub-system team. They communicate deadlines, create achievement plans, and distribute tasks appropriately. Additional roles include event attendance, reporting, inter-lead collaboration, decision documentation, system validation, manufacturing processes, and rule understanding.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Manufacturing Image</div>
                 <h3>Manufacturing</h3>
-                <p>The primary duty of the Manufacturing lead is to manage all aspects of the team regarding manufacturing processes and lab space safety. Excluding the Chief Systems Engineer, all team positions are subject to the Manufacturing Lead’s authority regarding any manufacturing process, such as what tools to use and the systematic construction of the project. The Manufacturing Lead must be capable of planning and monitoring the complete assembly process of the rocket to avoid issues resulting from permanent and undesired changes to the rocket’s physical structure. In addition to this, the Manufacturing Lead is expected to: 1. Attend all team meetings and major events. 2. Hold the other members of the leadership team accountable for their responsibilities. 3. Read and understand all competition rules and team requirements. 4. Interim for any team lead in case of long-term absence, after Chief Systems Engineer. 5. Manage team member badge access to all facilities. 6. Interact with Environmental Health and Safety (EHS) & Risk departments when necessary. 7. Develop a manufacturing plan for each component of the project. 8. Organize a systematic process and order for the various manufacturing tasks to complete the project in an efficient manner.</p>
+                <p>The Manufacturing Lead oversees all manufacturing processes and lab safety, with authority on tools and construction methods. They plan and monitor rocket assembly to prevent structural issues. Responsibilities include meetings, accountability, rule knowledge, interim roles, badge access, EHS interaction, component plans, and task organization.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Project Management Image</div>
                 <h3>Project Management</h3>
-                <p>The primary duty of the Project Manager is to manage all aspects of the team’s logistics outside of engineering and design decisions. Excluding the Chief Systems Engineer, all team positions are subject to the Project Manager’s authority regarding any of the team’s logistics. In addition, the Project Manager must keep track of and hold the team accountable to the deadlines set by the team leadership, the university, and the competition. The Project Manager must be detail-oriented and well organized. In addition to this, the Project Manager is expected to: 1. Attend all team meetings and major events. 2. Hold the other members of the leadership team accountable for their responsibilities. 3. Read and understand all competition rules and team requirements. 4. Interim for any team lead in case of long-term absence, after Chief Systems Engineer and Manufacturing Lead. 5. Attend any opportunities for expanding public relationships. 6. Reach out to possible sponsors or donors. 7. Compile all purchase orders. 8. Track the project’s budget. 9. Oversee all Design Reports. 10. Organize and update a team calendar with dates set by each lead. 11. Coordinate travel logistics. 12. Organize community outreach events. 13. Manage the team’s social media.</p>
+                <p>The Project Manager handles team logistics outside engineering, enforcing deadlines from leadership, university, and competition. They are detail-oriented, managing budgets, reports, calendars, travel, outreach, and social media. Duties encompass meetings, accountability, rule knowledge, interim roles, public relations, sponsorships, purchases, and community events.</p>
             </div>
             <div class="subteam">
                 <div class="subteam-image-placeholder">Media Image</div>
                 <h3>Media</h3>
-                <p>Manage the team’s social media.</p>
+                <p>The Media subteam manages the team's social media presence and outreach efforts. They coordinate with the Project Manager to organize community events and promote the team. Responsibilities include creating content to highlight achievements and engage followers.</p>
             </div>
         </div>
     </section>
