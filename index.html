@@ -397,9 +397,13 @@
             justify-content: center;
             color: #aaa;
             font-style: italic;
-            border: 1px dashed #fff;
             border-radius: 8px;
             transition: transform 0.3s ease;
+        }
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .image-placeholder:hover {
             transform: scale(1.02);
@@ -586,8 +590,10 @@
             <p>Liberty Rocketry competes annually in ESRA's International Rocket Engineering Competition - the largest intercollegiate rocketry competition in the world. Every June, over 150 student-led teams from around the world meet in Midland, Texas to pit their wits and engineering prowess against each other in a struggle to design, manufacture, and launch the most stable, most accurate, and most efficient high-powered rocket system possible.</p>
             <div class="images-grid">
                 <div>
-                    <img src="images/Screenshot 2025-10-02 203236.png" alt="A snapshot of a previous rocket prototype in assembly." class="image-placeholder">
-                    <p class="image-desc">Description for image 1: A snapshot of a previous rocket prototype in assembly.</p>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203236.png" alt="A snapshot of a previous rocket prototype in assembly.">
+                    </div>
+                    <p class="image-desc">A snapshot of a previous rocket prototype in assembly.</p>
                 </div>
                 <div>
                     <div class="image-placeholder">Image Placeholder 2</div>
