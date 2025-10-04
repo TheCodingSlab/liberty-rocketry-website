@@ -461,36 +461,6 @@
         #merchandise::before {
             display: none; /* Optional: Remove dark overlay if desired */
         }
-        #contact-form {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        #contact-form input,
-        #contact-form textarea {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            background-color: #111;
-            color: #ccc;
-            font-family: 'Montserrat', sans-serif;
-        }
-        #contact-form button {
-            padding: 15px;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        #contact-form button:hover {
-            background: linear-gradient(45deg, #cc0000, #aa0000);
-            transform: scale(1.05);
-        }
         #images-section h2 {
             text-align: center;
         }
@@ -564,6 +534,24 @@
         .sponsor-cta .download-btn {
             display: block;
             margin: 0 auto 20px;
+        }
+        /* Style for Microsoft Forms iframe */
+        .ms-forms-embed {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+        }
+        .ms-forms-embed iframe {
+            width: 100%;
+            height: 600px; /* Adjust based on your form length */
+            border: none;
+        }
+        @media (max-width: 768px) {
+            .ms-forms-embed iframe {
+                height: 500px;
+            }
         }
     </style>
 </head>
@@ -887,13 +875,10 @@
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
-        <p>Email: kanewsome3@liberty.edu | Address: Liberty University, Lynchburg, VA</p>
-        <form id="contact-form">
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea placeholder="Message" required></textarea>
-            <button type="button" onclick="sendMessage()">Send Mission</button>
-        </form>
+        <p>Email: gaweaver3@liberty.edu | Address: Liberty University, Lynchburg, VA</p>
+        <div class="ms-forms-embed">
+            <iframe src="https://forms.cloud.microsoft/r/R44kFYfLBC" width="100%" height="600px" frameborder="0"></iframe>
+        </div>
     </section>
     <footer>
         &copy; 2025 Liberty University Rocketry | Established 2023
@@ -948,7 +933,6 @@
             });
         }
         renderSponsors();
-        function sendMessage() { alert('Message sent! (Placeholder)'); }
     </script>
 </body>
 </html>
