@@ -535,20 +535,51 @@
             display: block;
             margin: 0 auto 20px;
         }
-        /* Style for Microsoft Forms iframe */
+        /* Enhanced Microsoft Forms Embed */
         .ms-forms-embed {
             max-width: 600px;
-            margin: 0 auto;
-            border-radius: 8px;
+            margin: 20px auto; /* Center with breathing room */
+            border-radius: 12px; /* Slightly larger radius to match site cards */
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2); /* Red-tinted shadow for theme tie-in */
+            background: rgba(17, 17, 17, 0.8); /* Dark semi-transparent bg to "frame" the light form */
+            position: relative; /* For overlay positioning */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect like your cards */
+        }
+        .ms-forms-embed:hover {
+            transform: translateY(-5px); /* Lift on hover, matching news-post/project-box */
+            box-shadow: 0 12px 32px rgba(255, 0, 0, 0.3);
+        }
+        .ms-forms-embed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* Subtle dark overlay to tone down the light theme */
+            z-index: 1;
+            pointer-events: none; /* Allows clicks through */
         }
         .ms-forms-embed iframe {
             width: 100%;
-            height: 600px; /* Adjust based on your form length */
+            height: 650px; /* Taller for more fields; adjust if your form is shorter */
             border: none;
+            filter: brightness(0.9) contrast(1.1); /* Slight dim to blend with dark site */
+            position: relative;
+            z-index: 2; /* Above overlay */
         }
+        /* Responsive tweaks */
         @media (max-width: 768px) {
+            .ms-forms-embed {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            .ms-forms-embed iframe {
+                height: 550px; /* Shorter on mobile */
+            }
+        }
+        @media (max-width: 480px) {
             .ms-forms-embed iframe {
                 height: 500px;
             }
@@ -876,8 +907,9 @@
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
         <p>Email: gaweaver3@liberty.edu | Address: Liberty University, Lynchburg, VA</p>
+        <p style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
         <div class="ms-forms-embed">
-            <iframe src="https://forms.cloud.microsoft/r/R44kFYfLBC" width="100%" height="600px" frameborder="0"></iframe>
+            <iframe src="https://forms.cloud.microsoft/r/R44kFYfLBC" width="100%" height="650px" frameborder="0"></iframe>
         </div>
     </section>
     <footer>
@@ -933,6 +965,23 @@
             });
         }
         renderSponsors();
+        // Darken MS Forms on load/hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.querySelector('.ms-forms-embed iframe');
+            if (iframe) {
+                // Initial dark filter
+                iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
+                
+                // Hover enhancement
+                const embed = document.querySelector('.ms-forms-embed');
+                embed.addEventListener('mouseenter', () => {
+                    iframe.style.filter = 'brightness(0.75) contrast(1.2) sepia(0.15)';
+                });
+                embed.addEventListener('mouseleave', () => {
+                    iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
+                });
+            }
+        });
     </script>
 </body>
 </html>
