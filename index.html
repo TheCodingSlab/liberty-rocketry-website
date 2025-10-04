@@ -167,4 +167,778 @@
             font-weight: 700;
             color: #fff;
             z-index: 1;
-            /* Removed
+            /* Removed animation */
+        }
+        .hero-section p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 300;
+            color: #fff;
+            z-index: 1;
+        }
+        .hero-section .quote {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+            max-width: 900px;
+            margin: 20px auto;
+            color: #fff;
+            z-index: 1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .grey-divider {
+            width: 100%;
+            height: 50px;
+            background-color: #333; /* Grey block */
+            position: absolute;
+            top: 100vh; /* Position directly below hero-section */
+            left: 0;
+            z-index: 1;
+        }
+        section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        section p {
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #projects { background: url('images/projects-bg.jpg') no-repeat center center/cover; }
+        #members { background: url('images/team-bg.jpg') no-repeat center center/cover; }
+        #sponsors { background: url('images/sponsors-bg.jpg') no-repeat center center/cover; }
+        #contact { background: url('images/contact-bg.jpg') no-repeat center center/cover; }
+        .news-post {
+            background: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        .news-post:hover {
+            transform: translateY(-5px);
+        }
+        .news-post img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .project-box {
+            position: relative;
+            margin: 20px -40px;
+            padding: 20px;
+            background: rgba(34, 34, 34, 0.9);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-box:hover {
+            transform: translateY(-5px);
+        }
+        .project-image-placeholder {
+            background-color: #333;
+            width: 300px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border: 1px dashed #fff;
+            flex-shrink: 0;
+            border-radius: 8px;
+        }
+        .project-text {
+            flex: 1;
+        }
+        .project-text h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 2rem;
+        }
+        .project-text p {
+            margin: 0;
+        }
+        @media (max-width: 768px) {
+            .project-box {
+                flex-direction: column;
+                align-items: center;
+            }
+            .project-image-placeholder {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .members-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        .member {
+            text-align: center;
+            background: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .member:hover {
+            transform: translateY(-5px);
+        }
+        .member img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .subteams-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .subteam {
+            text-align: center;
+            background: rgba(34, 34, 34, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .subteam:hover {
+            transform: translateY(-5px);
+        }
+        .subteam-image-placeholder {
+            background-color: #333;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border: 1px dashed #fff;
+            border-radius: 8px;
+        }
+        .subteam h3 {
+            color: #fff;
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+        .subteam p {
+            font-size: 1.1rem;
+        }
+        .sponsors {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+        .sponsor img {
+            max-width: 250px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+            border-radius: 8px;
+        }
+        .sponsor img:hover {
+            filter: grayscale(0%);
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #000;
+            color: #ccc;
+            text-align: center;
+            padding: 25px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+        }
+        section:not(#home) {
+            display: none;
+        }
+        .download-btn {
+            color: #fff;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .download-btn:hover {
+            background: linear-gradient(45deg, #cc0000, #aa0000);
+            transform: scale(1.05);
+        }
+        #images-section {
+            background-color: #111;
+            margin-top: 40px;
+            padding: 40px;
+            border-radius: 0;
+        }
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .image-placeholder {
+            background-color: #333;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-style: italic;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-placeholder:hover {
+            transform: scale(1.02);
+        }
+        .image-desc {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        #about-section {
+            background-color: rgba(17, 17, 17, 0.7);
+            margin-top: 40px;
+            padding: 60px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #about-section .team-photo-placeholder {
+            width: 90vw; /* A bit smaller than full page */
+            max-width: 90%; /* Fallback for consistency */
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 8px;
+        }
+        #contact-bottom {
+            text-align: center;
+            margin-top: 60px;
+        }
+        #contact-bottom button {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        #contact-bottom button:hover {
+            background: linear-gradient(45deg, #cc0000, #aa0000);
+            transform: scale(1.05);
+        }
+        #merchandise {
+            background-color: transparent; /* Remove black background */
+            padding: 80px 40px;
+            border-radius: 20px;
+        }
+        #merchandise::before {
+            display: none; /* Optional: Remove dark overlay if desired */
+        }
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        #contact-form input,
+        #contact-form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #111;
+            color: #ccc;
+            font-family: 'Montserrat', sans-serif;
+        }
+        #contact-form button {
+            padding: 15px;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        #contact-form button:hover {
+            background: linear-gradient(45deg, #cc0000, #aa0000);
+            transform: scale(1.05);
+        }
+        #images-section h2 {
+            text-align: center;
+        }
+        #images-section > p {
+            text-align: center;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            color: #fff; /* Changed to white */
+            margin: 0 25px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem; /* Larger */
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #111; /* Adjusted for visibility */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            margin: 0;
+            font-size: 1.3rem; /* Slightly larger */
+        }
+        .dropdown-content a:hover {
+            background-color: #222;
+            color: #ff0000;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropbtn {
+            color: #ff0000;
+        }
+        .bottom-hero {
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw;
+            height: 100vh;
+            background: url('images/Screenshot 2025-09-26 134848.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        #contact-bottom p {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder">
+        <a href="#home" onclick="showSection('home')">Home</a>
+        <a href="#projects" onclick="showSection('projects')">Projects</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Team</a>
+            <div class="dropdown-content">
+                <a href="#members" onclick="showSection('members')">Members</a>
+                <a href="#subteams" onclick="showSection('subteams')">Subteams</a>
+                <a href="#hall-of-fame" onclick="showSection('hall-of-fame')">Hall of Fame</a>
+                <a href="#about" onclick="showSection('about')">About</a>
+            </div>
+        </div>
+        <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
+        <a href="#merchandise" onclick="showSection('merchandise')">Merchandise</a>
+        <a href="#contact" onclick="showSection('contact')">Contact</a>
+    </nav>
+    <!-- HERO SECTION FIRST -->
+    <div class="hero-section">
+        <h1>Liberty University Rocketry</h1>
+        <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
+    </div>
+    <!-- Now Home Content starts AFTER hero -->
+    <section id="home">
+        <!-- Images section -->
+        <div id="images-section">
+            <h2>Design. Launch. Repeat.</h2>
+            <p>Liberty Rocketry competes annually in ESRA's International Rocket Engineering Competition - the largest intercollegiate rocketry competition in the world. Every June, over 150 student-led teams from around the world meet in Midland, Texas to pit their wits and engineering prowess against each other in a struggle to design, manufacture, and launch the most stable, most accurate, and most efficient high-powered rocket system possible.</p>
+            <div class="images-grid">
+                <div>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203236.png" alt="A snapshot of a previous rocket prototype in assembly.">
+                    </div>
+                    <p class="image-desc">A snapshot of a previous rocket prototype in assembly.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203220.png" alt="Team members collaborating on engine design.">
+                    </div>
+                    <p class="image-desc">Team members collaborating on engine design.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203229.png" alt="Team members working diligently on developing a cutting-edge frame design.">
+                    </div>
+                    <p class="image-desc">Team members working diligently on developing a cutting-edge frame design.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203250.png" alt="Opening of team meetings led by the Chief Engineer.">
+                    </div>
+                    <p class="image-desc">Opening of team meetings led by the Chief Engineer.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203314.png" alt="Team prepping to launch.">
+                    </div>
+                    <p class="image-desc">Team prepping to launch.</p>
+                </div>
+                <div>
+                    <div class="image-placeholder" style="border: none; background: none;">
+                        <img src="images/Screenshot 2025-10-02 203321.png" alt="Team collaborating while having fun.">
+                    </div>
+                    <p class="image-desc">Team collaborating while having fun.</p>
+                </div>
+            </div>
+        </div>
+        <!-- About Section -->
+        <div id="about-section">
+            <img src="images/Screenshot 2025-09-28 090938.png" alt="Team Photo" class="team-photo-placeholder">
+            <h2>About Us</h2>
+            <h3>Our Mission</h3>
+            <p>Liberty Rocketry is a competitive student-led engineering competition team composed of over 50 undergraduate students from 7 different majors and areas of study. Through determination and relentless innovation, our team of passionate, creative, and hard-working engineers is dedicated to pushing the limits of collegiate rocketry design far beyond its traditional norms, all while developing Christ-centered men and women with the values, knowledge, and skills essential to impact the world for the glory of God.</p>
+        </div>
+        <!-- Bottom Hero with Contact Overlay -->
+        <div class="bottom-hero">
+            <div id="contact-bottom">
+                <h2>Contact Us</h2>
+                <p>Have questions or want to get involved? Reach out today!</p>
+                <button onclick="showSection('contact')">Get in Touch</button>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Current Projects</h2>
+        <p>Browse our collection of current and past projects.</p>
+        <div class="project-box">
+            <div class="project-image-placeholder">Coming soon</div>
+            <div class="project-text">
+                <h3>Project Genesis</h3>
+                <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike as the highest-placing first-year team. Performing phenomenally as our first entry in the Spaceport America Cup, Genesis provided our team exceptional experience and a solid foundation to begin our legacy of engineering excellence.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Coming soon</div>
+            <div class="project-text">
+                <h3>Project Waymaker</h3>
+                <p>In 2024, Liberty Rocketry took the competition by storm, placing 9th overall, 5th in our division, and 4th in the country, placing above some the biggest names in engineering like Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&M, Rice, and Embry-Riddle, becoming one of the most elite collegiate rocketry teams in the world in only our second year competing.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Coming soon</div>
+            <div class="project-text">
+                <h3>Project Trinity</h3>
+                <p>In 2025, Liberty Rocketry competed for the third time, placing 9th in technical performance and launch results, staying consistent through a quickly evolving high-powered-rocketry competition. Due to a late technical report, the official standing for Trinity unfortunately dropped down to 57th internationally. This has led to improved team structure changes, management improvements across the board, in an effort to solve the administrative issues holding us back from a top 10 placement.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder" style="font-size: 4rem; color: #fff;">?</div>
+            <div class="project-text">
+                <h3>Project Omega</h3>
+                <p>With our engineering ability proven twice over, and new organizational improvements in effect, Liberty Rocketry is sure to come back stronger than ever, with our fourth high-powered rocket system - Omega. From further developing an unmatched in-house avionics and ground station system to manufacturing experimental airbrake systems and fuel mixtures, we are not only aiming for the top of the International Rocket Engineering Competition, but also developing technology never before used by another team - and we need your help! By sponsoring Liberty Rocketry, you will be supporting some of the best and brightest minds in the next generation of engineers and aerospace professionals. A team of ambitious, hard-working engineering students committed to pushing the limits of student-led rocketry design, and with your support, we can make this goal a reality!</p>
+            </div>
+        </div>
+    </section>
+    <section id="members">
+        <h2>Our Team of Innovators</h2>
+        <p>Meet the dedicated students and faculty pushing the boundaries of rocketry.</p>
+        <h3>Executive Leadership</h3>
+        <div class="members-grid" id="executive-leadership">
+            <div class="member">
+                <img src="images/Screenshot 2025-09-27 202409.png" alt="Joshua Cowell, Chief Engineer">
+                <h4>Joshua Cowell</h4>
+                <p>Chief Engineer</p>
+                <p>"Just keep swimming"</p>
+                <p>The role of the Chief Engineer is to oversee all engineering decisions, purchases, simulations, and calculations. I take ultimate responsibility for any engineering component of the rocket. I consistently communicate with the subteam leads (they are awesome btw) to ensure compatibility between components.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-04 124339.png" alt="Kaden Newsome" style="object-position: center top;">
+                <h4>Kaden Newsome</h4>
+                <p>Project Manager</p>
+                <p>"Stay curious."</p>
+                <p>I'm the Project Manager for the Omega Project, handling everything that isn't directly involved with the rocket, everything from budgeting to personnel management to process improvement across the board. I love supporting the other engineers so they can create the best competition rocket possible.</p>
+            </div>
+        </div>
+        <h3>Subteam Leadership</h3>
+        <div class="members-grid" id="subteam-leadership">
+            <div class="member">
+                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
+                <h4>Judah Finely</h4>
+                <p>Lead Manufacturer</p>
+                <p>"The first rule is to have fun. The second rule is safety first."</p>
+                <p>I oversee the manufacturing and production of Liberty Rocketry's high-power rockets for our team of 55 members. As manufacturing lead, I outline design processes for all components and approve plans developed by sub teams. It is my job to enforce all team and university safety standards with final say on all manufacturing methods and procedures.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-04 125457.png" alt="Zizai Liu">
+                <h4>Zizai Liu</h4>
+                <p>Aerodynamics Lead</p>
+                <p>“Failure to launch” isn’t a rom-com. It’s Tuesday at the test stand."</p>
+                <p>This year, the Aerodynamics Sub-Team is focusing on researching experimental aerodynamic components while improving our manufacturing processes. My goal is to ensure every member develops strong technical skills in rocket performance analysis and gains hands-on experience in manufacturing. By combining innovative design with practical training, we are building a team prepared to advance Liberty Rocketry’s mission and success at competition.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-04 125914.png" alt="Caden Solle">
+                <h4>Caden Solle</h4>
+                <p>Payload Lead</p>
+                <p>"A person who thinks all the time has nothing to think about except thoughts."</p>
+                <p>The Payload subteam focuses on designing, building, and testing the competition payload for our IREC rocket. This part of the rocket is open to a lot of creative freedom, and this year our project of choice is creating a galvanometric laser engraver. The laser engraver integrates mechanical, electrical, and computer engineering to demonstrate precision manufacturing in a compact form. Our goal is to deliver a fully functional payload that showcases engineering innovation while meeting the IREC technical requirements.</p>
+            </div>
+            <!-- Members -->
+        </div>
+    </section>
+    <section id="subteams">
+        <h2>Our Subteams</h2>
+        <p>Our team is divided into eight technical teams: aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media.</p>
+        <div class="subteams-grid">
+            <div class="subteam">
+                <h3>Aerodynamics</h3>
+                <p>The Aerodynamics team focuses on designing and optimizing the rocket’s aerostructures for stability and efficiency. They validate and test airframe materials to ensure compliance with competition requirements. The team collaborates on manufacturing processes to realize their designs.</p>
+            </div>
+            <div class="subteam">
+                <h3>Avionics</h3>
+                <p>The Avionics team designs the rocket’s electronic systems and experimental payload. They validate and test components for reliability under flight conditions. The team coordinates with other sub-systems for seamless integration.</p>
+            </div>
+            <div class="subteam">
+                <h3>Payload</h3>
+                <p>The Payload team develops the experimental payload for the rocket. They focus on validation and testing to ensure functionality. The team works to integrate the payload with overall rocket systems.</p>
+            </div>
+            <div class="subteam">
+                <h3>Propulsion</h3>
+                <p>The Propulsion team selects and validates the rocket’s motor for optimal performance. They document decisions and ensure rule compliance. The team collaborates on motor integration manufacturing.</p>
+            </div>
+            <div class="subteam">
+                <h3>Recovery</h3>
+                <p>The Recovery team designs systems for safe rocket retrieval post-launch. They validate and test components for reliability. The team cooperates on manufacturing recovery elements.</p>
+            </div>
+            <div class="subteam">
+                <h3>Manufacturing</h3>
+                <p>The Manufacturing team manages production processes and lab safety. They develop component fabrication plans and organize assembly. The team handles facility access and safety compliance.</p>
+            </div>
+            <div class="subteam">
+                <h3>Project Management</h3>
+                <p>The Project Management team oversees logistics, budgets, and deadlines. They compile reports and coordinate travel and events. The team tracks progress and manages social media.</p>
+            </div>
+            <div class="subteam">
+                <h3>Media</h3>
+                <p>The Media team handles social media and public relations. They create content showcasing team activities. The team organizes community outreach to promote the mission.</p>
+            </div>
+        </div>
+    </section>
+    <section id="hall-of-fame">
+        <h2>Hall of Fame</h2>
+        <p>Honoring our past members and achievements.</p>
+        <!-- Add hall of fame content here -->
+    </section>
+    <section id="about">
+        <h2>Who We Are</h2>
+        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px;">
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <h3>Engineering Extraordinaire</h3>
+                <p>Our near-completely student-led and student-started team works together to honor God in engineering by pursuing excellence in every aspect of our rocketry projects. From design and build to launch, we collaborate across disciplines, fostering hands-on experience and skill development that prepares us for future careers while glorifying God through our dedication and innovation.</p>
+            </div>
+            <img src="images/Screenshot 2025-09-26 134824.png" alt="Liberty Rocketry Team" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;">
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-top: 40px;">
+            <img src="images/Screenshot 2025-09-27 232845.png" alt="Liberty Rocketry Team 2" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;">
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <h3>God & Goals</h3>
+                <p>As a Christian university, we seek to do God's will and fulfill the Great Commission by spreading the gospel through our work in rocketry, bringing glory to God's name. We show our love for Christ by spending time with the Lord at the beginning of every event and meeting, keeping Christ at the center of it all. Our team, divided into eight technical teams - aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media - collaborates to design, build, and launch rockets, providing hands-on experience and skill training for future careers. In just three years, we've grown from a small group to one of the world's top aerospace competition teams.</p>
+            </div>
+        </div>
+    </section>
+    <section id="sponsors">
+        <h2>Our Partners in Exploration</h2>
+        <p>Thanks to our sponsors for fueling our journey. Join them in supporting the next generation of space engineers.</p>
+        <p>All donations go directly towards enabling Liberty Rocketry to become the best collegiate rocketry team in the world. By supporting us, sponsors will gain direct exposure to some of the most dedicated and promising students in engineering as well as widespread visibility through our international competitions! All donations to the team are tax deductible.</p>
+        <h3>Sponsor Tiers</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Benefit</th>
+                    <th>Bronze ($500+)</th>
+                    <th>Silver ($1,000+)</th>
+                    <th>Gold ($2,500+)</th>
+                    <th>Platinum ($5,000+)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sponsor logo featured on team website</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Access to team resume book</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Sponsor logo featured on team apparel</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Design and competition progress updates</td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Social media recognition</td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Access to team designs and technical report</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Large logo and prime location on team merchandise</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Company photo launched and recovered at competition</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="downloads/4 Liberty Rocketry Sponsorship Packet.pdf.pdf" class="download-btn" download>Download Our Sponsor Pack</a>
+        <p>Interested in becoming a sponsor? Contact us at kanewsome3@liberty.edu or oshobayo@liberty.edu.</p>
+        <div class="sponsors" id="sponsors-container">
+            <!-- Sponsors -->
+        </div>
+    </section>
+    <section id="merchandise">
+        <h2>Merchandise Store</h2>
+        <p>Browse our collection of Liberty University Rocketry merchandise!</p>
+        <!-- To set up the store:
+        1. Sign up for Shopify (or similar service like Snipcart) and add your products.
+        2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button).
+        3. Paste the <script> code (the initialization script) once in the <head> of this HTML file.
+        4. Paste the <div> elements for each button below to display products.
+        Example embed for a product (replace with your generated code):
+        <div id='product-component-your-id-here'></div>
+        -->
+        <!-- Add your product embeds here -->
+    </section>
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>Reach out for sponsorships, membership, or collaborations.</p>
+        <p>Email: rocketry@liberty.edu | Phone: (123) 456-7890 | Address: Liberty University, Lynchburg, VA</p>
+        <form id="contact-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" required></textarea>
+            <button type="button" onclick="sendMessage()">Send Mission</button>
+        </form>
+    </section>
+    <footer>
+        &copy; 2025 Liberty University Rocketry | Established 2023
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(sec => {
+                sec.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+            setTimeout(() => {
+                document.getElementById(sectionId).classList.add('visible');
+            }, 100);
+            // Fix: Show hero only on home
+            const hero = document.querySelector('.hero-section');
+            hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
+        }
+        showSection('home');
+        // Removed the scroll event listener for scrolled class
+        const newsData = [
+            { title: "Launch Prep Update", content: "Week 1: Engine tests complete. See pics from the lab.", image: "path/to/update.jpg", date: "2025-09-05" },
+        ];
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            newsData.forEach(post => {
+                const div = document.createElement('div');
+                div.classList.add('news-post');
+                div.innerHTML = `<h3>${post.title}</h3><p>${post.date}</p><p>${post.content}</p>${post.image ? `<img src="${post.image}">` : ''}`;
+                container.appendChild(div);
+            });
+        }
+        renderNews();
+        const membersData = [];
+        function renderMembers() {
+            const container = document.getElementById('members-container');
+            membersData.forEach(member => {
+                const div = document.createElement('div');
+                div.classList.add('member');
+                div.innerHTML = `<img src="${member.image}" alt="${member.name}"><h4>${member.name}</h4><p>${member.role}</p>`;
+                container.appendChild(div);
+            });
+        }
+        renderMembers();
+        const sponsorsData = [];
+        function renderSponsors() {
+            const container = document.getElementById('sponsors-container');
+            sponsorsData.forEach(sponsor => {
+                const div = document.createElement('div');
+                div.classList.add('sponsor');
+                div.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
+                container.appendChild(div);
+            });
+        }
+        renderSponsors();
+        function sendMessage() { alert('Message sent! (Placeholder)'); }
+    </script>
+</body>
+</html>
