@@ -362,16 +362,25 @@
             justify-content: center;
             gap: 40px;
         }
+        .sponsor {
+            text-align: center;
+        }
+        .sponsor a {
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .sponsor a:hover {
+            transform: scale(1.05);
+        }
         .sponsor img {
             max-width: 250px;
             filter: grayscale(100%);
-            transition: filter 0.3s ease, transform 0.3s ease;
+            transition: filter 0.3s ease;
             border-radius: 8px;
             loading: lazy;
         }
-        .sponsor img:hover {
+        .sponsor a:hover img {
             filter: grayscale(0%);
-            transform: scale(1.05);
         }
         footer {
             background-color: #000;
@@ -961,16 +970,24 @@
         <p>Thank you to our sponsors for supporting our goals!</p>
         <div class="sponsors" id="sponsors-container">
             <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180250.png" alt="Sponsor Logo 1" loading="lazy">
+                <a href="https://www.deepearthlogic.com/" target="_blank" rel="noopener">
+                    <img src="images/Screenshot 2025-10-29 180250.png" alt="Deep Earth Logic Logo" loading="lazy">
+                </a>
             </div>
             <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180241.png" alt="Sponsor Logo 2" loading="lazy">
+                <a href="https://www.ngtruss.com/" target="_blank" rel="noopener">
+                    <img src="images/Screenshot 2025-10-29 180241.png" alt="North Georgia Truss Systems Logo" loading="lazy">
+                </a>
             </div>
             <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180235.png" alt="Sponsor Logo 3" loading="lazy">
+                <a href="https://www.ansys.com/" target="_blank" rel="noopener">
+                    <img src="images/Screenshot 2025-10-29 180235.png" alt="Ansys Logo" loading="lazy">
+                </a>
             </div>
             <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180157.png" alt="Sponsor Logo 4" loading="lazy">
+                <a href="https://www.onshape.com/" target="_blank" rel="noopener">
+                    <img src="images/Screenshot 2025-10-29 180157.png" alt="Onshape Logo" loading="lazy">
+                </a>
             </div>
         </div>
     </section>
