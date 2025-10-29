@@ -559,7 +559,55 @@
             display: block;
             margin: 0 auto 20px;
         }
-        /* Enhanced Microsoft Forms Embed - REMOVED */
+        /* Enhanced Microsoft Forms Embed */
+        .ms-forms-embed {
+            max-width: 600px;
+            margin: 20px auto; /* Center with breathing room */
+            border-radius: 12px; /* Slightly larger radius to match site cards */
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2); /* Red-tinted shadow for theme tie-in */
+            background: rgba(17, 17, 17, 0.8); /* Dark semi-transparent bg to "frame" the light form */
+            position: relative; /* For overlay positioning */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect like your cards */
+        }
+        .ms-forms-embed:hover {
+            transform: translateY(-5px); /* Lift on hover, matching news-post/project-box */
+            box-shadow: 0 12px 32px rgba(255, 0, 0, 0.3);
+        }
+        .ms-forms-embed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3); /* Subtle dark overlay to tone down the light theme */
+            z-index: 1;
+            pointer-events: none; /* Allows clicks through */
+        }
+        .ms-forms-embed iframe {
+            width: 100%;
+            height: 650px; /* Taller for more fields; adjust if your form is shorter */
+            border: none;
+            filter: brightness(0.9) contrast(1.1); /* Slight dim to blend with dark site */
+            position: relative;
+            z-index: 2; /* Above overlay */
+        }
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            .ms-forms-embed {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            .ms-forms-embed iframe {
+                height: 550px; /* Shorter on mobile */
+            }
+        }
+        @media (max-width: 480px) {
+            .ms-forms-embed iframe {
+                height: 500px;
+            }
+        }
         /* Sponsor Table Styling */
         table {
             width: 100%;
@@ -585,106 +633,7 @@
         tr:hover {
             background: rgba(255, 0, 0, 0.1);
         }
-        /* Custom Contact Form Styles */
-        .contact-form {
-            max-width: 600px;
-            margin: 40px auto;
-            background: rgba(34, 34, 34, 0.9);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2);
-            transition: transform 0.3s ease;
-        }
-        .contact-form:hover {
-            transform: translateY(-5px);
-        }
-        .contact-form h3 {
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            color: #fff;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: #222;
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: #fff;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #ff0000;
-        }
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-        .form-submit {
-            text-align: center;
-            margin-top: 30px;
-        }
-        .form-submit button {
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            color: #fff;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 5px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .form-submit button:hover {
-            background: linear-gradient(45deg, #cc0000, #aa0000);
-            transform: scale(1.05);
-        }
-        .form-submit button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        .success-message,
-        .error-message {
-            text-align: center;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-        }
-        .success-message {
-            background: rgba(0, 255, 0, 0.2);
-            color: #0f0;
-        }
-        .error-message {
-            background: rgba(255, 0, 0, 0.2);
-            color: #f00;
-        }
-        @media (max-width: 768px) {
-            .contact-form {
-                margin: 20px;
-                padding: 20px;
-            }
-        }
     </style>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <nav>
@@ -777,4 +726,321 @@
             <div class="project-image-placeholder">Coming soon</div>
             <div class="project-text">
                 <h3>Project Genesis</h3>
-                <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike
+                <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike as the highest-placing first-year team. Performing phenomenally as our first entry in the Spaceport America Cup, Genesis provided our team exceptional experience and a solid foundation to begin our legacy of engineering excellence.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Coming soon</div>
+            <div class="project-text">
+                <h3>Project Waymaker</h3>
+                <p>In 2024, Liberty Rocketry took the competition by storm, placing 9th overall, 5th in our division, and 4th in the country, placing above some the biggest names in engineering like Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&M, Rice, and Embry-Riddle, becoming one of the most elite collegiate rocketry teams in the world in only our second year competing.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder">Coming soon</div>
+            <div class="project-text">
+                <h3>Project Trinity</h3>
+                <p>In 2025, Liberty Rocketry competed for the third time, placing 9th in technical performance and launch results, staying consistent through a quickly evolving high-powered-rocketry competition. Due to a late technical report, the official standing for Trinity unfortunately dropped down to 57th internationally. This has led to improved team structure changes, management improvements across the board, in an effort to solve the administrative issues holding us back from a top 10 placement.</p>
+            </div>
+        </div>
+        <div class="project-box">
+            <div class="project-image-placeholder" style="font-size: 4rem; color: #fff;">?</div>
+            <div class="project-text">
+                <h3>Project Omega</h3>
+                <p>With our engineering ability proven twice over, and new organizational improvements in effect, Liberty Rocketry is sure to come back stronger than ever, with our fourth high-powered rocket system - Omega. From further developing an unmatched in-house avionics and ground station system to manufacturing experimental airbrake systems and fuel mixtures, we are not only aiming for the top of the International Rocket Engineering Competition.</p>
+            </div>
+        </div>
+    </section>
+    <section id="members">
+        <h2>Our Team of Innovators</h2>
+        <p>Meet the dedicated students and faculty pushing the boundaries of rocketry.</p>
+        <h3>Executive Leadership</h3>
+        <div class="members-grid" id="executive-leadership">
+            <div class="member">
+                <img src="images/Screenshot 2025-09-27 202409.png" alt="Joshua Cowell, Chief Engineer" loading="lazy">
+                <h4>Joshua Cowell</h4>
+                <p>Chief Engineer</p>
+                <p>"Just keep swimming"</p>
+                <p>The role of the Chief Engineer is to oversee all engineering decisions, purchases, simulations, and calculations. I take ultimate responsibility for any engineering component of the rocket. I consistently communicate with the subteam leads (they are awesome btw) to ensure compatibility between components.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-04 124339.png" alt="Kaden Newsome" style="object-position: center top;" loading="lazy">
+                <h4>Kaden Newsome</h4>
+                <p>Project Manager</p>
+                <p>"Stay curious."</p>
+                <p>I'm the Project Manager for the Omega Project, handling everything that isn't directly involved with the rocket, everything from budgeting to personnel management to process improvement across the board. I love supporting the other engineers so they can create the best competition rocket possible.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely" loading="lazy">
+                <h4>Judah Finely</h4>
+                <p>Lead Manufacturer</p>
+                <p>"The first rule is to have fun. The second rule is safety first."</p>
+                <p>I oversee the manufacturing and production of Liberty Rocketry's high-power rockets for our team of 55 members. As manufacturing lead, I outline design processes for all components and approve plans developed by sub teams. It is my job to enforce all team and university safety standards with final say on all manufacturing methods and procedures.</p>
+            </div>
+        </div>
+        <h3>Subteam Leadership</h3>
+        <div class="members-grid" id="subteam-leadership">
+            <div class="member">
+                <img src="images/Screenshot 2025-10-04 125457.png" alt="Zizai Liu" loading="lazy">
+                <h4>Zizai Liu</h4>
+                <p>Aerodynamics Lead</p>
+                <p>“Failure to launch” isn’t a rom-com. It’s Tuesday at the test stand."</p>
+                <p>This year, the Aerodynamics Sub-Team is focusing on researching experimental aerodynamic components while improving our manufacturing processes. My goal is to ensure every member develops strong technical skills in rocket performance analysis and gains hands-on experience in manufacturing. By combining innovative design with practical training, we are building a team prepared to advance Liberty Rocketry’s mission and success at competition.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-04 125914.png" alt="Caden Solle" loading="lazy">
+                <h4>Caden Solle</h4>
+                <p>Payload Lead</p>
+                <p>"A person who thinks all the time has nothing to think about except thoughts."</p>
+                <p>The Payload subteam focuses on designing, building, and testing the competition payload for our IREC rocket. This part of the rocket is open to a lot of creative freedom, and this year our project of choice is creating a galvanometric laser engraver. The laser engraver integrates mechanical, electrical, and computer engineering to demonstrate precision manufacturing in a compact form. Our goal is to deliver a fully functional payload that showcases engineering innovation while meeting the IREC technical requirements.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-07 155842.png" alt="Joshua Blottenberger, Propulsion Lead" loading="lazy">
+                <h4>Joshua Blottenberger</h4>
+                <p>Propulsion Lead</p>
+                <p>"Leading Propulsion, fueling innovation"</p>
+                <p>The Propulsion Sub-team is responsible for selecting motors for both subscale and full-scale launches, integrating them into the rocket, and managing related components such as connecting the boattail to the vehicle. We work closely with other sub-teams to ensure propulsion requirements align with overall mission goals, including achieving target altitudes. Our primary focus is the development of SRAD (Student Researched and Developed) solid motors. Currently, we are designing J-class motor casings and working toward approval to begin initial fuel mixing, paving the way for M-class motors and more advanced propellants in future competitions.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-07 162231.png" alt="Owen Offman, Recovery Lead" loading="lazy">
+                <h4>Owen Offman</h4>
+                <p>Recovery Lead</p>
+                <p>"...every day above ground is a great day. Remember that" - Mr. Worldwide</p>
+                <p>Recovery is a dedicated subteam within Liberty Rocketry focused on the recovery systems of our rockets, ensuring safe and controlled descents after launches. We design, fabricate, and test parachute deployment mechanisms, shock cords, and other recovery components critical for preserving rocket integrity during landing. Our responsibilities include thorough testing of recovery systems under various conditions to guarantee reliability and performance in actual launch scenarios. As a pivotal part of the rocket design process, we collaborate closely with other subteams to integrate our systems seamlessly into the overall rocket architecture.</p>
+            </div>
+            <div class="member">
+                <img src="images/Screenshot 2025-10-07 160621.png" alt="Caden Palmer, Media Manager" loading="lazy">
+                <h4>Caden Palmer</h4>
+                <p>Media Manager</p>
+                <p>"The Team has a story to be told, we're just the ones with the camera."</p>
+                <p>The Media Team is responsible for any digital and graphic needs of the team, as well as team documentation. The culminating task of this team is to produce Liberty Rocketry's IREC competition video which encompasses the entire year of the team's rocket building process, from conception to final launch.</p>
+            </div>
+            <!-- Members -->
+        </div>
+    </section>
+    <section id="subteams">
+        <h2>Our Subteams</h2>
+        <p>Our team is divided into eight technical teams: aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media.</p>
+        <div class="subteams-grid">
+            <div class="subteam">
+                <h3>Aerodynamics</h3>
+                <p>The Aerodynamics team focuses on designing and optimizing the rocket’s aerostructures for stability and efficiency. They validate and test airframe materials to ensure compliance with competition requirements. The team collaborates on manufacturing processes to realize their designs.</p>
+            </div>
+            <div class="subteam">
+                <h3>Avionics</h3>
+                <p>The Avionics team designs the rocket’s electronic systems and experimental payload. They validate and test components for reliability under flight conditions. The team coordinates with other sub-systems for seamless integration.</p>
+            </div>
+            <div class="subteam">
+                <h3>Payload</h3>
+                <p>The Payload team develops the experimental payload for the rocket. They focus on validation and testing to ensure functionality. The team works to integrate the payload with overall rocket systems.</p>
+            </div>
+            <div class="subteam">
+                <h3>Propulsion</h3>
+                <p>The Propulsion team selects and validates the rocket’s motor for optimal performance. They document decisions and ensure rule compliance. The team collaborates on motor integration manufacturing.</p>
+            </div>
+            <div class="subteam">
+                <h3>Recovery</h3>
+                <p>The Recovery team designs systems for safe rocket retrieval post-launch. They validate and test components for reliability. The team cooperates on manufacturing recovery elements.</p>
+            </div>
+            <div class="subteam">
+                <h3>Manufacturing</h3>
+                <p>The Manufacturing team manages production processes and lab safety. They develop component fabrication plans and organize assembly. The team handles facility access and safety compliance.</p>
+            </div>
+            <div class="subteam">
+                <h3>Project Management</h3>
+                <p>The Project Management team oversees logistics, budgets, and deadlines. They compile reports and coordinate travel and events. The team tracks progress and manages media.</p>
+            </div>
+            <div class="subteam">
+                <h3>Media</h3>
+                <p>The Media team handles media and public relations. They create content showcasing team activities. The team organizes community outreach to promote the mission.</p>
+            </div>
+        </div>
+    </section>
+    <section id="hall-of-fame">
+        <h2>Hall of Fame</h2>
+        <p>Honoring our past members and achievements.</p>
+        <!-- Add hall of fame content here, e.g., a members-grid of alumni -->
+        <div class="members-grid">
+            <!-- Example: <div class="member"><img src="..." alt="..."><h4>Past Member Name</h4><p>Achievements: ...</p></div> -->
+        </div>
+    </section>
+    <section id="about">
+        <h2>Who We Are</h2>
+        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px;">
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <h3>Engineering Extraordinaire</h3>
+                <p>Our near-completely student-led and student-started team works together to honor God in engineering by pursuing excellence in every aspect of our rocketry projects. From design and build to launch, we collaborate across disciplines, fostering hands-on experience and skill development that prepares us for future careers while glorifying God through our dedication and innovation.</p>
+            </div>
+            <img src="images/Screenshot 2025-09-26 134824.png" alt="Liberty Rocketry Team" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;" loading="lazy">
+        </div>
+        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-top: 40px;">
+            <img src="images/Screenshot 2025-09-27 232845.png" alt="Liberty Rocketry Team 2" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;" loading="lazy">
+            <div style="flex: 1; display: flex; flex-direction: column;">
+                <h3>God & Goals</h3>
+                <p>As a Christian university, we seek to do God's will and fulfill the Great Commission by spreading the gospel through our work in rocketry, bringing glory to God's name. We show our love for Christ by spending time with the Lord at the beginning of every event and meeting, keeping Christ at the center of it all. Our team, divided into eight technical teams - aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media - collaborates to design, build, and launch rockets, providing hands-on experience and skill training for future careers. In just three years, we've grown from a small group to one of the world's top aerospace competition teams.</p>
+            </div>
+        </div>
+    </section>
+    <section id="sponsors">
+        <h2>Our Partners in Exploration</h2>
+        <p>Thanks to our sponsors for fueling our journey. Join them in supporting the next generation of space engineers.</p>
+        <p>All donations go directly towards enabling Liberty Rocketry to become the best collegiate rocketry team in the world. By supporting us, sponsors will gain direct exposure to some of the most dedicated and promising students in engineering as well as widespread visibility through our international competitions! All donations to the team are tax deductible.</p>
+        <h3>Sponsor Tiers</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Benefit</th>
+                    <th>Bronze ($500+)</th>
+                    <th>Silver ($1,000+)</th>
+                    <th>Gold ($2,500+)</th>
+                    <th>Platinum ($5,000+)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sponsor logo featured on team website</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Access to team resume book</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Sponsor logo featured on team apparel</td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Design and competition progress updates</td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Social media recognition</td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Access to team designs and technical report</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Large logo and prime location on team merchandise</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Company photo launched and recovered at competition</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✓</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="sponsor-cta">
+            <a href="downloads/4 Liberty Rocketry Sponsorship Packet.pdf" class="download-btn" download>Download Our Sponsor Pack</a>
+            <p>Interested in becoming a sponsor? Check out our sponsor packet! Contact us at kanewsome3@liberty.edu or oshobayo@liberty.edu.</p>
+        </div>
+        <p>Thank you to our sponsors for supporting our goals!</p>
+        <div class="sponsors" id="sponsors-container">
+            <div class="sponsor">
+                <img src="images/Screenshot 2025-10-29 180250.png" alt="Deep Earth Logic Logo" loading="lazy">
+            </div>
+            <div class="sponsor">
+                <img src="images/Screenshot 2025-10-29 180241.png" alt="North Georgia Truss Systems Logo" loading="lazy">
+            </div>
+            <div class="sponsor">
+                <img src="images/Screenshot 2025-10-29 180235.png" alt="Ansys Logo" loading="lazy">
+            </div>
+            <div class="sponsor">
+                <img src="images/Screenshot 2025-10-29 180157.png" alt="Onshape Logo" loading="lazy">
+            </div>
+        </div>
+    </section>
+    <section id="merchandise">
+        <h2>Merchandise Store</h2>
+        <p>Stay tuned, merchandise will be coming soon!</p>
+        <!-- To set up the store: 1. Sign up for Shopify (or similar service like Snipcart) and add your products. 2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button). 3. Paste the <script> code (the initialization script) once in the <head> of this HTML file. 4. Paste the <div> elements for each button below to display products. Example embed for a product (replace with your generated code): <div id='product-component-your-id-here'></div> -->
+        <!-- Add your product embeds here -->
+    </section>
+    <section id="contact">
+        <h2>Get in Touch</h2>
+        <p>Reach out for sponsorships, membership, or collaborations.</p>
+        <p>Email: libertyrocketry@gmail.com | Address: Liberty University, Lynchburg, VA</p>
+        <p style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
+        <div class="ms-forms-embed">
+            <iframe src="https://forms.cloud.microsoft/r/R44kFYfLBC" width="100%" height="650px" frameborder="0"></iframe>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Liberty University Rocketry | Established 2023
+    </footer>
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(sec => {
+                sec.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+            setTimeout(() => {
+                document.getElementById(sectionId).classList.add('visible');
+            }, 100);
+            // Fix: Show hero only on home
+            const hero = document.querySelector('.hero-section');
+            hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
+        }
+
+        // Dropdown toggle for accessibility
+        function toggleDropdown(dropdown) {
+            const expanded = dropdown.getAttribute('aria-expanded') === 'true';
+            dropdown.setAttribute('aria-expanded', !expanded);
+        }
+
+        showSection('home'); // Initial load
+
+        // Dynamic MS Forms height adjustment
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframe = document.querySelector('.ms-forms-embed iframe');
+            if (iframe) {
+                function adjustHeight() {
+                    const isMobile = window.innerWidth <= 768;
+                    iframe.style.height = isMobile ? (window.innerWidth <= 480 ? '500px' : '550px') : '650px';
+                }
+                adjustHeight();
+                window.addEventListener('resize', adjustHeight);
+
+                // Darken on load/hover
+                iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
+                const embed = document.querySelector('.ms-forms-embed');
+                embed.addEventListener('mouseenter', () => {
+                    iframe.style.filter = 'brightness(0.75) contrast(1.2) sepia(0.15)';
+                });
+                embed.addEventListener('mouseleave', () => {
+                    iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
+                });
+            }
+        });
+
+        // Optional: Add sponsors data here for dynamic render
+        // const sponsorsData = [{ logo: 'images/sponsor1.png', name: 'Sponsor 1' }];
+        // function renderSponsors() { ... } // Uncomment if needed
+    </script>
+</body>
+</html>
