@@ -81,6 +81,9 @@
             .images-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .logo-placeholder {
+                margin-left: 5px; /* Tiny fix for nav overlap on tiny screens */
+            }
         }
         @media (max-width: 480px) {
             .logo-placeholder {
@@ -166,8 +169,7 @@
             font-size: 5.5rem;
             font-weight: 700;
             color: #fff;
-            z-index: 1;
-            /* Removed animation */
+            z-index: 1; /* Removed animation */
         }
         .hero-section p {
             font-family: 'Montserrat', sans-serif;
@@ -187,8 +189,14 @@
             z-index: 1;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         .grey-divider {
             width: 100%;
@@ -213,10 +221,18 @@
             opacity: 1;
             transform: translateY(0);
         }
-        #projects { background: url('images/projects-bg.jpg') no-repeat center center/cover; }
-        #members { background: url('images/team-bg.jpg') no-repeat center center/cover; }
-        #sponsors { background: url('images/sponsors-bg.jpg') no-repeat center center/cover; }
-        #contact { background: url('images/contact-bg.jpg') no-repeat center center/cover; }
+        #projects {
+            background: url('images/projects-bg.jpg') no-repeat center center/cover;
+        }
+        #members {
+            background: url('images/team-bg.jpg') no-repeat center center/cover;
+        }
+        #sponsors {
+            background: url('images/sponsors-bg.jpg') no-repeat center center/cover;
+        }
+        #contact {
+            background: url('images/contact-bg.jpg') no-repeat center center/cover;
+        }
         .news-post {
             background: rgba(34, 34, 34, 0.9);
             padding: 20px;
@@ -302,6 +318,7 @@
             height: 250px;
             border-radius: 50%;
             object-fit: cover;
+            loading: lazy;
         }
         .subteams-grid {
             display: grid;
@@ -350,6 +367,7 @@
             filter: grayscale(100%);
             transition: filter 0.3s ease, transform 0.3s ease;
             border-radius: 8px;
+            loading: lazy;
         }
         .sponsor img:hover {
             filter: grayscale(0%);
@@ -404,6 +422,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            loading: lazy;
         }
         .image-placeholder:hover {
             transform: scale(1.02);
@@ -433,6 +452,7 @@
             margin-bottom: 20px;
             border: none;
             border-radius: 8px;
+            loading: lazy;
         }
         #contact-bottom {
             text-align: center;
@@ -479,6 +499,9 @@
             font-weight: 400;
             font-size: 1.5rem; /* Larger */
             transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .dropdown[aria-expanded="true"] .dropdown-content {
+            display: block;
         }
         .dropdown-content {
             display: none;
@@ -584,20 +607,45 @@
                 height: 500px;
             }
         }
+        /* Sponsor Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(34, 34, 34, 0.9);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background: #222;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+        }
+        tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        tr:hover {
+            background: rgba(255, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
     <nav>
-        <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder">
+        <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder" loading="lazy">
         <a href="#home" onclick="showSection('home')">Home</a>
         <a href="#projects" onclick="showSection('projects')">Projects</a>
-        <div class="dropdown">
-            <a href="#" class="dropbtn">Team</a>
+        <div class="dropdown" role="button" aria-expanded="false" tabindex="0" onclick="toggleDropdown(this)">
+            <a href="#" class="dropbtn" aria-haspopup="true">Team</a>
             <div class="dropdown-content">
-                <a href="#members" onclick="showSection('members')">Members</a>
-                <a href="#subteams" onclick="showSection('subteams')">Subteams</a>
-                <a href="#hall-of-fame" onclick="showSection('hall-of-fame')">Hall of Fame</a>
-                <a href="#about" onclick="showSection('about')">About</a>
+                <a href="#members" onclick="showSection('members'); toggleDropdown()">Members</a>
+                <a href="#subteams" onclick="showSection('subteams'); toggleDropdown()">Subteams</a>
+                <a href="#hall-of-fame" onclick="showSection('hall-of-fame'); toggleDropdown()">Hall of Fame</a>
+                <a href="#about" onclick="showSection('about'); toggleDropdown()">About</a>
             </div>
         </div>
         <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
@@ -618,37 +666,37 @@
             <div class="images-grid">
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-29 174112.png" alt="Team members setting up their IREC 2025 showcase.">
+                        <img src="images/Screenshot 2025-10-29 174112.png" alt="Team members setting up their IREC 2025 showcase." loading="lazy">
                     </div>
                     <p class="image-desc">Team members setting up their IREC 2025 showcase.</p>
                 </div>
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203220.png" alt="Propulsion members manufacturing their L2 Certification Rockets">
+                        <img src="images/Screenshot 2025-10-02 203220.png" alt="Propulsion members manufacturing their L2 Certification Rockets" loading="lazy">
                     </div>
                     <p class="image-desc">Propulsion members manufacturing their L2 Certification Rockets</p>
                 </div>
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203229.png" alt="Team members working diligently on developing a cutting-edge frame design.">
+                        <img src="images/Screenshot 2025-10-02 203229.png" alt="Team members working diligently on developing a cutting-edge frame design." loading="lazy">
                     </div>
                     <p class="image-desc">Team members working diligently on developing a cutting-edge frame design.</p>
                 </div>
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203250.png" alt="Opening of team meetings led by the Chief Engineer.">
+                        <img src="images/Screenshot 2025-10-02 203250.png" alt="Opening of team meetings led by the Chief Engineer." loading="lazy">
                     </div>
                     <p class="image-desc">Opening of team meetings led by the Chief Engineer.</p>
                 </div>
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203314.png" alt="Team prepping to launch.">
+                        <img src="images/Screenshot 2025-10-02 203314.png" alt="Team prepping to launch." loading="lazy">
                     </div>
                     <p class="image-desc">Team prepping to launch.</p>
                 </div>
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203321.png" alt="Team collaborating while having fun.">
+                        <img src="images/Screenshot 2025-10-02 203321.png" alt="Team collaborating while having fun." loading="lazy">
                     </div>
                     <p class="image-desc">Team collaborating while having fun.</p>
                 </div>
@@ -656,7 +704,7 @@
         </div>
         <!-- About Section -->
         <div id="about-section">
-            <img src="images/Screenshot 2025-09-28 090938.png" alt="Team Photo" class="team-photo-placeholder">
+            <img src="images/Screenshot 2025-09-28 090938.png" alt="Team Photo" class="team-photo-placeholder" loading="lazy">
             <h2>About Us</h2>
             <h3>Our Mission</h3>
             <p>Liberty Rocketry is a competitive student-led engineering competition team composed of over 50 undergraduate students from 7 different majors and areas of study. Through determination and relentless innovation, our team of passionate, creative, and hard-working engineers is dedicated to pushing the limits of collegiate rocketry design far beyond its traditional norms, all while developing Christ-centered men and women with the values, knowledge, and skills essential to impact the world for the glory of God.</p>
@@ -708,59 +756,59 @@
         <h3>Executive Leadership</h3>
         <div class="members-grid" id="executive-leadership">
             <div class="member">
-                <img src="images/Screenshot 2025-09-27 202409.png" alt="Joshua Cowell, Chief Engineer">
+                <img src="images/Screenshot 2025-09-27 202409.png" alt="Joshua Cowell, Chief Engineer" loading="lazy">
                 <h4>Joshua Cowell</h4>
                 <p>Chief Engineer</p>
                 <p>"Just keep swimming"</p>
                 <p>The role of the Chief Engineer is to oversee all engineering decisions, purchases, simulations, and calculations. I take ultimate responsibility for any engineering component of the rocket. I consistently communicate with the subteam leads (they are awesome btw) to ensure compatibility between components.</p>
             </div>
             <div class="member">
-                <img src="images/Screenshot 2025-10-04 124339.png" alt="Kaden Newsome" style="object-position: center top;">
+                <img src="images/Screenshot 2025-10-04 124339.png" alt="Kaden Newsome" style="object-position: center top;" loading="lazy">
                 <h4>Kaden Newsome</h4>
                 <p>Project Manager</p>
                 <p>"Stay curious."</p>
                 <p>I'm the Project Manager for the Omega Project, handling everything that isn't directly involved with the rocket, everything from budgeting to personnel management to process improvement across the board. I love supporting the other engineers so they can create the best competition rocket possible.</p>
             </div>
-        </div>
-        <h3>Subteam Leadership</h3>
-        <div class="members-grid" id="subteam-leadership">
             <div class="member">
-                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely">
+                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely" loading="lazy">
                 <h4>Judah Finely</h4>
                 <p>Lead Manufacturer</p>
                 <p>"The first rule is to have fun. The second rule is safety first."</p>
                 <p>I oversee the manufacturing and production of Liberty Rocketry's high-power rockets for our team of 55 members. As manufacturing lead, I outline design processes for all components and approve plans developed by sub teams. It is my job to enforce all team and university safety standards with final say on all manufacturing methods and procedures.</p>
             </div>
+        </div>
+        <h3>Subteam Leadership</h3>
+        <div class="members-grid" id="subteam-leadership">
             <div class="member">
-                <img src="images/Screenshot 2025-10-04 125457.png" alt="Zizai Liu">
+                <img src="images/Screenshot 2025-10-04 125457.png" alt="Zizai Liu" loading="lazy">
                 <h4>Zizai Liu</h4>
                 <p>Aerodynamics Lead</p>
                 <p>“Failure to launch” isn’t a rom-com. It’s Tuesday at the test stand."</p>
                 <p>This year, the Aerodynamics Sub-Team is focusing on researching experimental aerodynamic components while improving our manufacturing processes. My goal is to ensure every member develops strong technical skills in rocket performance analysis and gains hands-on experience in manufacturing. By combining innovative design with practical training, we are building a team prepared to advance Liberty Rocketry’s mission and success at competition.</p>
             </div>
             <div class="member">
-                <img src="images/Screenshot 2025-10-04 125914.png" alt="Caden Solle">
+                <img src="images/Screenshot 2025-10-04 125914.png" alt="Caden Solle" loading="lazy">
                 <h4>Caden Solle</h4>
                 <p>Payload Lead</p>
                 <p>"A person who thinks all the time has nothing to think about except thoughts."</p>
                 <p>The Payload subteam focuses on designing, building, and testing the competition payload for our IREC rocket. This part of the rocket is open to a lot of creative freedom, and this year our project of choice is creating a galvanometric laser engraver. The laser engraver integrates mechanical, electrical, and computer engineering to demonstrate precision manufacturing in a compact form. Our goal is to deliver a fully functional payload that showcases engineering innovation while meeting the IREC technical requirements.</p>
             </div>
             <div class="member">
-                <img src="images/Screenshot 2025-10-07 155842.png" alt="Joshua Blottenberger, Propulsion Lead">
+                <img src="images/Screenshot 2025-10-07 155842.png" alt="Joshua Blottenberger, Propulsion Lead" loading="lazy">
                 <h4>Joshua Blottenberger</h4>
                 <p>Propulsion Lead</p>
                 <p>"Leading Propulsion, fueling innovation"</p>
                 <p>The Propulsion Sub-team is responsible for selecting motors for both subscale and full-scale launches, integrating them into the rocket, and managing related components such as connecting the boattail to the vehicle. We work closely with other sub-teams to ensure propulsion requirements align with overall mission goals, including achieving target altitudes. Our primary focus is the development of SRAD (Student Researched and Developed) solid motors. Currently, we are designing J-class motor casings and working toward approval to begin initial fuel mixing, paving the way for M-class motors and more advanced propellants in future competitions.</p>
             </div>
             <div class="member">
-                <img src="images/Screenshot 2025-10-07 162231.png" alt="Owen Offman, Recovery Lead">
+                <img src="images/Screenshot 2025-10-07 162231.png" alt="Owen Offman, Recovery Lead" loading="lazy">
                 <h4>Owen Offman</h4>
                 <p>Recovery Lead</p>
                 <p>"...every day above ground is a great day. Remember that" - Mr. Worldwide</p>
                 <p>Recovery is a dedicated subteam within Liberty Rocketry focused on the recovery systems of our rockets, ensuring safe and controlled descents after launches. We design, fabricate, and test parachute deployment mechanisms, shock cords, and other recovery components critical for preserving rocket integrity during landing. Our responsibilities include thorough testing of recovery systems under various conditions to guarantee reliability and performance in actual launch scenarios. As a pivotal part of the rocket design process, we collaborate closely with other subteams to integrate our systems seamlessly into the overall rocket architecture.</p>
             </div>
             <div class="member">
-                <img src="images/Screenshot 2025-10-07 160621.png" alt="Caden Palmer, Media Manager">
+                <img src="images/Screenshot 2025-10-07 160621.png" alt="Caden Palmer, Media Manager" loading="lazy">
                 <h4>Caden Palmer</h4>
                 <p>Media Manager</p>
                 <p>"The Team has a story to be told, we're just the ones with the camera."</p>
@@ -810,7 +858,10 @@
     <section id="hall-of-fame">
         <h2>Hall of Fame</h2>
         <p>Honoring our past members and achievements.</p>
-        <!-- Add hall of fame content here -->
+        <!-- Add hall of fame content here, e.g., a members-grid of alumni -->
+        <div class="members-grid">
+            <!-- Example: <div class="member"><img src="..." alt="..."><h4>Past Member Name</h4><p>Achievements: ...</p></div> -->
+        </div>
     </section>
     <section id="about">
         <h2>Who We Are</h2>
@@ -819,10 +870,10 @@
                 <h3>Engineering Extraordinaire</h3>
                 <p>Our near-completely student-led and student-started team works together to honor God in engineering by pursuing excellence in every aspect of our rocketry projects. From design and build to launch, we collaborate across disciplines, fostering hands-on experience and skill development that prepares us for future careers while glorifying God through our dedication and innovation.</p>
             </div>
-            <img src="images/Screenshot 2025-09-26 134824.png" alt="Liberty Rocketry Team" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;">
+            <img src="images/Screenshot 2025-09-26 134824.png" alt="Liberty Rocketry Team" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;" loading="lazy">
         </div>
         <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-top: 40px;">
-            <img src="images/Screenshot 2025-09-27 232845.png" alt="Liberty Rocketry Team 2" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;">
+            <img src="images/Screenshot 2025-09-27 232845.png" alt="Liberty Rocketry Team 2" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;" loading="lazy">
             <div style="flex: 1; display: flex; flex-direction: column;">
                 <h3>God & Goals</h3>
                 <p>As a Christian university, we seek to do God's will and fulfill the Great Commission by spreading the gospel through our work in rocketry, bringing glory to God's name. We show our love for Christ by spending time with the Lord at the beginning of every event and meeting, keeping Christ at the center of it all. Our team, divided into eight technical teams - aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media - collaborates to design, build, and launch rockets, providing hands-on experience and skill training for future careers. In just three years, we've grown from a small group to one of the world's top aerospace competition teams.</p>
@@ -904,24 +955,17 @@
             </tbody>
         </table>
         <div class="sponsor-cta">
-            <a href="downloads/4 Liberty Rocketry Sponsorship Packet.pdf.pdf" class="download-btn" download>Download Our Sponsor Pack</a>
+            <a href="downloads/4 Liberty Rocketry Sponsorship Packet.pdf" class="download-btn" download>Download Our Sponsor Pack</a>
             <p>Interested in becoming a sponsor? Check out our sponsor packet! Contact us at kanewsome3@liberty.edu or oshobayo@liberty.edu.</p>
         </div>
         <div class="sponsors" id="sponsors-container">
-            <!-- Sponsors -->
+            <!-- Sponsors will render here if data added -->
         </div>
     </section>
     <section id="merchandise">
         <h2>Merchandise Store</h2>
         <p>Stay tuned, merchandise will be coming soon!</p>
-        <!-- To set up the store:
-        1. Sign up for Shopify (or similar service like Snipcart) and add your products.
-        2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button).
-        3. Paste the <script> code (the initialization script) once in the <head> of this HTML file.
-        4. Paste the <div> elements for each button below to display products.
-        Example embed for a product (replace with your generated code):
-        <div id='product-component-your-id-here'></div>
-        -->
+        <!-- To set up the store: 1. Sign up for Shopify (or similar service like Snipcart) and add your products. 2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button). 3. Paste the <script> code (the initialization script) once in the <head> of this HTML file. 4. Paste the <div> elements for each button below to display products. Example embed for a product (replace with your generated code): <div id='product-component-your-id-here'></div> -->
         <!-- Add your product embeds here -->
     </section>
     <section id="contact">
@@ -949,51 +993,28 @@
             const hero = document.querySelector('.hero-section');
             hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
         }
-        showSection('home');
-        // Removed the scroll event listener for scrolled class
-        const newsData = [
-            { title: "Launch Prep Update", content: "Week 1: Engine tests complete. See pics from the lab.", image: "path/to/update.jpg", date: "2025-09-05" },
-        ];
-        function renderNews() {
-            const container = document.getElementById('news-container');
-            newsData.forEach(post => {
-                const div = document.createElement('div');
-                div.classList.add('news-post');
-                div.innerHTML = `<h3>${post.title}</h3><p>${post.date}</p><p>${post.content}</p>${post.image ? `<img src="${post.image}">` : ''}`;
-                container.appendChild(div);
-            });
+
+        // Dropdown toggle for accessibility
+        function toggleDropdown(dropdown) {
+            const expanded = dropdown.getAttribute('aria-expanded') === 'true';
+            dropdown.setAttribute('aria-expanded', !expanded);
         }
-        renderNews();
-        const membersData = [];
-        function renderMembers() {
-            const container = document.getElementById('members-container');
-            membersData.forEach(member => {
-                const div = document.createElement('div');
-                div.classList.add('member');
-                div.innerHTML = `<img src="${member.image}" alt="${member.name}"><h4>${member.name}</h4><p>${member.role}</p>`;
-                container.appendChild(div);
-            });
-        }
-        renderMembers();
-        const sponsorsData = [];
-        function renderSponsors() {
-            const container = document.getElementById('sponsors-container');
-            sponsorsData.forEach(sponsor => {
-                const div = document.createElement('div');
-                div.classList.add('sponsor');
-                div.innerHTML = `<img src="${sponsor.logo}" alt="${sponsor.name}">`;
-                container.appendChild(div);
-            });
-        }
-        renderSponsors();
-        // Darken MS Forms on load/hover
+
+        showSection('home'); // Initial load
+
+        // Dynamic MS Forms height adjustment
         document.addEventListener('DOMContentLoaded', function() {
             const iframe = document.querySelector('.ms-forms-embed iframe');
             if (iframe) {
-                // Initial dark filter
+                function adjustHeight() {
+                    const isMobile = window.innerWidth <= 768;
+                    iframe.style.height = isMobile ? (window.innerWidth <= 480 ? '500px' : '550px') : '650px';
+                }
+                adjustHeight();
+                window.addEventListener('resize', adjustHeight);
+
+                // Darken on load/hover
                 iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
-               
-                // Hover enhancement
                 const embed = document.querySelector('.ms-forms-embed');
                 embed.addEventListener('mouseenter', () => {
                     iframe.style.filter = 'brightness(0.75) contrast(1.2) sepia(0.15)';
@@ -1003,6 +1024,10 @@
                 });
             }
         });
+
+        // Optional: Add sponsors data here for dynamic render
+        // const sponsorsData = [{ logo: 'images/sponsor1.png', name: 'Sponsor 1' }];
+        // function renderSponsors() { ... } // Uncomment if needed
     </script>
 </body>
 </html>
