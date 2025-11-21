@@ -44,6 +44,21 @@
             z-index: 11;
             transition: width 0.3s ease, top 0.3s ease;
         }
+        .hamburger {
+            display: none;
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 101;
+            padding: 10px;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
         /* Responsive logo */
         @media (max-width: 768px) {
             .logo-placeholder {
@@ -57,14 +72,73 @@
             section {
                 padding: 80px 20px;
             }
-            nav {
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px 0;
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
             }
-            nav a, .dropbtn {
-                margin: 5px 0;
-                font-size: 1.2rem;
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 10px 0;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            }
+            .nav-links.mobile-show {
+                display: flex;
+            }
+            .nav-links a,
+            .nav-links .dropdown {
+                width: 100%;
+                margin: 0;
+                padding: 15px;
+                text-align: center;
+                border-bottom: 1px solid #333;
+                box-sizing: border-box;
+            }
+            .nav-links .dropbtn {
+                margin: 0;
+                justify-content: center;
+            }
+            .nav-links .dropdown-content {
+                position: static;
+                width: 100%;
+                background: rgba(34, 34, 34, 0.9);
+                box-shadow: none;
+                display: none;
+            }
+            .nav-links .dropdown:hover .dropdown-content,
+            .nav-links .dropdown[aria-expanded="true"] .dropdown-content {
+                display: block;
+            }
+            .nav-links .dropdown-content a {
+                padding-left: 30px;
+                border-bottom: none;
+                border-top: 1px solid #333;
+                font-size: 1.1rem;
+            }
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                padding: 0;
+                background: transparent;
+                justify-content: flex-start;
+                align-items: flex-start;
+                z-index: 100;
+            }
+            .logo-placeholder {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                margin: 0;
             }
             .hero-section {
                 margin: 0 -20px;
@@ -87,35 +161,34 @@
             .images-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .logo-placeholder {
-                margin-left: 5px; /* Tiny fix for nav overlap on tiny screens */
-                position: static;
-                align-self: flex-start;
-                margin: 0 0 10px 10px;
+            #home {
+                padding-top: calc(100vh + 70px); /* Extra padding for fixed nav */
+            }
+            section:not(#home) {
+                padding-top: 120px; /* Reduced for fixed nav */
             }
         }
         @media (max-width: 480px) {
             .logo-placeholder {
                 width: 120px;
-                top: 20px;
-                left: 15px;
+                top: 10px;
+                left: 10px;
+            }
+            .hamburger {
+                right: 15px;
+                top: 15px;
+                font-size: 1.5rem;
             }
             section:not(#home) {
-                padding-top: 120px;
+                padding-top: 100px;
             }
             .images-grid {
                 grid-template-columns: 1fr;
             }
-            nav a, .dropbtn {
+            .nav-links a,
+            .nav-links .dropdown {
                 font-size: 1rem;
-                margin: 3px 0;
-            }
-            .subteams-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            section {
-                padding: 60px 15px;
+                padding: 12px;
             }
             .hero-section h1 {
                 font-size: 2.5rem;
@@ -127,17 +200,31 @@
                 font-size: 0.9rem;
                 max-width: 80%;
             }
+            #home {
+                padding-top: calc(100vh + 60px);
+            }
         }
         @media (max-width: 360px) {
             .logo-placeholder {
                 width: 100px;
-                left: 10px;
+                left: 5px;
             }
             section:not(#home) {
-                padding-top: 100px;
+                padding-top: 80px;
             }
             nav {
-                padding: 5px 0;
+                padding: 0;
+            }
+        }
+        /* About section responsive */
+        @media (max-width: 768px) {
+            #about > div[style*="flex-direction: row"] {
+                flex-direction: column !important;
+                gap: 20px;
+            }
+            #about img[style*="max-width: 50%"] {
+                max-width: 100% !important;
+                order: -1;
             }
         }
         nav a {
@@ -748,20 +835,23 @@
 <body>
     <nav>
         <img src="images/logo.png" alt="Liberty Rocketry Logo" class="logo-placeholder" loading="lazy">
-        <a href="#home" onclick="showSection('home')">Home</a>
-        <a href="#projects" onclick="showSection('projects')">Projects</a>
-        <div class="dropdown" role="button" aria-expanded="false" tabindex="0" onclick="toggleDropdown(this)">
-            <a href="#" class="dropbtn" aria-haspopup="true">Team</a>
-            <div class="dropdown-content">
-                <a href="#members" onclick="showSection('members'); toggleDropdown()">Members</a>
-                <a href="#subteams" onclick="showSection('subteams'); toggleDropdown()">Subteams</a>
-                <a href="#hall-of-fame" onclick="showSection('hall-of-fame'); toggleDropdown()">Hall of Fame</a>
-                <a href="#about" onclick="showSection('about'); toggleDropdown()">About</a>
+        <span class="hamburger" onclick="toggleMobileMenu()">☰</span>
+        <div class="nav-links" id="navLinks">
+            <a href="#home" onclick="showSection('home'); closeMobileMenu()">Home</a>
+            <a href="#projects" onclick="showSection('projects'); closeMobileMenu()">Projects</a>
+            <div class="dropdown" role="button" aria-expanded="false" tabindex="0" onclick="toggleDropdown(this)">
+                <a href="#" class="dropbtn" aria-haspopup="true">Team</a>
+                <div class="dropdown-content">
+                    <a href="#members" onclick="showSection('members'); toggleDropdown(); closeMobileMenu()">Members</a>
+                    <a href="#subteams" onclick="showSection('subteams'); toggleDropdown(); closeMobileMenu()">Subteams</a>
+                    <a href="#hall-of-fame" onclick="showSection('hall-of-fame'); toggleDropdown(); closeMobileMenu()">Hall of Fame</a>
+                    <a href="#about" onclick="showSection('about'); toggleDropdown(); closeMobileMenu()">About</a>
+                </div>
             </div>
+            <a href="#sponsors" onclick="showSection('sponsors'); closeMobileMenu()">Sponsors</a>
+            <a href="#merchandise" onclick="showSection('merchandise'); closeMobileMenu()">Merchandise</a>
+            <a href="#contact" onclick="showSection('contact'); closeMobileMenu()">Contact</a>
         </div>
-        <a href="#sponsors" onclick="showSection('sponsors')">Sponsors</a>
-        <a href="#merchandise" onclick="showSection('merchandise')">Merchandise</a>
-        <a href="#contact" onclick="showSection('contact')">Contact</a>
     </nav>
     <!-- HERO SECTION FIRST -->
     <div class="hero-section">
@@ -825,7 +915,7 @@
             <div id="contact-bottom">
                 <h2>Contact Us</h2>
                 <p>Have questions or want to get involved? Reach out today!</p>
-                <button onclick="showSection('contact')">Get in Touch</button>
+                <button onclick="showSection('contact'); closeMobileMenu()">Get in Touch</button>
             </div>
         </div>
     </section>
@@ -1123,6 +1213,21 @@
             const expanded = dropdown.getAttribute('aria-expanded') === 'true';
             dropdown.setAttribute('aria-expanded', !expanded);
         }
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('mobile-show');
+        }
+        function closeMobileMenu() {
+            document.getElementById('navLinks').classList.remove('mobile-show');
+        }
+        // Close mobile menu on outside click
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            if (!nav.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
         showSection('home'); // Initial load
         // Dynamic MS Forms height adjustment
         document.addEventListener('DOMContentLoaded', function() {
