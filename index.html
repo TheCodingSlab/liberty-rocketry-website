@@ -57,8 +57,14 @@
             section {
                 padding: 80px 20px;
             }
-            nav a {
-                margin: 0 10px;
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 0;
+            }
+            nav a, .dropbtn {
+                margin: 5px 0;
+                font-size: 1.2rem;
             }
             .hero-section {
                 margin: 0 -20px;
@@ -83,6 +89,9 @@
             }
             .logo-placeholder {
                 margin-left: 5px; /* Tiny fix for nav overlap on tiny screens */
+                position: static;
+                align-self: flex-start;
+                margin: 0 0 10px 10px;
             }
         }
         @media (max-width: 480px) {
@@ -96,6 +105,39 @@
             }
             .images-grid {
                 grid-template-columns: 1fr;
+            }
+            nav a, .dropbtn {
+                font-size: 1rem;
+                margin: 3px 0;
+            }
+            .subteams-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            section {
+                padding: 60px 15px;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .hero-section .quote {
+                font-size: 0.9rem;
+                max-width: 80%;
+            }
+        }
+        @media (max-width: 360px) {
+            .logo-placeholder {
+                width: 100px;
+                left: 10px;
+            }
+            section:not(#home) {
+                padding-top: 100px;
+            }
+            nav {
+                padding: 5px 0;
             }
         }
         nav a {
@@ -291,10 +333,16 @@
             .project-box {
                 flex-direction: column;
                 align-items: center;
+                margin: 20px -20px;
+                padding: 15px;
             }
             .project-image-placeholder {
                 width: 100%;
                 height: auto;
+            }
+            .project-text h3 {
+                font-size: 1.5rem;
+                text-align: center;
             }
         }
         .members-grid {
@@ -309,6 +357,7 @@
             padding: 20px;
             border-radius: 8px;
             transition: transform 0.3s ease;
+            max-width: 100%;
         }
         .member:hover {
             transform: translateY(-5px);
@@ -319,6 +368,21 @@
             border-radius: 50%;
             object-fit: cover;
             loading: lazy;
+        }
+        @media (max-width: 768px) {
+            .member img {
+                width: 200px;
+                height: 200px;
+            }
+            .member {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            .member img {
+                width: 150px;
+                height: 150px;
+            }
         }
         .subteams-grid {
             display: grid;
@@ -365,14 +429,24 @@
         .sponsor {
             text-align: center;
             transition: transform 0.3s ease;
+            flex: 1 1 200px;
+            max-width: 250px;
         }
         .sponsor:hover {
             transform: scale(1.05);
         }
         .sponsor img {
-            max-width: 250px;
+            max-width: 100%;
             border-radius: 8px;
             loading: lazy;
+        }
+        @media (max-width: 768px) {
+            .sponsors {
+                gap: 20px;
+            }
+            .sponsor {
+                flex: 1 1 150px;
+            }
         }
         footer {
             background-color: #000;
@@ -432,6 +506,17 @@
             margin-top: 10px;
             text-align: center;
             font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .images-grid {
+                gap: 15px;
+            }
+            .image-placeholder {
+                height: 150px;
+            }
+            .image-desc {
+                font-size: 0.8rem;
+            }
         }
         #about-section {
             background-color: rgba(17, 17, 17, 0.7);
@@ -530,6 +615,19 @@
         .dropdown:hover .dropbtn {
             color: #ff0000;
         }
+        @media (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background: rgba(34, 34, 34, 0.9);
+                border-radius: 8px;
+                margin-top: 5px;
+            }
+            .dropdown-content a {
+                font-size: 1.1rem;
+                padding: 10px 15px;
+            }
+        }
         .bottom-hero {
             position: relative;
             left: 50%;
@@ -598,6 +696,7 @@
             .ms-forms-embed {
                 margin: 10px;
                 border-radius: 8px;
+                max-width: 95%;
             }
             .ms-forms-embed iframe {
                 height: 550px; /* Shorter on mobile */
@@ -609,10 +708,14 @@
             }
         }
         /* Sponsor Table Styling */
+        .sponsors-table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
         table {
             width: 100%;
+            min-width: 600px; /* Ensure table doesn't collapse too much */
             border-collapse: collapse;
-            margin: 20px 0;
             background: rgba(34, 34, 34, 0.9);
             border-radius: 8px;
             overflow: hidden;
@@ -621,6 +724,7 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #444;
+            white-space: nowrap; /* Prevent text wrapping in cells */
         }
         th {
             background: #222;
@@ -632,6 +736,12 @@
         }
         tr:hover {
             background: rgba(255, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 8px 6px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -886,75 +996,77 @@
         <p>Thanks to our sponsors for fueling our journey. Join them in supporting the next generation of space engineers.</p>
         <p>All donations go directly towards enabling Liberty Rocketry to become the best collegiate rocketry team in the world. By supporting us, sponsors will gain direct exposure to some of the most dedicated and promising students in engineering as well as widespread visibility through our international competitions! All donations to the team are tax deductible.</p>
         <h3>Sponsor Tiers</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Benefit</th>
-                    <th>Bronze ($500+)</th>
-                    <th>Silver ($1,000+)</th>
-                    <th>Gold ($2,500+)</th>
-                    <th>Platinum ($5,000+)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Sponsor logo featured on team website</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Access to team resume book</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Sponsor logo featured on team apparel</td>
-                    <td></td>
-                    <td>✓</td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Design and competition progress updates</td>
-                    <td></td>
-                    <td></td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Social media recognition</td>
-                    <td></td>
-                    <td></td>
-                    <td>✓</td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Access to team designs and technical report</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Large logo and prime location on team merchandise</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>✓</td>
-                </tr>
-                <tr>
-                    <td>Company photo launched and recovered at competition</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>✓</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="sponsors-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Benefit</th>
+                        <th>Bronze ($500+)</th>
+                        <th>Silver ($1,000+)</th>
+                        <th>Gold ($2,500+)</th>
+                        <th>Platinum ($5,000+)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sponsor logo featured on team website</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Access to team resume book</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Sponsor logo featured on team apparel</td>
+                        <td></td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Design and competition progress updates</td>
+                        <td></td>
+                        <td></td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Social media recognition</td>
+                        <td></td>
+                        <td></td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Access to team designs and technical report</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Large logo and prime location on team merchandise</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Company photo launched and recovered at competition</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>✓</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <div class="sponsor-cta">
             <a href="downloads/4 Liberty Rocketry Sponsorship Packet.pdf" class="download-btn" download>Download Our Sponsor Pack</a>
             <p>Interested in becoming a sponsor? Check out our sponsor packet! Contact us at kanewsome3@liberty.edu or oshobayo@liberty.edu.</p>
@@ -1006,15 +1118,12 @@
             const hero = document.querySelector('.hero-section');
             hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
         }
-
         // Dropdown toggle for accessibility
         function toggleDropdown(dropdown) {
             const expanded = dropdown.getAttribute('aria-expanded') === 'true';
             dropdown.setAttribute('aria-expanded', !expanded);
         }
-
         showSection('home'); // Initial load
-
         // Dynamic MS Forms height adjustment
         document.addEventListener('DOMContentLoaded', function() {
             const iframe = document.querySelector('.ms-forms-embed iframe');
@@ -1025,7 +1134,6 @@
                 }
                 adjustHeight();
                 window.addEventListener('resize', adjustHeight);
-
                 // Darken on load/hover
                 iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
                 const embed = document.querySelector('.ms-forms-embed');
@@ -1037,7 +1145,6 @@
                 });
             }
         });
-
         // Optional: Add sponsors data here for dynamic render
         // const sponsorsData = [{ logo: 'images/sponsor1.png', name: 'Sponsor 1' }];
         // function renderSponsors() { ... } // Uncomment if needed
