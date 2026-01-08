@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -315,6 +316,8 @@
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
             word-wrap: break-word;
             hyphens: auto;
+            /* Optional cap for extremely long titles:
+               max-width: 16ch; margin-left:auto; margin-right:auto; */
         }
         /* Fluid typography for quote/subtitle */
         .hero-section .quote {
@@ -786,7 +789,7 @@
             transition: color 0.3s ease, transform 0.2s ease;
         }
         .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block;
+            display: block.
         }
         .dropdown-content {
             display: none;
@@ -858,22 +861,6 @@
             margin: 0 auto 20px;
         }
 
-        /* Enhanced Microsoft Forms Embed (legacy styles kept; iframe removed below) */
-        .ms-forms-embed {
-            max-width: 600px;
-            margin: 20px auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2);
-            background: rgba(17, 17, 17, 0.8);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .ms-forms-embed:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(255, 0, 0, 0.3);
-        }
-
         /* Sponsor Table Styling */
         .sponsors-table-container {
             overflow-x: auto;
@@ -911,7 +898,7 @@
             }
         }
 
-        /* ===== Contact Form Styles (NEW, minimal) ===== */
+        /* ===== Contact Form Styles (New) ===== */
         .contact-card {
             max-width: 800px;
             margin: 20px auto;
@@ -923,12 +910,14 @@
         .contact-card h3 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            margin: 0 0 12px;
+            margin-top: 0;
+            margin-bottom: 12px;
             font-size: 2rem;
         }
         .contact-desc {
             color: #bbb;
             margin-bottom: 16px;
+            text-align: left;
         }
         form#contactForm .form-row {
             display: grid;
@@ -942,6 +931,7 @@
         }
         form#contactForm .form-group {
             margin-bottom: 14px;
+            text-align: left;
         }
         form#contactForm .form-label {
             display: block;
@@ -971,6 +961,11 @@
             outline: none;
             border-color: #cc0000;
             box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.2);
+        }
+        form#contactForm .form-help {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 6px;
         }
         form#contactForm .submit-row {
             display: flex;
@@ -1314,59 +1309,35 @@
                 <tbody>
                     <tr>
                         <td>Sponsor logo featured on team website</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td>✓</td><td>✓</td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Access to team resume book</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td>✓</td><td>✓</td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Sponsor logo featured on team apparel</td>
-                        <td></td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td></td><td>✓</td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Design and competition progress updates</td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td></td><td></td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Social media recognition</td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td></td><td></td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Access to team designs and technical report</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
+                        <td></td><td></td><td></td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Large logo and prime location on team merchandise</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
+                        <td></td><td></td><td></td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Company photo launched and recovered at competition</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
+                        <td></td><td></td><td></td><td>✓</td>
                     </tr>
                 </tbody>
             </table>
@@ -1395,10 +1366,11 @@
     <section id="merchandise">
         <h2>Merchandise Store</h2>
         <p>Stay tuned, merchandise will be coming soon!</p>
-        <!-- Store TODOs left unchanged -->
+        <!-- To set up the store: 1. Sign up for Shopify (or similar service like Snipcart) and add your products. 2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button). 3. Paste the <script> code (the initialization script) once in the <head> of this HTML file. 4. Paste the <div> elements for each button below to display products. Example embed for a product (replace with your generated code): <div id='product-component-your-id-here'></div> -->
+        <!-- Add your product embeds here -->
     </section>
 
-    <!-- ===== CONTACT (Updated: Native Form posting to /api/contact) ===== -->
+    <!-- ===== CONTACT (Updated: Native Form) ===== -->
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
@@ -1409,21 +1381,24 @@
             <h3 id="contactFormTitle">Contact Form</h3>
             <p class="contact-desc">Fields marked with * are required.</p>
 
-            <!-- ✅ Native form posting to Cloudflare Pages Function -->
-            <form id="contactForm" action="/api/contact" method="POST" novalidate>
-                <!-- Basic token -->
-                <input type="hidden" name="form_token" value="liberty_rocketry_contact_v1" />
+            <!-- If you use Formspree/EmailJS/etc., put the HTTPS endpoint in the `action` attribute below -->
+            <form id="contactForm" action="" method="POST" novalidate>
                 <!-- Honeypot (spam trap) -->
                 <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                <!-- Optional subject for backends -->
+                <input type="hidden" name="_subject" value="New message from Liberty Rocketry Website" />
 
                 <div class="form-row">
                     <div class="form-group">
                         <label class="form-label" for="name">Full Name *</label>
                         <input class="form-input" type="text" id="name" name="name" required autocomplete="name" />
+                        <div class="form-help">Your legal or preferred name.</div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email">Email *</label>
                         <input class="form-input" type="email" id="email" name="email" required autocomplete="email" />
+                        <div class="form-help">We'll reply to this address.</div>
                     </div>
                 </div>
 
@@ -1442,6 +1417,7 @@
                     <div class="form-group">
                         <label class="form-label" for="phone">Phone (optional)</label>
                         <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" />
+                        <div class="form-help">Include country/area code if applicable.</div>
                     </div>
                 </div>
 
@@ -1503,15 +1479,14 @@
         });
         showSection('home'); // Initial load
 
-        // ===== Contact Form: AJAX submit to /api/contact (minimal) =====
+        // ===== Contact Form JS (handles async submit & validation) =====
         (function(){
             const form = document.getElementById('contactForm');
             const submitBtn = document.getElementById('submitBtn');
             const status = document.getElementById('statusMsg');
-            if (!form) return;
 
-            // Simple anti-spam: time-to-submit
-            const loadedAt = Date.now();
+            // Simple anti-spam: time to submit
+            let formLoadedAt = Date.now();
 
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
@@ -1519,9 +1494,9 @@
                 status.className = 'status-msg';
                 submitBtn.disabled = true;
 
-                // Honeypot or too-fast submission
+                // Spam trap: honeypot or too-fast submission
                 const hp = form.querySelector('input[name="_hp"]');
-                const tooFast = (Date.now() - loadedAt) < 1200;
+                const tooFast = (Date.now() - formLoadedAt) < 1200; // 1.2s threshold
                 if ((hp && hp.value) || tooFast) {
                     submitBtn.disabled = false;
                     status.textContent = 'Submission failed. Please try again.';
@@ -1529,8 +1504,21 @@
                     return;
                 }
 
-                // Basic email format check
+                // Basic client-side validation
+                const name = form.name.value.trim();
                 const email = form.email.value.trim();
+                const topic = form.topic.value.trim();
+                const message = form.message.value.trim();
+                const consentChecked = form.consent.checked;
+                const phone = form.phone.value.trim();
+
+                if (!name || !email || !topic || !message || !consentChecked) {
+                    submitBtn.disabled = false;
+                    status.textContent = 'Please complete all required fields.';
+                    status.classList.add('status-error');
+                    return;
+                }
+                // rudimentary email format check
                 const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
                 if (!emailOK) {
                     submitBtn.disabled = false;
@@ -1539,26 +1527,62 @@
                     return;
                 }
 
-                try {
-                    const resp = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form)
-                    });
-                    const data = await resp.json().catch(() => ({}));
-                    if (resp.ok && data.ok) {
-                        form.reset();
-                        status.textContent = 'Thanks! Your message has been sent.';
-                        status.classList.add('status-success');
-                    } else {
-                        status.textContent = data.error || 'There was a problem submitting your form.';
+                // Prepare payload
+                const payload = {
+                    name, email, topic, phone, message,
+                    to: 'libertyrocketry@gmail.com'
+                };
+
+                // If you configure a backend endpoint (e.g., Formspree/EmailJS/server), set it in the form action
+                const endpoint = form.getAttribute('action');
+
+                if (endpoint && endpoint.startsWith('https://')) {
+                    try {
+                        const resp = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (resp.ok) {
+                            form.reset();
+                            status.textContent = 'Thanks! Your message has been sent.';
+                            status.classList.add('status-success');
+                        } else {
+                            const data = await resp.json().catch(() => ({}));
+                            const msg = data.error || 'There was a problem submitting your form.';
+                            status.textContent = msg;
+                            status.classList.add('status-error');
+                        }
+                    } catch (err) {
+                        status.textContent = 'Network error. Please try again later.';
                         status.classList.add('status-error');
+                    } finally {
+                        submitBtn.disabled = false;
                     }
-                } catch (err) {
-                    status.textContent = 'Network error. Please try again later.';
-                    status.classList.add('status-error');
-                } finally {
-                    submitBtn.disabled = false;
+                    return;
                 }
+
+                // Fallback: mailto link (opens visitor's email app)
+                const subject = encodeURIComponent(`Website Contact: ${topic} — ${name}`);
+                const bodyLines = [
+                    `Name: ${name}`,
+                    `Email: ${email}`,
+                    `Phone: ${phone || 'N/A'}`,
+                    `Topic: ${topic}`,
+                    '',
+                    'Message:',
+                    message
+                ];
+                const body = encodeURIComponent(bodyLines.join('\n'));
+
+                // Open mail client
+                const mailtoURL = `mailto:libertyrocketry@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = mailtoURL;
+
+                // Show status (in case mail client doesn't open)
+                status.textContent = 'Opening your email app. If it does not open, please email libertyrocketry@gmail.com directly.';
+                status.classList.add('status-success');
+                submitBtn.disabled = false;
             });
         })();
     </script>
