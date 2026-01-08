@@ -789,7 +789,7 @@
             transition: color 0.3s ease, transform 0.2s ease;
         }
         .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block;
+            display: block.
         }
         .dropdown-content {
             display: none;
@@ -861,57 +861,6 @@
             margin: 0 auto 20px;
         }
 
-        /* Enhanced Microsoft Forms Embed */
-        .ms-forms-embed {
-            max-width: 600px;
-            margin: 20px auto; /* Center with breathing room */
-            border-radius: 12px; /* Slightly larger radius to match site cards */
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.2); /* Red-tinted shadow for theme tie-in */
-            background: rgba(17, 17, 17, 0.8); /* Dark semi-transparent bg to "frame" the light form */
-            position: relative; /* For overlay positioning */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect like your cards */
-        }
-        .ms-forms-embed:hover {
-            transform: translateY(-5px); /* Lift on hover, matching news-post/project-box */
-            box-shadow: 0 12px 32px rgba(255, 0, 0, 0.3);
-        }
-        .ms-forms-embed::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3); /* Subtle dark overlay to tone down the light theme */
-            z-index: 1;
-            pointer-events: none; /* Allows clicks through */
-        }
-        .ms-forms-embed iframe {
-            width: 100%;
-            height: 650px; /* Taller for more fields; adjust if your form is shorter */
-            border: none;
-            filter: brightness(0.9) contrast(1.1); /* Slight dim to blend with dark site */
-            position: relative;
-            z-index: 2; /* Above overlay */
-        }
-        /* Responsive tweaks */
-        @media (max-width: 768px) {
-            .ms-forms-embed {
-                margin: 10px;
-                border-radius: 8px;
-                max-width: 95%;
-            }
-            .ms-forms-embed iframe {
-                height: 550px; /* Shorter on mobile */
-            }
-        }
-        @media (max-width: 480px) {
-            .ms-forms-embed iframe {
-                height: 500px;
-            }
-        }
-
         /* Sponsor Table Styling */
         .sponsors-table-container {
             overflow-x: auto;
@@ -948,6 +897,108 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* ===== Contact Form Styles (New) ===== */
+        .contact-card {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 24px;
+            background: rgba(17, 17, 17, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.15);
+        }
+        .contact-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 2rem;
+        }
+        .contact-desc {
+            color: #bbb;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        form#contactForm .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 600px) {
+            form#contactForm .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        form#contactForm .form-group {
+            margin-bottom: 14px;
+            text-align: left;
+        }
+        form#contactForm .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #ddd;
+        }
+        form#contactForm .form-input,
+        form#contactForm .form-textarea,
+        form#contactForm .form-select {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #0d0d0d;
+            color: #eee;
+            font-size: 1rem;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        form#contactForm .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        form#contactForm .form-input:focus,
+        form#contactForm .form-textarea:focus,
+        form#contactForm .form-select:focus {
+            outline: none;
+            border-color: #cc0000;
+            box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.2);
+        }
+        form#contactForm .form-help {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 6px;
+        }
+        form#contactForm .submit-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 10px;
+        }
+        .btn-primary {
+            appearance: none;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.3s ease, opacity 0.2s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(45deg, #cc0000, #aa0000);
+        }
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .status-msg { font-size: 0.95rem; }
+        .status-success { color: #6dd56d; }
+        .status-error { color: #ff6b6b; }
+        /* Honeypot (hidden) */
+        .hp-field { display: none !important; visibility: hidden !important; }
     </style>
 </head>
 <body>
@@ -1258,59 +1309,35 @@
                 <tbody>
                     <tr>
                         <td>Sponsor logo featured on team website</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td>✓</td><td>✓</td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Access to team resume book</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td>✓</td><td>✓</td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Sponsor logo featured on team apparel</td>
-                        <td></td>
-                        <td>✓</td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td></td><td>✓</td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Design and competition progress updates</td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td></td><td></td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Social media recognition</td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
-                        <td>✓</td>
+                        <td></td><td></td><td>✓</td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Access to team designs and technical report</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
+                        <td></td><td></td><td></td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Large logo and prime location on team merchandise</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
+                        <td></td><td></td><td></td><td>✓</td>
                     </tr>
                     <tr>
                         <td>Company photo launched and recovered at competition</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>✓</td>
+                        <td></td><td></td><td></td><td>✓</td>
                     </tr>
                 </tbody>
             </table>
@@ -1343,13 +1370,74 @@
         <!-- Add your product embeds here -->
     </section>
 
+    <!-- ===== CONTACT (Updated: Native Form) ===== -->
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
         <p>Email: libertyrocketry@gmail.com | Address: Liberty University, Lynchburg, VA</p>
         <p style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
-        <div class="ms-forms-embed">
-            <iframe src="https://forms.cloud.microsoft/r/R44kFYfLBC" width="100%" height="650px" frameborder="0"></iframe>
+
+        <div class="contact-card" role="form" aria-labelledby="contactFormTitle">
+            <h3 id="contactFormTitle">Contact Form</h3>
+            <p class="contact-desc">Fields marked with * are required.</p>
+
+            <!-- If you use Formspree/EmailJS/etc., put the HTTPS endpoint in the `action` attribute below -->
+            <form id="contactForm" action="" method="POST" novalidate>
+                <!-- Honeypot (spam trap) -->
+                <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+                <!-- Optional subject for backends -->
+                <input type="hidden" name="_subject" value="New message from Liberty Rocketry Website" />
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name *</label>
+                        <input class="form-input" type="text" id="name" name="name" required autocomplete="name" />
+                        <div class="form-help">Your legal or preferred name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input class="form-input" type="email" id="email" name="email" required autocomplete="email" />
+                        <div class="form-help">We'll reply to this address.</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="topic">Topic *</label>
+                        <select class="form-select" id="topic" name="topic" required>
+                            <option value="">Select a topic</option>
+                            <option value="Sponsorship">Sponsorship</option>
+                            <option value="Membership">Membership</option>
+                            <option value="Collaboration">Collaboration</option>
+                            <option value="Media">Media / PR</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone (optional)</label>
+                        <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" />
+                        <div class="form-help">Include country/area code if applicable.</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="message">Message *</label>
+                    <textarea class="form-textarea" id="message" name="message" required placeholder="How can we help?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                        <input type="checkbox" id="consent" name="consent" required />
+                        <span>I consent to Liberty Rocketry storing my submitted information for the purpose of responding to my inquiry.*</span>
+                    </label>
+                </div>
+
+                <div class="submit-row">
+                    <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
+                    <span class="status-msg" id="statusMsg" role="status" aria-live="polite"></span>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -1391,30 +1479,112 @@
         });
         showSection('home'); // Initial load
 
-        // Dynamic MS Forms height adjustment
-        document.addEventListener('DOMContentLoaded', function() {
-            const iframe = document.querySelector('.ms-forms-embed iframe');
-            if (iframe) {
-                function adjustHeight() {
-                    const isMobile = window.innerWidth <= 768;
-                    iframe.style.height = isMobile ? (window.innerWidth <= 480 ? '500px' : '550px') : '650px';
+        // ===== Contact Form JS (handles async submit & validation) =====
+        (function(){
+            const form = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const status = document.getElementById('statusMsg');
+
+            // Simple anti-spam: time to submit
+            let formLoadedAt = Date.now();
+
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                status.textContent = '';
+                status.className = 'status-msg';
+                submitBtn.disabled = true;
+
+                // Spam trap: honeypot or too-fast submission
+                const hp = form.querySelector('input[name="_hp"]');
+                const tooFast = (Date.now() - formLoadedAt) < 1200; // 1.2s threshold
+                if ((hp && hp.value) || tooFast) {
+                    submitBtn.disabled = false;
+                    status.textContent = 'Submission failed. Please try again.';
+                    status.classList.add('status-error');
+                    return;
                 }
-                adjustHeight();
-                window.addEventListener('resize', adjustHeight);
-                // Darken on load/hover
-                iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
-                const embed = document.querySelector('.ms-forms-embed');
-                embed.addEventListener('mouseenter', () => {
-                    iframe.style.filter = 'brightness(0.75) contrast(1.2) sepia(0.15)';
-                });
-                embed.addEventListener('mouseleave', () => {
-                    iframe.style.filter = 'brightness(0.85) contrast(1.15) sepia(0.1)';
-                });
-            }
-        });
-        // Optional: Add sponsors data here for dynamic render
-        // const sponsorsData = [{ logo: 'images/sponsor1.png', name: 'Sponsor 1' }];
-        // function renderSponsors() { ... } // Uncomment if needed
+
+                // Basic client-side validation
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const topic = form.topic.value.trim();
+                const message = form.message.value.trim();
+                const consentChecked = form.consent.checked;
+                const phone = form.phone.value.trim();
+
+                if (!name || !email || !topic || !message || !consentChecked) {
+                    submitBtn.disabled = false;
+                    status.textContent = 'Please complete all required fields.';
+                    status.classList.add('status-error');
+                    return;
+                }
+                // rudimentary email format check
+                const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                if (!emailOK) {
+                    submitBtn.disabled = false;
+                    status.textContent = 'Please enter a valid email address.';
+                    status.classList.add('status-error');
+                    return;
+                }
+
+                // Prepare payload
+                const payload = {
+                    name, email, topic, phone, message,
+                    to: 'libertyrocketry@gmail.com'
+                };
+
+                // If you configure a backend endpoint (e.g., Formspree/EmailJS/server), set it in the form action
+                const endpoint = form.getAttribute('action');
+
+                if (endpoint && endpoint.startsWith('https://')) {
+                    try {
+                        const resp = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (resp.ok) {
+                            form.reset();
+                            status.textContent = 'Thanks! Your message has been sent.';
+                            status.classList.add('status-success');
+                        } else {
+                            const data = await resp.json().catch(() => ({}));
+                            const msg = data.error || 'There was a problem submitting your form.';
+                            status.textContent = msg;
+                            status.classList.add('status-error');
+                        }
+                    } catch (err) {
+                        status.textContent = 'Network error. Please try again later.';
+                        status.classList.add('status-error');
+                    } finally {
+                        submitBtn.disabled = false;
+                    }
+                    return;
+                }
+
+                // Fallback: mailto link (opens visitor's email app)
+                const subject = encodeURIComponent(`Website Contact: ${topic} — ${name}`);
+                const bodyLines = [
+                    `Name: ${name}`,
+                    `Email: ${email}`,
+                    `Phone: ${phone || 'N/A'}`,
+                    `Topic: ${topic}`,
+                    '',
+                    'Message:',
+                    message
+                ];
+                const body = encodeURIComponent(bodyLines.join('\n'));
+
+                // Open mail client
+                const mailtoURL = `mailto:libertyrocketry@gmail.com?subject=${subject}&body=${body}`;
+                window.location.href = mailtoURL;
+
+                // Show status (in case mail client doesn't open)
+                status.textContent = 'Opening your email app. If it does not open, please email libertyrocketry@gmail.com directly.';
+                status.classList.add('status-success');
+                submitBtn.disabled = false;
+            });
+        })();
     </script>
 </body>
 </html>
