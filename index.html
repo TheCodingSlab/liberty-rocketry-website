@@ -60,7 +60,8 @@
             align-items: center;
             width: 100%;
         }
-        /* Responsive logo */
+
+        /* Responsive logo & nav for mobile */
         @media (max-width: 768px) {
             .logo-placeholder {
                 width: 150px;
@@ -147,14 +148,7 @@
             .project-box {
                 margin: 20px -20px;
             }
-            .hero-section h1 {
-                font-size: 2.2rem;
-                line-height: 1.1;
-                margin-bottom: 10px;
-                padding: 0 10px;
-                word-wrap: break-word;
-                hyphens: auto;
-            }
+            /* Removed explicit hero h1 size here; clamp() below handles it */
             .hero-section .quote {
                 font-size: 0.95rem;
                 padding: 0 20px;
@@ -166,12 +160,13 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             #home {
-                padding-top: calc(100vh + 70px); /* Extra padding for fixed nav */
+                padding-top: calc(min(100svh, 100vh) + 60px); /* Extra padding for fixed nav */
             }
             section:not(#home) {
                 padding-top: 120px; /* Reduced for fixed nav */
             }
         }
+
         @media (max-width: 480px) {
             .logo-placeholder {
                 width: 120px;
@@ -194,17 +189,16 @@
                 font-size: 1rem;
                 padding: 12px;
             }
-            .hero-section h1 {
-                font-size: 1.8rem;
-            }
+            /* Removed explicit hero h1 size here; clamp() below handles it */
             .hero-section .quote {
                 font-size: 0.9rem;
                 max-width: 90%;
             }
             #home {
-                padding-top: calc(100vh + 60px);
+                padding-top: calc(min(100svh, 100vh) + 50px);
             }
         }
+
         @media (max-width: 360px) {
             .logo-placeholder {
                 width: 100px;
@@ -216,13 +210,15 @@
             nav {
                 padding: 0;
             }
-            .hero-section h1 {
-                font-size: 1.4rem;
-            }
+            /* Removed explicit hero h1 size here; clamp() below handles it */
             .hero-section .quote {
                 font-size: 0.85rem;
             }
+            #home {
+                padding-top: calc(min(100svh, 100vh) + 45px);
+            }
         }
+
         /* About section responsive */
         @media (max-width: 768px) {
             #about > div[style*="flex-direction: row"] {
@@ -234,6 +230,7 @@
                 order: -1;
             }
         }
+
         nav a {
             color: #fff; /* Changed to white for better visibility */
             margin: 0 25px;
@@ -247,6 +244,7 @@
             color: #ff0000;
             transform: scale(1.05);
         }
+
         section {
             padding: 80px 40px;
             max-width: 1600px;
@@ -260,14 +258,122 @@
             position: relative;
             z-index: 1;
         }
-        #home {
-            padding-top: calc(100vh + 50px); /* Push content below hero + grey block */
-            margin-top: 0;
-            background-color: transparent; /* Fix: Make #home transparent to show body background in gaps */
+
+        /* --- HERO SECTION (updated) --- */
+        .hero-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            width: 100vw;
+            height: min(100svh, 100vh); /* safer on mobile browser chrome */
+
+            margin: 0;
+            padding: 0;
+            background: url('images/Genesis Test Launch.png') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            z-index: 0;
         }
+        /* Subtle overlay for legibility */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.35) 0%,
+                rgba(0, 0, 0, 0.35) 60%,
+                rgba(0, 0, 0, 0.50) 100%
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Content container to constrain line length */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 0 24px;
+        }
+        /* Fluid typography for title */
+        .hero-section h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin: 0 0 0.5rem 0;
+            padding: 0;
+
+            /* fluid size: min 1.6rem, ideal ~7vw, max 5.5rem */
+            font-size: clamp(1.6rem, 7vw, 5.5rem);
+
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+            word-wrap: break-word;
+            hyphens: auto;
+            /* Optional cap for extremely long titles:
+               max-width: 16ch; margin-left:auto; margin-right:auto; */
+        }
+        /* Fluid typography for quote/subtitle */
+        .hero-section .quote {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-style: italic;
+            color: #fff;
+            margin: 16px auto 0;
+            line-height: 1.25;
+
+            /* fluid size: min 0.95rem, ideal ~3.8vw, max 2rem */
+            font-size: clamp(0.95rem, 3.8vw, 2rem);
+
+            max-width: 70ch;
+            padding: 0;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Small device tweaks for hero container */
+        @media (max-width: 768px) {
+            .hero-content {
+                max-width: 680px;
+                padding: 0 20px;
+            }
+            .hero-section h1 {
+                line-height: 1.08; /* slightly tighter for small screens */
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-content {
+                max-width: 95%;
+                padding: 0 16px;
+            }
+            .hero-section h1 {
+                line-height: 1.08;
+            }
+        }
+        /* Safe-area insets (iOS notch) */
+        @supports(padding:max(0px)) {
+            .hero-content {
+                padding-left: max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
+            }
+        }
+
+        /* Home section sits below hero */
+        #home {
+            padding-top: calc(min(100svh, 100vh) + 50px); /* Push content below hero + grey block */
+            margin-top: 0;
+            background-color: transparent; /* Show body background in gaps */
+        }
+
         section:not(#home) {
             padding-top: 200px; /* Avoid logo overlap */
         }
+
         section::before {
             content: '';
             position: absolute;
@@ -280,38 +386,10 @@
             border-radius: 20px;
         }
         #home::before {
-            display: none; /* Optional: Remove overlay for #home if you don't want darkening over the body background */
+            display: none; /* Optional: Remove overlay for #home */
         }
-        .hero-section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            z-index: 0;
-        }
-        .hero-section h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 700;
-            color: #fff;
-            z-index: 1; /* Removed animation */
-            line-height: 1.1;
-            margin: 0;
-            padding: 0 20px;
-            word-wrap: break-word;
-            hyphens: auto;
-        }
+
+        /* Legacy hero paragraph rule (kept for future p in hero; not used for .quote) */
         .hero-section p {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.9rem;
@@ -319,19 +397,7 @@
             color: #fff;
             z-index: 1;
         }
-        .hero-section .quote {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            font-style: italic;
-            max-width: 900px;
-            margin: 20px auto;
-            color: #fff;
-            z-index: 1;
-            line-height: 1.2;
-            padding: 0 20px;
-            word-wrap: break-word;
-        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -342,15 +408,17 @@
                 transform: translateY(0);
             }
         }
+
         .grey-divider {
             width: 100%;
             height: 50px;
             background-color: #333; /* Grey block */
             position: absolute;
-            top: 100vh; /* Position directly below hero-section */
+            top: 100vh; /* Position directly below hero-section (visual only) */
             left: 0;
             z-index: 1;
         }
+
         section h2 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3.2rem;
@@ -377,6 +445,7 @@
         #contact {
             background: url('images/contact-bg.jpg') no-repeat center center/cover;
         }
+
         .news-post {
             background: rgba(34, 34, 34, 0.9);
             padding: 20px;
@@ -392,6 +461,7 @@
             max-width: 100%;
             border-radius: 8px;
         }
+
         .project-box {
             position: relative;
             margin: 20px -40px;
@@ -420,7 +490,7 @@
             flex-shrink: 0;
             border-radius: 8px;
         }
-        /* NEW: actual project images that show entire photo (no cropping) */
+        /* actual project images that show entire photo (no cropping) */
         .project-image {
             width: 300px;         /* desktop tile width */
             height: 200px;        /* desktop tile height */
@@ -466,6 +536,7 @@
                 text-align: center;
             }
         }
+
         .members-grid {
             display: flex;
             flex-direction: column;
@@ -505,6 +576,7 @@
                 height: 150px;
             }
         }
+
         .subteams-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -541,6 +613,7 @@
         .subteam p {
             font-size: 1.1rem;
         }
+
         .sponsors {
             display: flex;
             flex-wrap: wrap;
@@ -569,6 +642,7 @@
                 flex: 1 1 150px;
             }
         }
+
         footer {
             background-color: #000;
             color: #ccc;
@@ -577,9 +651,11 @@
             border-top: 1px solid #333;
             font-size: 0.9rem;
         }
+
         section:not(#home) {
             display: none;
         }
+
         .download-btn {
             color: #fff;
             background: linear-gradient(45deg, #ff0000, #cc0000);
@@ -592,6 +668,7 @@
             background: linear-gradient(45deg, #cc0000, #aa0000);
             transform: scale(1.05);
         }
+
         #images-section {
             background-color: #111;
             margin-top: 40px;
@@ -639,6 +716,7 @@
                 font-size: 0.8rem;
             }
         }
+
         #about-section {
             background-color: rgba(17, 17, 17, 0.7);
             margin-top: 40px;
@@ -661,6 +739,7 @@
             border-radius: 8px;
             loading: lazy;
         }
+
         #contact-bottom {
             text-align: center;
             margin-top: 60px;
@@ -680,6 +759,7 @@
             background: linear-gradient(45deg, #cc0000, #aa0000);
             transform: scale(1.05);
         }
+
         #merchandise {
             background-color: transparent; /* Remove black background */
             padding: 80px 40px;
@@ -694,6 +774,7 @@
         #images-section > p {
             text-align: center;
         }
+
         .dropdown {
             position: relative;
             display: inline-block;
@@ -749,6 +830,7 @@
                 padding: 10px 15px;
             }
         }
+
         .bottom-hero {
             position: relative;
             left: 50%;
@@ -778,6 +860,7 @@
             display: block;
             margin: 0 auto 20px;
         }
+
         /* Enhanced Microsoft Forms Embed */
         .ms-forms-embed {
             max-width: 600px;
@@ -828,6 +911,7 @@
                 height: 500px;
             }
         }
+
         /* Sponsor Table Styling */
         .sponsors-table-container {
             overflow-x: auto;
@@ -890,8 +974,10 @@
 
     <!-- HERO SECTION FIRST -->
     <div class="hero-section">
-        <h1>Liberty University Rocketry</h1>
-        <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
+        <div class="hero-content">
+            <h1>Liberty University Rocketry</h1>
+            <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
+        </div>
     </div>
 
     <!-- Now Home Content starts AFTER hero -->
@@ -1280,7 +1366,7 @@
             setTimeout(() => {
                 document.getElementById(sectionId).classList.add('visible');
             }, 100);
-            // Fix: Show hero only on home
+            // Show hero only on home
             const hero = document.querySelector('.hero-section');
             hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
         }
