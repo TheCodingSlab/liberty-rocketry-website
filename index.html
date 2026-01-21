@@ -789,7 +789,7 @@
             transition: color 0.3s ease, transform 0.2s ease;
         }
         .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block.
+            display: block; /* fixed typo: was display: block. */
         }
         .dropdown-content {
             display: none;
@@ -999,6 +999,79 @@
         .status-error { color: #ff6b6b; }
         /* Honeypot (hidden) */
         .hp-field { display: none !important; visibility: hidden !important; }
+
+        /* ===== IMPROVED TEXT SIZING & WIDTH (added) ===== */
+        section p {
+            font-size: 1.45rem;      /* bigger text */
+            line-height: 1.7;        /* more readable */
+            max-width: 90ch;         /* keeps lines from getting too long */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section h2 {
+            font-size: 3.6rem;       /* larger section titles */
+        }
+
+        section h3 {
+            font-size: 2.2rem;
+        }
+
+        /* Reduce empty space around sections and widen content */
+        section {
+            padding: 100px 60px;     /* wider and taller */
+            max-width: 1800px;       /* fill more screen */
+        }
+
+        /* Home images section: widen intro paragraph */
+        #images-section > p {
+            max-width: 100ch;
+            font-size: 1.5rem;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Project text box spacing */
+        .project-text p {
+            font-size: 1.35rem;
+            line-height: 1.65;
+        }
+
+        /* Member cards text sizing */
+        .member p {
+            font-size: 1.25rem;
+            line-height: 1.55;
+        }
+
+        /* Subteams text */
+        .subteam p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+
+        /* Sponsors page text */
+        #sponsors p {
+            font-size: 1.4rem;
+            line-height: 1.65;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            section {
+                padding: 70px 25px;
+            }
+
+            section p {
+                font-size: 1.2rem;
+            }
+
+            section h2 {
+                font-size: 2.4rem;
+            }
+
+            section h3 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1588,3 +1661,4 @@
     </script>
 </body>
 </html>
+``
