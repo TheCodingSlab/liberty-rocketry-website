@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -388,7 +389,7 @@
 
         /* Legacy hero paragraph rule (kept for future p in hero; not used for .quote) */
         .hero-section p {
-            font-family: 'Montserrat', sans-serif';
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.9rem;
             font-weight: 300;
             color: #fff;
@@ -711,6 +712,32 @@
             }
         }
 
+        /* ===== White card for "Design. Launch. Repeat." ===== */
+        .dlr-card {
+            background: #fff;
+            color: #111;
+            border-radius: 16px;
+            padding: clamp(20px, 4vw, 40px);
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .dlr-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #111;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .dlr-card p {
+            color: #333;
+            max-width: 85ch;
+            margin: 0 auto;
+            font-size: clamp(1rem, 1.4vw, 1.25rem);
+            line-height: 1.7;
+        }
+
         #about-section {
             background-color: rgba(17, 17, 17, 0.7);
             margin-top: 40px;
@@ -735,7 +762,7 @@
 
         #contact-bottom {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 60px; /* kept for non-hero uses; overridden when in hero */
         }
         #contact-bottom button {
             padding: 15px 40px;
@@ -782,7 +809,7 @@
             transition: color 0.3s ease, transform 0.2s ease;
         }
         .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block; /* fixed typo: was display: block. */
+            display: block;
         }
         .dropdown-content {
             display: none;
@@ -824,6 +851,7 @@
             }
         }
 
+        /* ===== Bottom hero (Contact image) — updated & raised overlay ===== */
         .bottom-hero {
             position: relative;
             left: 50%;
@@ -831,20 +859,57 @@
             margin-left: -50vw;
             margin-right: -50vw;
             width: 100vw;
-            height: 100vh;
+            height: min(85vh, 900px); /* slightly shorter for better above-the-fold feel */
             background: url('images/Screenshot 2025-09-26 134848.png') no-repeat center center/cover;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: center;   /* centers baseline */
             text-align: center;
             overflow: hidden;
         }
-        #contact-bottom p {
-            color: #fff;
-            font-size: 1.8rem;
-            font-weight: 700;
+        /* Gentle overlay for legibility, similar to top hero */
+        .bottom-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.25) 0%,
+                rgba(0,0,0,0.35) 60%,
+                rgba(0,0,0,0.5) 100%
+            );
+            pointer-events: none;
         }
+        /* Move overlay content up a bit while staying centered horizontally */
+        .bottom-hero #contact-bottom {
+            position: relative;
+            z-index: 1;
+            transform: translateY(-6vh);
+            padding: 0 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .bottom-hero #contact-bottom h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: clamp(2rem, 6vw, 3.2rem);
+            margin: 0 0 12px 0;
+        }
+        .bottom-hero #contact-bottom p {
+            color: #fff;
+            font-size: clamp(1rem, 2.2vw, 1.25rem);
+            font-weight: 600;
+            margin: 0 0 18px 0;
+        }
+        @media (max-width: 600px) {
+            .bottom-hero #contact-bottom {
+                transform: translateY(-3vh);
+            }
+            .bottom-hero {
+                height: 70vh;
+            }
+        }
+
         .sponsor-cta {
             text-align: center;
             margin-top: 40px;
@@ -891,7 +956,7 @@
             }
         }
 
-        /* ===== Contact Form Styles (New) ===== */
+        /* ===== Contact Form Styles ===== */
         .contact-card {
             max-width: 800px;
             margin: 20px auto;
@@ -1135,13 +1200,15 @@
     <section id="home">
         <!-- Images section -->
         <div id="images-section">
-            
-<div class="dlr-card">
-  <h2>Design. Launch. Repeat.</h2>
-  <p>
-    Liberty Rocketry competes annually in ESRA's International Rocket Engineering Competition - the largest intercollegiate rocketry competition in the world. Every June, over 150 student-led teams from around the world meet in Midland, Texas to pit their wits and engineering prowess against each other in a struggle to design, manufacture, and launch the most stable, most accurate, and most efficient high-powered rocket system possible.
-  </p>
-</div>
+
+            <!-- White card: Design. Launch. Repeat. -->
+            <div class="dlr-card">
+                <h2>Design. Launch. Repeat.</h2>
+                <p>
+                    Liberty Rocketry competes annually in ESRA's International Rocket Engineering Competition - the largest intercollegiate rocketry competition in the world. Every June, over 150 student-led teams from around the world meet in Midland, Texas to pit their wits and engineering prowess against each other in a struggle to design, manufacture, and launch the most stable, most accurate, and most efficient high-powered rocket system possible.
+                </p>
+            </div>
+
             <div class="images-grid">
                 <div>
                     <div class="image-placeholder" style="border: none; background: none;">
