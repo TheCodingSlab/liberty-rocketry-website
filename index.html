@@ -386,9 +386,9 @@
             display: none; /* Optional: Remove overlay for #home */
         }
 
-        /* Legacy hero paragraph rule */
+        /* Legacy hero paragraph rule (kept for future p in hero; not used for .quote) */
         .hero-section p {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', sans-serif';
             font-size: 1.9rem;
             font-weight: 300;
             color: #fff;
@@ -556,7 +556,6 @@
             height: 250px;
             border-radius: 50%;
             object-fit: cover;
-            loading: lazy;
         }
         @media (max-width: 768px) {
             .member img {
@@ -629,7 +628,6 @@
         .sponsor img {
             max-width: 100%;
             border-radius: 8px;
-            loading: lazy;
         }
         @media (max-width: 768px) {
             .sponsors {
@@ -692,7 +690,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            loading: lazy;
         }
         .image-placeholder:hover {
             transform: scale(1.02);
@@ -725,8 +722,8 @@
             justify-content: center;
         }
         #about-section .team-photo-placeholder {
-            width: 90vw;
-            max-width: 90%;
+            width: 90vw; /* A bit smaller than full page */
+            max-width: 90%; /* Fallback for consistency */
             height: auto;
             display: block;
             margin-left: auto;
@@ -734,7 +731,6 @@
             margin-bottom: 20px;
             border: none;
             border-radius: 8px;
-            loading: lazy;
         }
 
         #contact-bottom {
@@ -758,12 +754,12 @@
         }
 
         #merchandise {
-            background-color: transparent;
+            background-color: transparent; /* Remove black background */
             padding: 80px 40px;
             border-radius: 20px;
         }
         #merchandise::before {
-            display: none;
+            display: none; /* Optional: Remove dark overlay if desired */
         }
         #images-section h2 {
             text-align: center;
@@ -777,21 +773,21 @@
             display: inline-block;
         }
         .dropbtn {
-            color: #fff;
+            color: #fff; /* Changed to white */
             margin: 0 25px;
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-weight: 400;
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* Larger */
             transition: color 0.3s ease, transform 0.2s ease;
         }
         .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block;
+            display: block; /* fixed typo: was display: block. */
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #111;
+            background-color: #111; /* Adjusted for visibility */
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -802,7 +798,7 @@
             text-decoration: none;
             display: block;
             margin: 0;
-            font-size: 1.3rem;
+            font-size: 1.3rem; /* Slightly larger */
         }
         .dropdown-content a:hover {
             background-color: #222;
@@ -865,7 +861,7 @@
         }
         table {
             width: 100%;
-            min-width: 600px;
+            min-width: 600px; /* Ensure table doesn't collapse too much */
             border-collapse: collapse;
             background: rgba(34, 34, 34, 0.9);
             border-radius: 8px;
@@ -875,7 +871,7 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #444;
-            white-space: nowrap;
+            white-space: nowrap; /* Prevent text wrapping in cells */
         }
         th {
             background: #222;
@@ -1370,8 +1366,9 @@
     <section id="hall-of-fame">
         <h2>Hall of Fame</h2>
         <p>Honoring our past members and achievements.</p>
+        <!-- Add hall of fame content here, e.g., a members-grid of alumni -->
         <div class="members-grid">
-            <!-- Add alumni items here -->
+            <!-- Example: <div class="member"><img src="..." alt="..."><h4>Past Member Name</h4><p>Achievements: ...</p></div> -->
         </div>
     </section>
 
@@ -1458,12 +1455,12 @@
                 <img src="images/Screenshot 2025-10-29 180241.png" alt="North Georgia Truss Systems Logo" loading="lazy" />
             </div>
             <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180235.png" alt="Ansys Logo" loading="lazy" />
+                <img src="images/ANSS_BIG-4e994f5d-648394503.png" alt="Ansys Logo" loading="lazy" />
             </div>
             <div class="sponsor">
                 <img src="images/Screenshot 2025-10-29 180157.png" alt="Onshape Logo" loading="lazy" />
             </div>
-            <!-- NEW SPONSOR: 3Dconnexion -->
+            <!-- NEW SPONSOR ADDED -->
             <div class="sponsor">
                 <img src="images/3dconnexion-logo-3078880038.png" alt="3Dconnexion Logo" loading="lazy" />
             </div>
