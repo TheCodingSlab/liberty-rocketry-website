@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1072,6 +1071,40 @@
                 font-size: 1.6rem;
             }
         }
+
+        /* === FIX: remove extra spacer under hero causing the grey gap === */
+        #home {
+          /* Just push home content below the hero — no extra pixels */
+          padding-top: min(100svh, 100vh) !important;
+        }
+
+        /* Prefer dvh when available (more accurate on mobile with dynamic toolbars) */
+        @supports (height: 100dvh) {
+          .hero-section { height: 100dvh; }
+          #home { padding-top: 100dvh !important; }
+        }
+
+        /* Keep the same behavior across breakpoints (override earlier media rules) */
+        @media (max-width: 768px) {
+          #home { padding-top: min(100svh, 100vh) !important; }
+        }
+        @media (max-width: 480px) {
+          #home { padding-top: min(100svh, 100vh) !important; }
+        }
+        @media (max-width: 360px) {
+          #home { padding-top: min(100svh, 100vh) !important; }
+        }
+
+        /* Remove the pull-up that can create visual seams/halos */
+        section {
+          margin-top: 0 !important;
+        }
+
+        /* Hide any divider if present */
+        .grey-divider {
+          display: none !important;
+        }
+        /* === END FIX === */
     </style>
 </head>
 <body>
@@ -1661,4 +1694,3 @@
     </script>
 </body>
 </html>
-``
