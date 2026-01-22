@@ -315,8 +315,6 @@
             text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
             word-wrap: break-word;
             hyphens: auto;
-            /* Optional cap for extremely long titles:
-               max-width: 16ch; margin-left:auto; margin-right:auto; */
         }
         /* Fluid typography for quote/subtitle */
         .hero-section .quote {
@@ -388,7 +386,7 @@
             display: none; /* Optional: Remove overlay for #home */
         }
 
-        /* Legacy hero paragraph rule (kept for future p in hero; not used for .quote) */
+        /* Legacy hero paragraph rule */
         .hero-section p {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.9rem;
@@ -727,8 +725,8 @@
             justify-content: center;
         }
         #about-section .team-photo-placeholder {
-            width: 90vw; /* A bit smaller than full page */
-            max-width: 90%; /* Fallback for consistency */
+            width: 90vw;
+            max-width: 90%;
             height: auto;
             display: block;
             margin-left: auto;
@@ -760,12 +758,12 @@
         }
 
         #merchandise {
-            background-color: transparent; /* Remove black background */
+            background-color: transparent;
             padding: 80px 40px;
             border-radius: 20px;
         }
         #merchandise::before {
-            display: none; /* Optional: Remove dark overlay if desired */
+            display: none;
         }
         #images-section h2 {
             text-align: center;
@@ -779,21 +777,21 @@
             display: inline-block;
         }
         .dropbtn {
-            color: #fff; /* Changed to white */
+            color: #fff;
             margin: 0 25px;
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-weight: 400;
-            font-size: 1.5rem; /* Larger */
+            font-size: 1.5rem;
             transition: color 0.3s ease, transform 0.2s ease;
         }
         .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block; /* fixed typo: was display: block. */
+            display: block;
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #111; /* Adjusted for visibility */
+            background-color: #111;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -804,7 +802,7 @@
             text-decoration: none;
             display: block;
             margin: 0;
-            font-size: 1.3rem; /* Slightly larger */
+            font-size: 1.3rem;
         }
         .dropdown-content a:hover {
             background-color: #222;
@@ -867,7 +865,7 @@
         }
         table {
             width: 100%;
-            min-width: 600px; /* Ensure table doesn't collapse too much */
+            min-width: 600px;
             border-collapse: collapse;
             background: rgba(34, 34, 34, 0.9);
             border-radius: 8px;
@@ -877,7 +875,7 @@
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #444;
-            white-space: nowrap; /* Prevent text wrapping in cells */
+            white-space: nowrap;
         }
         th {
             background: #222;
@@ -1372,9 +1370,8 @@
     <section id="hall-of-fame">
         <h2>Hall of Fame</h2>
         <p>Honoring our past members and achievements.</p>
-        <!-- Add hall of fame content here, e.g., a members-grid of alumni -->
         <div class="members-grid">
-            <!-- Example: <div class="member"><img src="..." alt="..."><h4>Past Member Name</h4><p>Achievements: ...</p></div> -->
+            <!-- Add alumni items here -->
         </div>
     </section>
 
@@ -1465,6 +1462,10 @@
             </div>
             <div class="sponsor">
                 <img src="images/Screenshot 2025-10-29 180157.png" alt="Onshape Logo" loading="lazy" />
+            </div>
+            <!-- NEW SPONSOR: 3Dconnexion -->
+            <div class="sponsor">
+                <img src="images/3dconnexion-logo-3078880038.png" alt="3Dconnexion Logo" loading="lazy" />
             </div>
         </div>
     </section>
