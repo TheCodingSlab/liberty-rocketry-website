@@ -333,6 +333,43 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
         }
 
+        /* ===== COUNTDOWN TIMER STYLES (NEW) ===== */
+        .countdown-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .countdown-container div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .countdown-container span {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff0000; /* Rocketry Red Accent */
+            background: rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 8px;
+            min-width: 80px;
+            text-align: center;
+            margin-bottom: 5px;
+            border: 1px solid #444;
+        }
+        @media (max-width: 768px) {
+            .countdown-container { gap: 10px; margin-top: 25px; }
+            .countdown-container span { font-size: 2rem; min-width: 60px; padding: 5px 10px; }
+            .countdown-container div { font-size: 0.8rem; }
+        }
+
         /* Small device tweaks for hero container */
         @media (max-width: 768px) {
             .hero-content {
@@ -574,7 +611,7 @@
             }
         }
 
-        /* ===== General Members List Styling (UPDATED) ===== */
+        /* ===== General Members List Styling ===== */
         .general-members-container {
             max-width: 1400px;
             margin: 50px auto 0;
@@ -1245,6 +1282,13 @@
         <div class="hero-content">
             <h1>Liberty University Rocketry</h1>
             <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
+            
+            <div id="countdown" class="countdown-container">
+                <div><span id="days">00</span> Days</div>
+                <div><span id="hours">00</span> Hours</div>
+                <div><span id="minutes">00</span> Minutes</div>
+                <div><span id="seconds">00</span> Seconds</div>
+            </div>
         </div>
     </div>
 
@@ -1879,6 +1923,36 @@
             }
         });
         showSection('home'); // Initial load
+
+        // ===== COUNTDOWN TIMER SCRIPT =====
+        (function() {
+            // Set the date we're counting down to (Update year/date as needed)
+            const countDownDate = new Date("June 16, 2026 08:00:00").getTime();
+
+            const x = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const dayEl = document.getElementById("days");
+                if (dayEl) {
+                    dayEl.innerText = days < 10 ? "0" + days : days;
+                    document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+                    document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+                    document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+                }
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    const container = document.getElementById("countdown");
+                    if (container) container.innerHTML = "LIFTOFF!";
+                }
+            }, 1000);
+        })();
 
         // ===== Contact Form JS (handles async submit & validation) =====
         (function(){
