@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -490,14 +489,14 @@
         }
         /* actual project images that show entire photo (no cropping) */
         .project-image {
-            width: 300px;         /* desktop tile width */
-            height: 200px;        /* desktop tile height */
-            object-fit: contain;  /* ensure entire image is visible */
+            width: 300px;             /* desktop tile width */
+            height: 200px;            /* desktop tile height */
+            object-fit: contain;      /* ensure entire image is visible */
             border-radius: 8px;
             flex-shrink: 0;
             display: block;
             background-color: #222; /* letterbox fill to match dark theme */
-            padding: 6px;           /* small frame so edges aren’t flush */
+            padding: 6px;             /* small frame so edges aren’t flush */
             border: 1px solid #333; /* subtle border */
         }
         .project-text {
@@ -525,8 +524,8 @@
             /* Mobile: let images size naturally and avoid forced aspect ratio */
             .project-image {
                 width: 100%;
-                height: auto;       /* preserve full image and aspect ratio */
-                max-height: 300px;  /* prevent overly tall images on phones */
+                height: auto;           /* preserve full image and aspect ratio */
+                max-height: 300px;      /* prevent overly tall images on phones */
                 padding: 4px;
             }
             .project-text h3 {
@@ -712,26 +711,27 @@
             }
         }
 
-        /* ===== White card for "Design. Launch. Repeat." ===== */
+        /* ===== Grey card for "Design. Launch. Repeat." (UPDATED) ===== */
         .dlr-card {
-            background: #fff;
-            color: #111;
+            background: rgba(34, 34, 34, 0.9); /* Dark Grey */
+            color: #ccc;
             border-radius: 16px;
             padding: clamp(20px, 4vw, 40px);
             max-width: 1100px;
             margin: 0 auto 40px auto;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            border: 1px solid #444; /* Added border for definition */
         }
         .dlr-card h2 {
             font-family: 'Orbitron', sans-serif;
-            color: #111;
+            color: #fff; /* White title */
             font-size: clamp(1.8rem, 4vw, 3rem);
             margin-bottom: 10px;
             font-weight: 700;
         }
         .dlr-card p {
-            color: #333;
+            color: #ddd; /* Light grey text */
             max-width: 85ch;
             margin: 0 auto;
             font-size: clamp(1rem, 1.4vw, 1.25rem);
@@ -863,7 +863,7 @@
             background: url('images/Screenshot 2025-09-26 134848.png') no-repeat center center/cover;
             display: flex;
             justify-content: center;
-            align-items: center;   /* centers baseline */
+            align-items: center;    /* centers baseline */
             text-align: center;
             overflow: hidden;
         }
@@ -1060,15 +1060,15 @@
 
         /* ===== IMPROVED TEXT SIZING & WIDTH (added) ===== */
         section p {
-            font-size: 1.45rem;      /* bigger text */
-            line-height: 1.7;        /* more readable */
-            max-width: 90ch;         /* keeps lines from getting too long */
+            font-size: 1.45rem;       /* bigger text */
+            line-height: 1.7;         /* more readable */
+            max-width: 90ch;          /* keeps lines from getting too long */
             margin-left: auto;
             margin-right: auto;
         }
 
         section h2 {
-            font-size: 3.6rem;       /* larger section titles */
+            font-size: 3.6rem;        /* larger section titles */
         }
 
         section h3 {
@@ -1077,8 +1077,8 @@
 
         /* Reduce empty space around sections and widen content */
         section {
-            padding: 100px 60px;     /* wider and taller */
-            max-width: 1800px;       /* fill more screen */
+            padding: 100px 60px;      /* wider and taller */
+            max-width: 1800px;        /* fill more screen */
         }
 
         /* Home images section: widen intro paragraph */
@@ -1188,7 +1188,6 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION FIRST -->
     <div class="hero-section">
         <div class="hero-content">
             <h1>Liberty University Rocketry</h1>
@@ -1196,12 +1195,9 @@
         </div>
     </div>
 
-    <!-- Now Home Content starts AFTER hero -->
     <section id="home">
-        <!-- Images section -->
         <div id="images-section">
 
-            <!-- White card: Design. Launch. Repeat. -->
             <div class="dlr-card">
                 <h2>Design. Launch. Repeat.</h2>
                 <p>
@@ -1249,7 +1245,6 @@
             </div>
         </div>
 
-        <!-- About Section -->
         <div id="about-section">
             <img src="images/Screenshot 2025-09-28 090938.png" alt="Team Photo" class="team-photo-placeholder" loading="lazy" />
             <h2>About Us</h2>
@@ -1257,7 +1252,6 @@
             <p>Liberty Rocketry is a competitive student-led engineering competition team composed of over 50 undergraduate students from 7 different majors and areas of study. Through determination and relentless innovation, our team of passionate, creative, and hard-working engineers is dedicated to pushing the limits of collegiate rocketry design far beyond its traditional norms, all while developing Christ-centered men and women with the values, knowledge, and skills essential to impact the world for the glory of God.</p>
         </div>
 
-        <!-- Bottom Hero with Contact Overlay -->
         <div class="bottom-hero">
             <div id="contact-bottom">
                 <h2>Contact Us</h2>
@@ -1267,12 +1261,10 @@
         </div>
     </section>
 
-    <!-- UPDATED PROJECTS SECTION -->
     <section id="projects">
         <h2>Current Projects</h2>
         <p>Browse our collection of current and past projects.</p>
 
-        <!-- Project Genesis -->
         <div class="project-box">
             <img
                 src="images/Genesis Photo.png"
@@ -1287,7 +1279,6 @@
             </div>
         </div>
 
-        <!-- Project Waymaker -->
         <div class="project-box">
             <img
                 src="images/Waymaker Photo.png"
@@ -1302,7 +1293,6 @@
             </div>
         </div>
 
-        <!-- Project Trinity -->
         <div class="project-box">
             <img
                 src="images/Trinity Onshape.png"
@@ -1317,7 +1307,6 @@
             </div>
         </div>
 
-        <!-- Project Omega (unchanged placeholder) -->
         <div class="project-box">
             <div class="project-image-placeholder" style="font-size: 4rem; color: #fff;">?</div>
             <div class="project-text">
@@ -1392,8 +1381,7 @@
                 <p>"The Team has a story to be told, we're just the ones with the camera."</p>
                 <p>The Media Team is responsible for any digital and graphic needs of the team, as well as team documentation. The culminating task of this team is to produce Liberty Rocketry's IREC competition video which encompasses the entire year of the team's rocket building process, from conception to final launch.</p>
             </div>
-            <!-- Members -->
-        </div>
+            </div>
     </section>
 
     <section id="subteams">
@@ -1438,10 +1426,8 @@
     <section id="hall-of-fame">
         <h2>Hall of Fame</h2>
         <p>Honoring our past members and achievements.</p>
-        <!-- Add hall of fame content here, e.g., a members-grid of alumni -->
         <div class="members-grid">
-            <!-- Example: <div class="member"><img src="..." alt="..."><h4>Past Member Name</h4><p>Achievements: ...</p></div> -->
-        </div>
+            </div>
     </section>
 
     <section id="about">
@@ -1532,7 +1518,6 @@
             <div class="sponsor">
                 <img src="images/Screenshot 2025-10-29 180157.png" alt="Onshape Logo" loading="lazy" />
             </div>
-            <!-- NEW SPONSOR ADDED -->
             <div class="sponsor">
                 <img src="images/3dconnexion-logo-3078880038.png" alt="3Dconnexion Logo" loading="lazy" />
             </div>
@@ -1542,11 +1527,8 @@
     <section id="merchandise">
         <h2>Merchandise Store</h2>
         <p>Stay tuned, merchandise will be coming soon!</p>
-        <!-- To set up the store: 1. Sign up for Shopify (or similar service like Snipcart) and add your products. 2. Generate Buy Button embed codes for each product/collection via Shopify's admin (under Sales Channels > Buy Button). 3. Paste the <script> code (the initialization script) once in the <head> of this HTML file. 4. Paste the <div> elements for each button below to display products. Example embed for a product (replace with your generated code): <div id='product-component-your-id-here'></div> -->
-        <!-- Add your product embeds here -->
-    </section>
+        </section>
 
-    <!-- ===== CONTACT (Updated: Native Form) ===== -->
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
@@ -1557,12 +1539,9 @@
             <h3 id="contactFormTitle">Contact Form</h3>
             <p class="contact-desc">Fields marked with * are required.</p>
 
-            <!-- If you use Formspree/EmailJS/etc., put the HTTPS endpoint in the `action` attribute below -->
             <form id="contactForm" action="" method="POST" novalidate>
-                <!-- Honeypot (spam trap) -->
                 <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-                <!-- Optional subject for backends -->
                 <input type="hidden" name="_subject" value="New message from Liberty Rocketry Website" />
 
                 <div class="form-row">
