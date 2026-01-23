@@ -525,8 +525,8 @@
             /* Mobile: let images size naturally and avoid forced aspect ratio */
             .project-image {
                 width: 100%;
-                height: auto;           /* preserve full image and aspect ratio */
-                max-height: 300px;      /* prevent overly tall images on phones */
+                height: auto;            /* preserve full image and aspect ratio */
+                max-height: 300px;       /* prevent overly tall images on phones */
                 padding: 4px;
             }
             .project-text h3 {
@@ -572,6 +572,37 @@
                 width: 150px;
                 height: 150px;
             }
+        }
+
+        /* ===== General Members List Styling ===== */
+        .general-members-container {
+            max-width: 1400px;
+            margin: 50px auto 0;
+            text-align: center;
+        }
+        .general-members-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .general-member-item {
+            background: rgba(34, 34, 34, 0.9);
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            color: #eee;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            flex: 0 1 auto;
+        }
+        .general-member-item:hover {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+            transform: translateY(-3px);
+            color: #fff;
         }
 
         .subteams-grid {
@@ -1382,7 +1413,21 @@
                 <p>"The Team has a story to be told, we're just the ones with the camera."</p>
                 <p>The Media Team is responsible for any digital and graphic needs of the team, as well as team documentation. The culminating task of this team is to produce Liberty Rocketry's IREC competition video which encompasses the entire year of the team's rocket building process, from conception to final launch.</p>
             </div>
-            </div>
+        </div>
+
+        <h3>General Team Members</h3>
+        <div class="general-members-container">
+            <div class="general-members-list">
+                <div class="general-member-item">Member Name 1</div>
+                <div class="general-member-item">Member Name 2</div>
+                <div class="general-member-item">Member Name 3</div>
+                <div class="general-member-item">Member Name 4</div>
+                <div class="general-member-item">Member Name 5</div>
+                <div class="general-member-item">Member Name 6</div>
+                <div class="general-member-item">Member Name 7</div>
+                <div class="general-member-item">Member Name 8</div>
+                </div>
+        </div>
     </section>
 
     <section id="subteams">
@@ -1534,7 +1579,7 @@
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
         <p>Email: libertyrocketry@gmail.com | Address: Liberty University, Lynchburg, VA</p>
-        <p style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
+        <p>style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
 
         <div class="contact-card" role="form" aria-labelledby="contactFormTitle">
             <h3 id="contactFormTitle">Contact Form</h3>
