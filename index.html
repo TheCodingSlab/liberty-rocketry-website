@@ -574,35 +574,56 @@
             }
         }
 
-        /* ===== General Members List Styling ===== */
+        /* ===== General Members List Styling (UPDATED) ===== */
         .general-members-container {
             max-width: 1400px;
             margin: 50px auto 0;
             text-align: center;
         }
+        .general-members-group {
+            margin-bottom: 40px;
+        }
+        .general-members-group h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #444;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
         .general-members-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 15px;
-            margin-top: 30px;
+            justify-content: center;
         }
         .general-member-item {
             background: rgba(34, 34, 34, 0.9);
             border: 1px solid #444;
-            border-radius: 6px;
-            padding: 12px 24px;
-            font-size: 1.2rem;
-            color: #eee;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            flex: 0 1 auto;
         }
         .general-member-item:hover {
-            background: rgba(255, 0, 0, 0.2);
+            background: rgba(255, 0, 0, 0.15);
             border-color: #ff0000;
             transform: translateY(-3px);
+        }
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 600;
             color: #fff;
+        }
+        .member-role {
+            font-size: 1rem;
+            color: #aaa;
+            margin-top: 5px;
+            font-style: italic;
         }
 
         .subteams-grid {
@@ -1417,16 +1438,195 @@
 
         <h3>General Team Members</h3>
         <div class="general-members-container">
-            <div class="general-members-list">
-                <div class="general-member-item">Member Name 1</div>
-                <div class="general-member-item">Member Name 2</div>
-                <div class="general-member-item">Member Name 3</div>
-                <div class="general-member-item">Member Name 4</div>
-                <div class="general-member-item">Member Name 5</div>
-                <div class="general-member-item">Member Name 6</div>
-                <div class="general-member-item">Member Name 7</div>
-                <div class="general-member-item">Member Name 8</div>
+
+            <div class="general-members-group">
+                <h4>Project Management &amp; Media</h4>
+                <div class="general-members-list">
+                    <div class="general-member-item">
+                        <span class="member-name">Gerald Weaver</span>
+                        <span class="member-role">Assistant Project Manager</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Nicholas Hansing</span>
+                        <span class="member-role">Administrative Coordinator</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Juan Vasco</span>
+                        <span class="member-role">Administrative Coordinator</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Price Drawdy</span>
+                        <span class="member-role">Social Media Manager</span>
+                    </div>
                 </div>
+            </div>
+
+            <div class="general-members-group">
+                <h4>Aerodynamics</h4>
+                <div class="general-members-list">
+                    <div class="general-member-item">
+                        <span class="member-name">Andy Keathley</span>
+                        <span class="member-role">Assistant Aerodynamics Lead</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Matthew Cook</span>
+                        <span class="member-role">Fluid Dynamics Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Jason Hultgren</span>
+                        <span class="member-role">Lower Airframe Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Preston Plyler</span>
+                        <span class="member-role">Airframe Research Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Joseph Holt</span>
+                        <span class="member-role">Structural Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Sam Worthington</span>
+                        <span class="member-role">Senior Airbrakes Engineer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="general-members-group">
+                <h4>Payload</h4>
+                <div class="general-members-list">
+                    <div class="general-member-item">
+                        <span class="member-name">Noah Liscom</span>
+                        <span class="member-role">Vibration Energy Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Joshua DeLoach</span>
+                        <span class="member-role">Data Acquisition &amp; Power Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Andrew Hollo</span>
+                        <span class="member-role">Payload Integration Engineer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="general-members-group">
+                <h4>Propulsion</h4>
+                <div class="general-members-list">
+                    <div class="general-member-item">
+                        <span class="member-name">Collin Quirke</span>
+                        <span class="member-role">Assistant Propulsion Lead</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Nathan Daley</span>
+                        <span class="member-role">Energetics Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Brycen Vann</span>
+                        <span class="member-role">Casing Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Aiden Walter</span>
+                        <span class="member-role">Senior Technical Operations Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">John Moody</span>
+                        <span class="member-role">Senior Energetics Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Inara Redinger</span>
+                        <span class="member-role">Senior Technical Operations Engineer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="general-members-group">
+                <h4>Recovery</h4>
+                <div class="general-members-list">
+                    <div class="general-member-item">
+                        <span class="member-name">Jacob Ekstrom</span>
+                        <span class="member-role">Assistant Recovery Lead</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Aaron Earwood</span>
+                        <span class="member-role">Modeling &amp; Simulation Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Jordan Steele</span>
+                        <span class="member-role">Mathematical Analysis Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Preston Van Schaik</span>
+                        <span class="member-role">Recovery Research Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Josiah Stein</span>
+                        <span class="member-role">Mathematical Analysis Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Zixuan Chen</span>
+                        <span class="member-role">Recovery Research Engineer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="general-members-group">
+                <h4>Avionics</h4>
+                <div class="general-members-list">
+                    <div class="general-member-item">
+                        <span class="member-name">David Bantseev</span>
+                        <span class="member-role">Radio Frequency Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Micah Baxter</span>
+                        <span class="member-role">Avionics Design Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Ariel Brandt</span>
+                        <span class="member-role">Flight Computer Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Nathan Bruckner</span>
+                        <span class="member-role">Live Video Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Bradley Campbell</span>
+                        <span class="member-role">Flight Computer Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Megan Diller</span>
+                        <span class="member-role">Avionics Design Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Jack Harris</span>
+                        <span class="member-role">Live Video Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Sarah Hilliard</span>
+                        <span class="member-role">Senior Design Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Jonathan Labruto</span>
+                        <span class="member-role">Flight Computer Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Brook Ledford</span>
+                        <span class="member-role">Ground Station Engineer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Owen Sabold</span>
+                        <span class="member-role">Avionics Software Developer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Sawyer Salvigsen</span>
+                        <span class="member-role">Avionics Software Developer</span>
+                    </div>
+                    <div class="general-member-item">
+                        <span class="member-name">Ruben Wahrenburger</span>
+                        <span class="member-role">Live Video Engineer</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
