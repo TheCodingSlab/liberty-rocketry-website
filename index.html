@@ -6,7 +6,7 @@
     <title>Liberty University Rocketry</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>
-        /* --- NEW STATUS DOT STYLES --- */
+        /* --- STATUS DOT STYLES (UPDATED) --- */
         .status-dot {
             height: 12px;
             width: 12px;
@@ -15,13 +15,24 @@
             margin-right: 12px;
             vertical-align: middle;
         }
+        
+        /* Active Animation */
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
         .dot-green {
             background-color: #2ecc71; /* Active Green */
-            box-shadow: 0 0 10px #2ecc71;
+            box-shadow: 0 0 5px #2ecc71;
+            animation: pulse-green 2s infinite; /* BLINKING EFFECT */
         }
+
         .dot-red {
             background-color: #e74c3c; /* Inactive Red */
-            box-shadow: 0 0 10px #e74c3c;
+            box-shadow: 0 0 5px #c0392b;
+            /* Red does not blink to indicate inactivity */
         }
 
         * {
@@ -1396,7 +1407,6 @@
         <p>Browse our collection of current and past projects.</p>
 
         <div class="project-box">
-             
             <div class="project-text">
                 <h3><span class="status-dot dot-red"></span>Warehouse Route Optimization</h3>
                 <p>This research project focused on optimizing routes within a 10x10 factory layout containing 50 randomized shelves. Using Python and libraries like NumPy and Matplotlib, a simulation was built to analyze and improve picking paths. By implementing a greedy algorithm, the total travel distance was reduced by 26.47% compared to baseline routes. The study demonstrated significant efficiency gains applicable to e-commerce and manufacturing logistics, with future plans to integrate genetic algorithms for further optimization.</p>
@@ -1412,7 +1422,7 @@
                 decoding="async"
             />
             <div class="project-text">
-                <h3><span class="status-dot dot-green"></span>Project Genesis</h3>
+                <h3><span class="status-dot dot-red"></span>Project Genesis</h3>
                 <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike as the highest-placing first-year team. Performing phenomenally as our first entry in the Spaceport America Cup, Genesis provided our team exceptional experience and a solid foundation to begin our legacy of engineering excellence.</p>
             </div>
         </div>
@@ -1426,7 +1436,7 @@
                 decoding="async"
             />
             <div class="project-text">
-                <h3><span class="status-dot dot-green"></span>Project Waymaker</h3>
+                <h3><span class="status-dot dot-red"></span>Project Waymaker</h3>
                 <p>In 2024, Liberty Rocketry took the competition by storm, placing 9th overall, 5th in our division, and 4th in the country, placing above some the biggest names in engineering like Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&amp;M, Rice, and Embry-Riddle, becoming one of the most elite collegiate rocketry teams in the world in only our second year competing.</p>
             </div>
         </div>
@@ -1440,7 +1450,7 @@
                 decoding="async"
             />
             <div class="project-text">
-                <h3><span class="status-dot dot-green"></span>Project Trinity</h3>
+                <h3><span class="status-dot dot-red"></span>Project Trinity</h3>
                 <p>In 2025, Liberty Rocketry competed for the third time, placing 9th in technical performance and launch results, staying consistent through a quickly evolving high-powered-rocketry competition. Due to a late technical report, the official standing for Trinity unfortunately dropped down to 57th internationally. This has led to improved team structure changes, management improvements across the board, in an effort to solve the administrative issues holding us back from a top 10 placement.</p>
             </div>
         </div>
@@ -1716,7 +1726,7 @@
     </section>
 
     <section id="subteams">
-        <h2>Our Subteams</h2>
+        <h2>Mission Logs</h2>
         <p>Our team is divided into eight technical teams: aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media.</p>
         <div class="subteams-grid">
             <div class="subteam">
