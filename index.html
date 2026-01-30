@@ -6,35 +6,6 @@
     <title>Liberty University Rocketry</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
     <style>
-        /* --- STATUS DOT STYLES (UPDATED) --- */
-        .status-dot {
-            height: 12px;
-            width: 12px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 12px;
-            vertical-align: middle;
-        }
-        
-        /* Active Animation */
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
-        }
-
-        .dot-green {
-            background-color: #2ecc71; /* Active Green */
-            box-shadow: 0 0 5px #2ecc71;
-            animation: pulse-green 2s infinite; /* BLINKING EFFECT */
-        }
-
-        .dot-red {
-            background-color: #e74c3c; /* Inactive Red */
-            box-shadow: 0 0 5px #c0392b;
-            /* Red does not blink to indicate inactivity */
-        }
-
         * {
             box-sizing: border-box; /* Ensure consistent box model */
         }
@@ -559,9 +530,9 @@
         }
         /* actual project images that show entire photo (no cropping) */
         .project-image {
-            width: 300px;              /* desktop tile width */
-            height: 200px;             /* desktop tile height */
-            object-fit: contain;       /* ensure entire image is visible */
+            width: 300px;             /* desktop tile width */
+            height: 200px;            /* desktop tile height */
+            object-fit: contain;      /* ensure entire image is visible */
             border-radius: 8px;
             flex-shrink: 0;
             display: block;
@@ -1255,35 +1226,35 @@
 
         /* === FIX: remove extra spacer under hero causing the grey gap === */
         #home {
-            /* Just push home content below the hero — no extra pixels */
-            padding-top: min(100svh, 100vh) !important;
+          /* Just push home content below the hero — no extra pixels */
+          padding-top: min(100svh, 100vh) !important;
         }
 
         /* Prefer dvh when available (more accurate on mobile with dynamic toolbars) */
         @supports (height: 100dvh) {
-            .hero-section { height: 100dvh; }
-            #home { padding-top: 100dvh !important; }
+          .hero-section { height: 100dvh; }
+          #home { padding-top: 100dvh !important; }
         }
 
         /* Keep the same behavior across breakpoints (override earlier media rules) */
         @media (max-width: 768px) {
-            #home { padding-top: min(100svh, 100vh) !important; }
+          #home { padding-top: min(100svh, 100vh) !important; }
         }
         @media (max-width: 480px) {
-            #home { padding-top: min(100svh, 100vh) !important; }
+          #home { padding-top: min(100svh, 100vh) !important; }
         }
         @media (max-width: 360px) {
-            #home { padding-top: min(100svh, 100vh) !important; }
+          #home { padding-top: min(100svh, 100vh) !important; }
         }
 
         /* Remove the pull-up that can create visual seams/halos */
         section {
-            margin-top: 0 !important;
+          margin-top: 0 !important;
         }
 
         /* Hide any divider if present */
         .grey-divider {
-            display: none !important;
+          display: none !important;
         }
         /* === END FIX === */
     </style>
@@ -1407,13 +1378,6 @@
         <p>Browse our collection of current and past projects.</p>
 
         <div class="project-box">
-            <div class="project-text">
-                <h3><span class="status-dot dot-red"></span>Warehouse Route Optimization</h3>
-                <p>This research project focused on optimizing routes within a 10x10 factory layout containing 50 randomized shelves. Using Python and libraries like NumPy and Matplotlib, a simulation was built to analyze and improve picking paths. By implementing a greedy algorithm, the total travel distance was reduced by 26.47% compared to baseline routes. The study demonstrated significant efficiency gains applicable to e-commerce and manufacturing logistics, with future plans to integrate genetic algorithms for further optimization.</p>
-            </div>
-        </div>
-
-        <div class="project-box">
             <img
                 src="images/Genesis Photo.png"
                 alt="Project Genesis"
@@ -1422,7 +1386,7 @@
                 decoding="async"
             />
             <div class="project-text">
-                <h3><span class="status-dot dot-red"></span>Project Genesis</h3>
+                <h3>Project Genesis</h3>
                 <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike as the highest-placing first-year team. Performing phenomenally as our first entry in the Spaceport America Cup, Genesis provided our team exceptional experience and a solid foundation to begin our legacy of engineering excellence.</p>
             </div>
         </div>
@@ -1436,7 +1400,7 @@
                 decoding="async"
             />
             <div class="project-text">
-                <h3><span class="status-dot dot-red"></span>Project Waymaker</h3>
+                <h3>Project Waymaker</h3>
                 <p>In 2024, Liberty Rocketry took the competition by storm, placing 9th overall, 5th in our division, and 4th in the country, placing above some the biggest names in engineering like Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&amp;M, Rice, and Embry-Riddle, becoming one of the most elite collegiate rocketry teams in the world in only our second year competing.</p>
             </div>
         </div>
@@ -1450,7 +1414,7 @@
                 decoding="async"
             />
             <div class="project-text">
-                <h3><span class="status-dot dot-red"></span>Project Trinity</h3>
+                <h3>Project Trinity</h3>
                 <p>In 2025, Liberty Rocketry competed for the third time, placing 9th in technical performance and launch results, staying consistent through a quickly evolving high-powered-rocketry competition. Due to a late technical report, the official standing for Trinity unfortunately dropped down to 57th internationally. This has led to improved team structure changes, management improvements across the board, in an effort to solve the administrative issues holding us back from a top 10 placement.</p>
             </div>
         </div>
@@ -1458,7 +1422,7 @@
         <div class="project-box">
             <div class="project-image-placeholder" style="font-size: 4rem; color: #fff;">?</div>
             <div class="project-text">
-                <h3><span class="status-dot dot-green"></span>Project Omega</h3>
+                <h3>Project Omega</h3>
                 <p>With our engineering ability proven twice over, and new organizational improvements in effect, Liberty Rocketry is sure to come back stronger than ever, with our fourth high-powered rocket system - Omega. From further developing an unmatched in-house avionics and ground station system to manufacturing experimental airbrake systems and fuel mixtures, we are not only aiming for the top of the International Rocket Engineering Competition.</p>
             </div>
         </div>
@@ -1726,39 +1690,39 @@
     </section>
 
     <section id="subteams">
-        <h2>Mission Logs</h2>
+        <h2>Our Subteams</h2>
         <p>Our team is divided into eight technical teams: aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media.</p>
         <div class="subteams-grid">
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Aerodynamics</h3>
+                <h3>Aerodynamics</h3>
                 <p>The Aerodynamics team focuses on designing and optimizing the rocket’s aerostructures for stability and efficiency. They validate and test airframe materials to ensure compliance with competition requirements. The team collaborates on manufacturing processes to realize their designs.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Avionics</h3>
+                <h3>Avionics</h3>
                 <p>The Avionics team designs the rocket’s electronic systems and experimental payload. They validate and test components for reliability under flight conditions. The team coordinates with other sub-systems for seamless integration.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Payload</h3>
+                <h3>Payload</h3>
                 <p>The Payload team develops the experimental payload for the rocket. They focus on validation and testing to ensure functionality. The team works to integrate the payload with overall rocket systems.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Propulsion</h3>
+                <h3>Propulsion</h3>
                 <p>The Propulsion team selects and validates the rocket’s motor for optimal performance. They document decisions and ensure rule compliance. The team collaborates on motor integration manufacturing.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Recovery</h3>
+                <h3>Recovery</h3>
                 <p>The Recovery team designs systems for safe rocket retrieval post-launch. They validate and test components for reliability. The team cooperates on manufacturing recovery elements.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Manufacturing</h3>
+                <h3>Manufacturing</h3>
                 <p>The Manufacturing team manages production processes and lab safety. They develop component fabrication plans and organize assembly. The team handles facility access and safety compliance.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Project Management</h3>
+                <h3>Project Management</h3>
                 <p>The Project Management team oversees logistics, budgets, and deadlines. They compile reports and coordinate travel and events. The team tracks progress and manages media.</p>
             </div>
             <div class="subteam">
-                <h3><span class="status-dot dot-green"></span>Media</h3>
+                <h3>Media</h3>
                 <p>The Media team handles media and public relations. They create content showcasing team activities. The team organizes community outreach to promote the mission.</p>
             </div>
         </div>
@@ -1874,7 +1838,7 @@
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
         <p>Email: libertyrocketry@gmail.com | Address: Liberty University, Lynchburg, VA</p>
-        <p style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
+        <p>style="text-align: center; font-style: italic; color: #aaa;">Fill out the form below—we'll respond soon!</p>
 
         <div class="contact-card" role="form" aria-labelledby="contactFormTitle">
             <h3 id="contactFormTitle">Contact Form</h3>
