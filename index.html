@@ -1276,7 +1276,7 @@
                 </div>
             </div>
             <a href="#sponsors" onclick="showSection('sponsors'); closeMobileMenu()">Sponsors</a>
-            <a href="https://liberty-rocketry-shop.fourthwall.com" target="_blank" rel="noopener noreferrer" onclick="closeMobileMenu()">Merchandise</a>
+            <a href="#" onclick="openMerchStore(event, 'https://liberty-rocketry-shop.fourthwall.com'); closeMobileMenu()">Merchandise</a>
             <a href="#contact" onclick="showSection('contact'); closeMobileMenu()">Contact</a>
         </div>
     </nav>
@@ -1869,7 +1869,7 @@
         <p>Rep the team and support our journey to the International Rocket Engineering Competition. Every purchase directly funds our research, manufacturing, and launch operations!</p>
         
         <div style="text-align: center; margin-top: 40px;">
-            <a href="https://libertyrocketry.fourthwall.com" target="_blank" rel="noopener noreferrer" class="download-btn" style="font-size: 1.5rem; padding: 15px 40px; display: inline-block;">
+            <a href="#" onclick="openMerchStore(event, 'https://liberty-rocketry-shop.fourthwall.com')" class="download-btn" style="font-size: 1.5rem; padding: 15px 40px; display: inline-block;">
                 Shop Official Gear
             </a>
         </div>
@@ -1959,6 +1959,18 @@
             const hero = document.querySelector('.hero-section');
             hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
         }
+
+        // ===== MERCH STORE PASSWORD PROMPT =====
+        function openMerchStore(e, url) {
+            if (e) e.preventDefault();
+            const password = prompt("Please enter the 6-digit officer password to access the store:");
+            if (password === "820638") {
+                window.open(url, "_blank");
+            } else if (password !== null) {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+
         // Dropdown toggle for accessibility
         function toggleDropdown(dropdown) {
             const expanded = dropdown.getAttribute('aria-expanded') === 'true';
