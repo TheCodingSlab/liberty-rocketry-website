@@ -1031,106 +1031,34 @@
             }
         }
 
-        /* ===== Contact Form Styles ===== */
-        .contact-card {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 24px;
-            background: rgba(17, 17, 17, 0.85);
+        /* Styling for the updated Contact Box */
+        .contact-box-simple {
+            background: rgba(34, 34, 34, 0.9);
+            border: 1px solid #444;
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.15);
+            padding: 40px;
+            max-width: 800px;
+            margin: 30px auto 0;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
-        .contact-card h3 {
+        .contact-box-simple h3 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            margin-top: 0;
-            margin-bottom: 12px;
             font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 15px;
         }
-        .contact-desc {
-            color: #bbb;
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        form#contactForm .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        @media (max-width: 600px) {
-            form#contactForm .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-        form#contactForm .form-group {
-            margin-bottom: 14px;
-            text-align: left;
-        }
-        form#contactForm .form-label {
-            display: block;
+        .email-link-highlight {
+            color: #ff0000;
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 6px;
-            color: #ddd;
+            transition: color 0.2s ease;
         }
-        form#contactForm .form-input,
-        form#contactForm .form-textarea,
-        form#contactForm .form-select {
-            width: 100%;
-            padding: 12px 14px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            background: #0d0d0d;
-            color: #eee;
-            font-size: 1rem;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        .email-link-highlight:hover {
+            color: #cc0000;
+            text-decoration: underline;
         }
-        form#contactForm .form-textarea {
-            min-height: 140px;
-            resize: vertical;
-        }
-        form#contactForm .form-input:focus,
-        form#contactForm .form-textarea:focus,
-        form#contactForm .form-select:focus {
-            outline: none;
-            border-color: #cc0000;
-            box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.2);
-        }
-        form#contactForm .form-help {
-            font-size: 0.85rem;
-            color: #999;
-            margin-top: 6px;
-        }
-        form#contactForm .submit-row {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: flex-start;
-            margin-top: 10px;
-        }
-        .btn-primary {
-            appearance: none;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.2s ease, background 0.3s ease, opacity 0.2s ease;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(45deg, #cc0000, #aa0000);
-        }
-        .btn-primary:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        .status-msg { font-size: 0.95rem; }
-        .status-success { color: #6dd56d; }
-        .status-error { color: #ff6b6b; }
-        .hp-field { display: none !important; visibility: hidden !important; }
 
         section p {
             font-size: 1.45rem;
@@ -1870,69 +1798,18 @@
         </div>
     </section>
 
+    <!-- UPDATED CONTACT SECTION (NO FORM) -->
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
-        <p>Email: libertyrocketry@gmail.com | Address: Liberty University, Lynchburg, VA</p>
+        <p>Address: Liberty University, Lynchburg, VA</p>
 
-        <div class="contact-card" role="form" aria-labelledby="contactFormTitle">
-            <h3 id="contactFormTitle">Contact Form</h3>
-            <p class="contact-desc">Fields marked with * are required.</p>
-
-            <form id="contactForm" action="" method="POST" novalidate>
-                <input type="text" name="_hp" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
-
-                <input type="hidden" name="_subject" value="New message from Liberty Rocketry Website" />
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Full Name *</label>
-                        <input class="form-input" type="text" id="name" name="name" required autocomplete="name" />
-                        <div class="form-help">Your legal or preferred name.</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email *</label>
-                        <input class="form-input" type="email" id="email" name="email" required autocomplete="email" />
-                        <div class="form-help">We'll reply to this address.</div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="topic">Topic *</label>
-                        <select class="form-select" id="topic" name="topic" required>
-                            <option value="">Select a topic</option>
-                            <option value="Sponsorship">Sponsorship</option>
-                            <option value="Membership">Membership</option>
-                            <option value="Collaboration">Collaboration</option>
-                            <option value="Media">Media / PR</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="phone">Phone (optional)</label>
-                        <input class="form-input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" />
-                        <div class="form-help">Include country/area code if applicable.</div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="message">Message *</label>
-                    <textarea class="form-textarea" id="message" name="message" required placeholder="How can we help?"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                        <input type="checkbox" id="consent" name="consent" required />
-                        <span>I consent to Liberty Rocketry storing my submitted information for the purpose of responding to my inquiry.*</span>
-                    </label>
-                </div>
-
-                <div class="submit-row">
-                    <button type="submit" class="btn-primary" id="submitBtn">Send Message</button>
-                    <span class="status-msg" id="statusMsg" role="status" aria-live="polite"></span>
-                </div>
-            </form>
+        <div class="contact-box-simple">
+            <h3>Contact Us Directly</h3>
+            <p>For any inquiries, please reach out to us via email at:</p>
+            <p style="font-size: 1.8rem; margin-top: 15px;">
+                <a href="mailto:libertyrocketry@gmail.com" class="email-link-highlight">libertyrocketry@gmail.com</a>
+            </p>
         </div>
     </section>
 
@@ -2011,103 +1888,6 @@
 
             setInterval(updateCountdown, 1000);
             updateCountdown();
-        })();
-
-        (function(){
-            const form = document.getElementById('contactForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const status = document.getElementById('statusMsg');
-
-            let formLoadedAt = Date.now();
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-                status.textContent = '';
-                status.className = 'status-msg';
-                submitBtn.disabled = true;
-
-                const hp = form.querySelector('input[name="_hp"]');
-                const tooFast = (Date.now() - formLoadedAt) < 1200;
-                if ((hp && hp.value) || tooFast) {
-                    submitBtn.disabled = false;
-                    status.textContent = 'Submission failed. Please try again.';
-                    status.classList.add('status-error');
-                    return;
-                }
-
-                const name = form.name.value.trim();
-                const email = form.email.value.trim();
-                const topic = form.topic.value.trim();
-                const message = form.message.value.trim();
-                const consentChecked = form.consent.checked;
-                const phone = form.phone.value.trim();
-
-                if (!name || !email || !topic || !message || !consentChecked) {
-                    submitBtn.disabled = false;
-                    status.textContent = 'Please complete all required fields.';
-                    status.classList.add('status-error');
-                    return;
-                }
-                const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-                if (!emailOK) {
-                    submitBtn.disabled = false;
-                    status.textContent = 'Please enter a valid email address.';
-                    status.classList.add('status-error');
-                    return;
-                }
-
-                const payload = {
-                    name, email, topic, phone, message,
-                    to: 'libertyrocketry@gmail.com'
-                };
-
-                const endpoint = form.getAttribute('action');
-
-                if (endpoint && endpoint.startsWith('https://')) {
-                    try {
-                        const resp = await fetch(endpoint, {
-                            method: 'POST',
-                            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        if (resp.ok) {
-                            form.reset();
-                            status.textContent = 'Thanks! Your message has been sent.';
-                            status.classList.add('status-success');
-                        } else {
-                            const data = await resp.json().catch(() => ({}));
-                            const msg = data.error || 'There was a problem submitting your form.';
-                            status.textContent = msg;
-                            status.classList.add('status-error');
-                        }
-                    } catch (err) {
-                        status.textContent = 'Network error. Please try again later.';
-                        status.classList.add('status-error');
-                    } finally {
-                        submitBtn.disabled = false;
-                    }
-                    return;
-                }
-
-                const subject = encodeURIComponent(`Website Contact: ${topic} — ${name}`);
-                const bodyLines = [
-                    `Name: ${name}`,
-                    `Email: ${email}`,
-                    `Phone: ${phone || 'N/A'}`,
-                    `Topic: ${topic}`,
-                    '',
-                    'Message:',
-                    message
-                ];
-                const body = encodeURIComponent(bodyLines.join('\n'));
-
-                const mailtoURL = `mailto:libertyrocketry@gmail.com?subject=${subject}&body=${body}`;
-                window.location.href = mailtoURL;
-
-                status.textContent = 'Opening your email app. If it does not open, please email libertyrocketry@gmail.com directly.';
-                status.classList.add('status-success');
-                submitBtn.disabled = false;
-            });
         })();
     </script>
 </body>
