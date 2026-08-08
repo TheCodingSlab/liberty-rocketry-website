@@ -22,7 +22,7 @@
             position: relative;
             top: 0;
             width: 100%;
-            background-color: transparent; /* Removed black bar */
+            background-color: transparent;
             padding: 20px 0;
             text-align: center;
             z-index: 10;
@@ -33,13 +33,13 @@
             align-items: center;
         }
         nav.scrolled {
-            background-color: transparent; /* Removed black bar */
+            background-color: transparent;
         }
         .logo-placeholder {
             position: absolute;
-            top: 50px; /* Avoid overlap with home tab */
-            left: 40px; /* Right shift */
-            width: 300px; /* Base width */
+            top: 50px;
+            left: 40px;
+            width: 300px;
             height: auto;
             z-index: 11;
             transition: width 0.3s ease, top 0.3s ease;
@@ -158,10 +158,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             #home {
-                padding-top: calc(min(100svh, 100vh) + 60px); /* Extra padding for fixed nav */
+                padding-top: calc(min(100svh, 100vh) + 60px);
             }
             section:not(#home) {
-                padding-top: 120px; /* Reduced for fixed nav */
+                padding-top: 120px;
             }
         }
 
@@ -215,7 +215,6 @@
             }
         }
 
-        /* About section responsive */
         @media (max-width: 768px) {
             #about > div[style*="flex-direction: row"] {
                 flex-direction: column !important;
@@ -228,12 +227,12 @@
         }
 
         nav a {
-            color: #fff; /* Changed to white for better visibility */
+            color: #fff;
             margin: 0 25px;
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-weight: 400;
-            font-size: 1.5rem; /* Made larger */
+            font-size: 1.5rem;
             transition: color 0.3s ease, transform 0.2s ease;
         }
         nav a:hover {
@@ -248,7 +247,7 @@
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 1s ease, transform 1s ease;
-            background-color: #000; /* Solid black */
+            background-color: #000;
             border-radius: 20px;
             margin-top: -50px;
             position: relative;
@@ -262,7 +261,7 @@
             left: 0;
             right: 0;
             width: 100vw;
-            height: min(100svh, 100vh); /* safer on mobile browser chrome */
+            height: min(100svh, 100vh);
             margin: 0;
             padding: 0;
             background: url('images/Genesis Test Launch.png') no-repeat center center/cover;
@@ -274,7 +273,6 @@
             overflow: hidden;
             z-index: 0;
         }
-        /* Subtle overlay for legibility */
         .hero-section::after {
             content: '';
             position: absolute;
@@ -288,14 +286,12 @@
             pointer-events: none;
             z-index: 0;
         }
-        /* Content container to constrain line length */
         .hero-content {
             position: relative;
             z-index: 1;
             max-width: 900px;
             padding: 0 24px;
         }
-        /* Fluid typography for title */
         .hero-section h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
@@ -308,7 +304,6 @@
             word-wrap: break-word;
             hyphens: auto;
         }
-        /* Fluid typography for quote/subtitle */
         .hero-section .quote {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -357,7 +352,6 @@
             .countdown-label { font-size: 0.8rem; }
         }
 
-        /* Small device tweaks for hero container */
         @media (max-width: 768px) {
             .hero-content {
                 max-width: 680px;
@@ -383,7 +377,6 @@
             }
         }
 
-        /* Home section sits below hero */
         #home {
             padding-top: calc(min(100svh, 100vh) + 50px);
             margin-top: 0;
@@ -1031,7 +1024,7 @@
             }
         }
 
-        /* Styling for the updated Contact Box */
+        /* Styling for the simple Contact Box */
         .contact-box-simple {
             background: rgba(34, 34, 34, 0.9);
             border: 1px solid #444;
@@ -1798,7 +1791,7 @@
         </div>
     </section>
 
-    <!-- UPDATED CONTACT SECTION (NO FORM) -->
+    <!-- CONTACT SECTION (DIRECT EMAIL ONLY) -->
     <section id="contact">
         <h2>Get in Touch</h2>
         <p>Reach out for sponsorships, membership, or collaborations.</p>
