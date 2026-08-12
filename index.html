@@ -1,1887 +1,1454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Liberty University Rocketry</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
-    <style>
-        * {
-            box-sizing: border-box; /* Ensure consistent box model */
-        }
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #111; /* Even darker grey background */
-            color: #ccc; /* Light grey text */
-            overflow-x: hidden;
-            position: relative;
-        }
-        nav {
-            position: relative;
-            top: 0;
-            width: 100%;
-            background-color: transparent;
-            padding: 20px 0;
-            text-align: center;
-            z-index: 10;
-            transition: background 0.3s ease;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-        nav.scrolled {
-            background-color: transparent;
-        }
-        .logo-placeholder {
-            position: absolute;
-            top: 50px;
-            left: 40px;
-            width: 300px;
-            height: auto;
-            z-index: 11;
-            transition: width 0.3s ease, top 0.3s ease;
-        }
-        .hamburger {
-            display: none;
-            color: #fff;
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 101;
-            padding: 10px;
-        }
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Liberty University Rocketry</title>
+<meta name="description" content="Liberty University Rocketry — a student-led collegiate team competing annually in ESRA's International Rocket Engineering Competition." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-        /* Responsive logo & nav for mobile */
-        @media (max-width: 768px) {
-            .logo-placeholder {
-                width: 150px;
-                top: 30px;
-                left: 20px;
-            }
-            section:not(#home) {
-                padding-top: 150px;
-            }
-            section {
-                padding: 80px 20px;
-            }
-            .hamburger {
-                display: block;
-                position: absolute;
-                right: 20px;
-                top: 20px;
-            }
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.95);
-                flex-direction: column;
-                padding: 10px 0;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            }
-            .nav-links.mobile-show {
-                display: flex;
-            }
-            .nav-links a,
-            .nav-links .dropdown {
-                width: 100%;
-                margin: 0;
-                padding: 15px;
-                text-align: center;
-                border-bottom: 1px solid #333;
-                box-sizing: border-box;
-            }
-            .nav-links .dropbtn {
-                margin: 0;
-                justify-content: center;
-            }
-            .nav-links .dropdown-content {
-                position: static;
-                width: 100%;
-                background: rgba(34, 34, 34, 0.9);
-                box-shadow: none;
-                display: none;
-            }
-            .nav-links .dropdown:hover .dropdown-content,
-            .nav-links .dropdown[aria-expanded="true"] .dropdown-content {
-                display: block;
-            }
-            .nav-links .dropdown-content a {
-                padding-left: 30px;
-                border-bottom: none;
-                border-top: 1px solid #333;
-                font-size: 1.1rem;
-            }
-            nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: auto;
-                padding: 0;
-                background: transparent;
-                justify-content: flex-start;
-                align-items: flex-start;
-                z-index: 100;
-            }
-            .logo-placeholder {
-                position: absolute;
-                top: 15px;
-                left: 15px;
-                margin: 0;
-            }
-            .hero-section {
-                margin: 0 -20px;
-            }
-            .project-box {
-                margin: 20px -20px;
-            }
-            .hero-section .quote {
-                font-size: 0.95rem;
-                padding: 0 20px;
-            }
-            section h2 {
-                font-size: 2rem;
-            }
-            .images-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            #home {
-                padding-top: calc(min(100svh, 100vh) + 60px);
-            }
-            section:not(#home) {
-                padding-top: 120px;
-            }
-        }
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --void:#08090A;
+  --surface:#0D0F11;
+  --surface-2:#131619;
+  --line:rgba(255,255,255,.10);
+  --line-2:rgba(255,255,255,.20);
+  --ink:#F4F6F8;
+  --ink-2:#98A0AA;
+  --ink-3:#69707A;
+  --flame:#C8102E;
 
-        @media (max-width: 480px) {
-            .logo-placeholder {
-                width: 120px;
-                top: 10px;
-                left: 10px;
-            }
-            .hamburger {
-                right: 15px;
-                top: 15px;
-                font-size: 1.5rem;
-            }
-            section:not(#home) {
-                padding-top: 100px;
-            }
-            .images-grid {
-                grid-template-columns: 1fr;
-            }
-            .nav-links a,
-            .nav-links .dropdown {
-                font-size: 1rem;
-                padding: 12px;
-            }
-            .hero-section .quote {
-                font-size: 0.9rem;
-                max-width: 90%;
-            }
-            #home {
-                padding-top: calc(min(100svh, 100vh) + 50px);
-            }
-        }
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --data:'JetBrains Mono',ui-monospace,monospace;
 
-        @media (max-width: 360px) {
-            .logo-placeholder {
-                width: 100px;
-                left: 5px;
-            }
-            section:not(#home) {
-                padding-top: 80px;
-            }
-            nav {
-                padding: 0;
-            }
-            .hero-section .quote {
-                font-size: 0.85rem;
-            }
-            #home {
-                padding-top: calc(min(100svh, 100vh) + 45px);
-            }
-        }
+  --pad:clamp(20px,5vw,72px);
+  --nav-h:64px;
+  --maxw:1440px;
 
-        @media (max-width: 768px) {
-            #about > div[style*="flex-direction: row"] {
-                flex-direction: column !important;
-                gap: 20px;
-            }
-            #about img[style*="max-width: 50%"] {
-                max-width: 100% !important;
-                order: -1;
-            }
-        }
+  /* technical hatch used behind any empty or failed image slot */
+  --hatch:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 10px,transparent 10px 20px);
+}
 
-        nav a {
-            color: #fff;
-            margin: 0 25px;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 400;
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-        nav a:hover {
-            color: #ff0000;
-            transform: scale(1.05);
-        }
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 
-        section {
-            padding: 80px 40px;
-            max-width: 1600px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease, transform 1s ease;
-            background-color: #000;
-            border-radius: 20px;
-            margin-top: -50px;
-            position: relative;
-            z-index: 1;
-        }
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--ink-2);
+  font-family:var(--body);
+  font-weight:300;
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
-        /* --- HERO SECTION --- */
-        .hero-section {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100vw;
-            height: min(100svh, 100vh);
-            margin: 0;
-            padding: 0;
-            background: url('images/Genesis Test Launch.png') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-            z-index: 0;
-        }
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.35) 0%,
-                rgba(0, 0, 0, 0.35) 60%,
-                rgba(0, 0, 0, 0.50) 100%
-            );
-            pointer-events: none;
-            z-index: 0;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            padding: 0 24px;
-        }
-        .hero-section h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.1;
-            margin: 0 0 0.5rem 0;
-            padding: 0;
-            font-size: clamp(1.6rem, 7vw, 5.5rem);
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
-            word-wrap: break-word;
-            hyphens: auto;
-        }
-        .hero-section .quote {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-style: italic;
-            color: #fff;
-            margin: 16px auto 0;
-            line-height: 1.25;
-            font-size: clamp(0.95rem, 3.8vw, 2rem);
-            max-width: 70ch;
-            padding: 0;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-        }
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--flame);outline-offset:3px}
+::selection{background:var(--flame);color:#fff}
 
-        /* ===== COUNTDOWN TIMER STYLES ===== */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; 
-            margin-top: 20px;
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            flex-wrap: wrap;
-        }
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        .countdown-number {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 5px;
-        }
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Montserrat', sans-serif;
-        }
-        @media (max-width: 768px) {
-            .countdown-container { gap: 15px; margin-top: 15px; }
-            .countdown-number { font-size: 2rem; }
-            .countdown-label { font-size: 0.8rem; }
-        }
+/* any image that fails to load fades out and reveals the hatched
+   panel behind it, so a missing file reads as a designed slot */
+img.is-failed{opacity:0}
 
-        @media (max-width: 768px) {
-            .hero-content {
-                max-width: 680px;
-                padding: 0 20px;
-            }
-            .hero-section h1 {
-                line-height: 1.08;
-            }
-        }
-        @media (max-width: 480px) {
-            .hero-content {
-                max-width: 95%;
-                padding: 0 16px;
-            }
-            .hero-section h1 {
-                line-height: 1.08;
-            }
-        }
-        @supports(padding:max(0px)) {
-            .hero-content {
-                padding-left: max(16px, env(safe-area-inset-left));
-                padding-right: max(16px, env(safe-area-inset-right));
-            }
-        }
+/* ============================================================
+   TYPE
+   ============================================================ */
+h1,h2,h3,h4{
+  font-family:var(--display);
+  color:var(--ink);
+  text-transform:uppercase;
+  margin:0;line-height:1.05;font-weight:600;
+}
+h1{font-size:clamp(2.4rem,7.4vw,6.2rem);font-weight:700;letter-spacing:-.015em;line-height:.94}
+h2{font-size:clamp(1.9rem,4.4vw,3.4rem);letter-spacing:.005em}
+h3{font-size:clamp(1.15rem,2.1vw,1.6rem);letter-spacing:.04em}
+h4{font-size:1.05rem;letter-spacing:.06em}
 
-        #home {
-            padding-top: calc(min(100svh, 100vh) + 50px);
-            margin-top: 0;
-            background-color: transparent;
-            padding-bottom: 0 !important;
-        }
+p{margin:0 0 1.1em;max-width:72ch}
+p:last-child{margin-bottom:0}
 
-        section:not(#home) {
-            padding-top: 200px;
-        }
+.eyebrow{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--data);font-size:.6875rem;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:18px;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--flame);flex:none}
 
-        section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: -1;
-            border-radius: 20px;
-        }
-        #home::before {
-            display: none;
-        }
+.lede{font-size:clamp(1rem,1.4vw,1.2rem);color:var(--ink-2);max-width:64ch}
 
-        .hero-section p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.9rem;
-            font-weight: 300;
-            color: #fff;
-            z-index: 1;
-        }
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:200;
+  background:rgba(8,9,10,.55);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;
+  transition:background .35s ease,border-color .35s ease;
+}
+.nav.is-solid{background:rgba(8,9,10,.92);border-bottom-color:var(--line)}
+.nav__inner{
+  max-width:var(--maxw);height:100%;margin:0 auto;padding:0 var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.nav__brand{display:flex;align-items:center;flex:none}
+.nav__brand img{height:34px;width:auto}
+.nav__menu{display:flex;align-items:center;gap:4px}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.nav__link{
+  position:relative;appearance:none;background:none;border:0;
+  font-family:var(--display);font-size:.75rem;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
+  padding:10px 14px;cursor:pointer;text-decoration:none;
+  transition:color .2s ease;
+}
+.nav__link:hover,.nav__link.is-active{color:var(--ink)}
+.nav__link::after{
+  content:'';position:absolute;left:14px;right:14px;bottom:4px;height:1px;
+  background:var(--flame);transform:scaleX(0);transform-origin:left;
+  transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.nav__link:hover::after,.nav__link.is-active::after{transform:scaleX(1)}
 
-        .grey-divider {
-            width: 100%;
-            height: 50px;
-            background-color: #333;
-            position: absolute;
-            top: 100vh;
-            left: 0;
-            z-index: 1;
-        }
+.nav__group{position:relative}
+.nav__drop{
+  position:absolute;top:calc(100% + 8px);left:0;min-width:190px;
+  background:rgba(13,15,17,.97);backdrop-filter:blur(14px);
+  border:1px solid var(--line);padding:6px;display:none;
+}
+.nav__group.is-open .nav__drop{display:block}
+.nav__drop .nav__link{display:block;width:100%;text-align:left;padding:11px 14px}
+.nav__drop .nav__link::after{left:14px;right:14px;bottom:7px}
 
-        section h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 600;
-            color: #fff;
-        }
-        section p {
-            font-size: 1.3rem;
-            font-weight: 300;
-        }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        #projects {
-            background: url('images/projects-bg.jpg') no-repeat center center/cover;
-        }
-        #members {
-            background: url('images/team-bg.jpg') no-repeat center center/cover;
-        }
-        #sponsors {
-            background: url('images/sponsors-bg.jpg') no-repeat center center/cover;
-        }
-        #contact {
-            background: url('images/contact-bg.jpg') no-repeat center center/cover;
-        }
+.nav__toggle{
+  display:none;appearance:none;background:none;
+  border:1px solid var(--line-2);color:var(--ink);
+  font-family:var(--data);font-size:.6875rem;letter-spacing:.18em;
+  text-transform:uppercase;padding:9px 14px;cursor:pointer;
+}
 
-        #hall-of-fame, #about {
-            background-color: #111;
-        }
+@media (max-width:960px){
+  .nav__toggle{display:block}
+  .nav__menu{
+    position:fixed;top:var(--nav-h);left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(8,9,10,.98);backdrop-filter:blur(18px);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:8px var(--pad) 20px;
+    max-height:calc(100dvh - var(--nav-h));overflow-y:auto;
+    transform:translateY(-8px);opacity:0;pointer-events:none;
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  .nav__menu.is-open{opacity:1;transform:none;pointer-events:auto}
+  .nav__menu .nav__link{width:100%;text-align:left;padding:16px 0;font-size:.9rem;border-bottom:1px solid var(--line)}
+  .nav__menu .nav__link::after{left:0;right:0;bottom:10px}
+  .nav__group{width:100%}
+  .nav__drop{position:static;border:0;background:none;padding:0 0 0 18px;min-width:0}
+  .nav__drop .nav__link{padding:14px 0;font-size:.8rem;color:var(--ink-3)}
+  .nav__drop .nav__link::after{left:0;right:0}
+}
 
-        .news-post {
-            background: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
-            transition: transform 0.3s ease;
-        }
-        .news-post:hover {
-            transform: translateY(-5px);
-        }
-        .news-post img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  background:#000 url('images/Genesis%20Test%20Launch.png') no-repeat center center/cover;
+  overflow:hidden;
+}
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom,rgba(8,9,10,.72) 0%,rgba(8,9,10,.18) 34%,rgba(8,9,10,.55) 72%,rgba(8,9,10,.96) 100%),
+    linear-gradient(to right,rgba(8,9,10,.75) 0%,rgba(8,9,10,0) 62%);
+  pointer-events:none;
+}
+.hero__content{
+  position:relative;z-index:2;width:100%;max-width:var(--maxw);
+  margin:0 auto;padding:0 var(--pad) clamp(36px,6vh,64px);
+}
+.hero__content .eyebrow{color:var(--ink-2)}
+.hero h1{color:#fff;margin-bottom:20px;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+.hero__sub{
+  font-size:clamp(1rem,1.6vw,1.3rem);font-weight:300;
+  color:rgba(244,246,248,.82);max-width:52ch;
+  border-left:1px solid var(--flame);padding-left:18px;
+}
 
-        .project-box {
-            position: relative;
-            margin: 20px -40px;
-            padding: 20px;
-            background: rgba(34, 34, 34, 0.9);
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(255,255,255,0.1);
-            transition: transform 0.3s ease;
-        }
-        .project-box:hover {
-            transform: translateY(-5px);
-        }
-        .project-image-placeholder {
-            background-color: #333;
-            width: 300px;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            font-style: italic;
-            border: 1px dashed #fff;
-            flex-shrink: 0;
-            border-radius: 8px;
-        }
-        .project-image {
-            width: 300px;
-            height: 200px;
-            object-fit: contain;
-            border-radius: 8px;
-            flex-shrink: 0;
-            display: block;
-            background-color: #222;
-            padding: 6px;
-            border: 1px solid #333;
-        }
-        .project-text {
-            flex: 1;
-        }
-        .project-text h3 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 2rem;
-        }
-        .project-text p {
-            margin: 0;
-        }
-        @media (max-width: 768px) {
-            .project-box {
-                flex-direction: column;
-                align-items: center;
-                margin: 20px -20px;
-                padding: 15px;
-            }
-            .project-image-placeholder {
-                width: 100%;
-                height: auto;
-            }
-            .project-image {
-                width: 100%;
-                height: auto;
-                max-height: 300px;
-                padding: 4px;
-            }
-            .project-text h3 {
-                font-size: 1.5rem;
-                text-align: center;
-            }
-        }
+.bar{
+  position:relative;z-index:2;
+  border-top:1px solid var(--line);
+  background:rgba(8,9,10,.6);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+}
+.bar::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:1px;
+  background:var(--flame);transform:scaleX(0);transform-origin:left;
+  animation:ignite 1.6s cubic-bezier(.16,1,.3,1) .5s forwards;
+}
+@keyframes ignite{to{transform:scaleX(1)}}
 
-        .members-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        .member {
-            text-align: center;
-            background: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-            max-width: 100%;
-        }
-        .member:hover {
-            transform: translateY(-5px);
-        }
-        .member img {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        @media (max-width: 768px) {
-            .member img {
-                width: 200px;
-                height: 200px;
-            }
-            .member {
-                padding: 15px;
-            }
-        }
-        @media (max-width: 480px) {
-            .member img {
-                width: 150px;
-                height: 150px;
-            }
-        }
+.bar__inner{
+  max-width:var(--maxw);margin:0 auto;padding:20px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:28px;flex-wrap:wrap;
+}
+.bar__label .eyebrow{margin-bottom:6px}
+.bar__label strong{
+  display:block;font-family:var(--display);
+  font-size:clamp(.9rem,1.5vw,1.1rem);font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+}
 
-        /* ===== General Members List Styling ===== */
-        .general-members-container {
-            max-width: 1400px;
-            margin: 50px auto 0;
-            text-align: center;
-        }
-        .general-members-group {
-            margin-bottom: 40px;
-        }
-        .general-members-group h4 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #444;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        .general-members-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            justify-content: center;
-        }
-        .general-member-item {
-            background: rgba(34, 34, 34, 0.9);
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-        .general-member-item:hover {
-            background: rgba(255, 0, 0, 0.15);
-            border-color: #ff0000;
-            transform: translateY(-3px);
-        }
-        .member-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #fff;
-        }
-        .member-role {
-            font-size: 1rem;
-            color: #aaa;
-            margin-top: 5px;
-            font-style: italic;
-        }
+.clock{display:flex;align-items:stretch}
+.clock__unit{padding:0 clamp(14px,2.4vw,26px);border-left:1px solid var(--line);text-align:center}
+.clock__unit:first-child{border-left:0;padding-left:0}
+.clock__unit:last-child{padding-right:0}
+.clock__num{
+  display:block;font-family:var(--data);
+  font-size:clamp(1.5rem,3.6vw,2.3rem);font-weight:500;
+  color:#fff;line-height:1.1;font-variant-numeric:tabular-nums;
+}
+.clock__lab{
+  display:block;font-family:var(--data);font-size:.5625rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-top:5px;
+}
+.clock.is-done{
+  font-family:var(--data);color:var(--flame);letter-spacing:.2em;
+  text-transform:uppercase;font-size:1.1rem;align-items:center;
+}
 
-        .subteams-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-        .subteam {
-            text-align: center;
-            background: rgba(34, 34, 34, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-        .subteam:hover {
-            transform: translateY(-5px);
-        }
-        .subteam-image-placeholder {
-            background-color: #333;
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            font-style: italic;
-            border: 1px dashed #fff;
-            border-radius: 8px;
-        }
-        .subteam h3 {
-            color: #fff;
-            font-size: 1.8rem;
-            margin: 10px 0;
-        }
-        .subteam p {
-            font-size: 1.1rem;
-        }
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+main{position:relative;z-index:1}
 
-        .sponsors {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
-        .sponsor {
-            text-align: center;
-            transition: transform 0.3s ease;
-            flex: 1 1 200px;
-            max-width: 250px;
-        }
-        .sponsor:hover {
-            transform: scale(1.05);
-        }
-        .sponsor img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        @media (max-width: 768px) {
-            .sponsors {
-                gap: 20px;
-            }
-            .sponsor {
-                flex: 1 1 150px;
-            }
-        }
+.sec{display:none;max-width:var(--maxw);margin:0 auto;padding:clamp(72px,10vh,130px) var(--pad)}
+.sec.is-visible{display:block}
+.sec--interior{padding-top:calc(var(--nav-h) + clamp(56px,9vh,110px))}
 
-        footer {
-            background-color: #000;
-            color: #ccc;
-            text-align: center;
-            padding: 25px;
-            border-top: 1px solid #333;
-            font-size: 0.9rem;
-        }
+.sec__head{margin-bottom:clamp(40px,6vh,72px);max-width:70ch}
+.sec__head h2{margin-bottom:18px}
 
-        section:not(#home) {
-            display: none;
-        }
+.reveal{
+  opacity:0;transform:translateY(22px);
+  transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);
+}
+.reveal.is-in{opacity:1;transform:none}
 
-        .download-btn {
-            color: #fff;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .download-btn:hover {
-            background: linear-gradient(45deg, #cc0000, #aa0000);
-            transform: scale(1.05);
-        }
+/* full-bleed helper (body has overflow-x:hidden) */
+.bleed{
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
 
-        #images-section {
-            background-color: #111;
-            margin-top: 40px;
-            padding: 40px;
-            border-radius: 0;
-        }
-        .images-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-        .image-placeholder {
-            background-color: #333;
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #aaa;
-            font-style: italic;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-        .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .image-placeholder:hover {
-            transform: scale(1.02);
-        }
-        .image-desc {
-            margin-top: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        @media (max-width: 768px) {
-            .images-grid {
-                gap: 15px;
-            }
-            .image-placeholder {
-                height: 150px;
-            }
-            .image-desc {
-                font-size: 0.8rem;
-            }
-        }
+/* wide banner strip used to open the thinner interior sections */
+.banner{
+  position:relative;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--surface-2);
+  overflow:hidden;
+  margin-bottom:clamp(40px,6vh,72px);
+}
+.banner img{width:100%;aspect-ratio:24/7;object-fit:cover;filter:grayscale(.45) contrast(1.05)}
+.banner::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to right,rgba(8,9,10,.85) 0%,rgba(8,9,10,.15) 55%,rgba(8,9,10,.6) 100%);
+}
+.banner figcaption{
+  position:absolute;left:0;bottom:0;z-index:2;
+  padding:0 clamp(20px,4vw,40px) clamp(16px,3vw,28px);
+  font-family:var(--data);font-size:.625rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-2);
+}
+@media (max-width:700px){.banner img{aspect-ratio:16/9}}
 
-        /* ===== Grey card for "Design. Launch. Repeat." ===== */
-        .dlr-card {
-            background: rgba(34, 34, 34, 0.9);
-            color: #ccc;
-            border-radius: 16px;
-            padding: clamp(20px, 4vw, 40px);
-            max-width: 1100px;
-            margin: 0 auto 40px auto;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-            border: 1px solid #444;
-        }
-        .dlr-card h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .dlr-card p {
-            color: #ddd;
-            max-width: 85ch;
-            margin: 0 auto;
-            font-size: clamp(1rem, 1.4vw, 1.25rem);
-            line-height: 1.7;
-        }
+/* ============================================================
+   HOME
+   ============================================================ */
+.intro{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(32px,6vw,80px);align-items:start;
+  padding-bottom:clamp(48px,7vh,88px);
+}
+.intro h2{margin-bottom:22px}
+.intro p{font-size:clamp(1rem,1.35vw,1.15rem)}
 
-        #about-section {
-            background-color: rgba(17, 17, 17, 0.7);
-            margin-top: 40px;
-            padding: 60px 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        #about-section .team-photo-placeholder {
-            width: 90vw;
-            max-width: 90%;
-            height: auto;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 20px;
-            border: none;
-            border-radius: 8px;
-        }
+.stats{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.stat{padding:24px 22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat b{
+  display:block;font-family:var(--display);
+  font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:700;
+  color:var(--ink);line-height:1;letter-spacing:-.02em;
+}
+.stat b i{font-style:normal;font-size:.42em;letter-spacing:.02em;color:var(--ink-3)}
+.stat span{
+  display:block;margin-top:10px;font-family:var(--data);
+  font-size:.625rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+}
+@media (max-width:900px){.intro{grid-template-columns:1fr;gap:36px}}
 
-        #contact-bottom {
-            text-align: center;
-            margin-top: 60px;
-        }
-        #contact-bottom button {
-            padding: 15px 40px;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        #contact-bottom button:hover {
-            background: linear-gradient(45deg, #cc0000, #aa0000);
-            transform: scale(1.05);
-        }
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.shot{background:var(--surface-2) var(--hatch);position:relative;overflow:hidden;margin:0}
+.shot img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  filter:grayscale(.35) contrast(1.05);
+  transition:filter .5s ease,transform .7s cubic-bezier(.16,1,.3,1),opacity .3s ease;
+}
+.shot:hover img{filter:none;transform:scale(1.035)}
+.shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;
+  background:linear-gradient(to top,rgba(8,9,10,.92),transparent);
+  font-family:var(--data);font-size:.5625rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-2);line-height:1.5;
+}
+@media (max-width:1100px){.gallery{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:820px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.gallery{grid-template-columns:1fr}}
 
-        #merchandise {
-            background-color: transparent;
-            padding: 80px 40px;
-            border-radius: 20px;
-        }
-        #merchandise::before {
-            display: none;
-        }
-        #images-section h2 {
-            text-align: center;
-        }
-        #images-section > p {
-            text-align: center;
-        }
+.band{position:relative;margin-top:clamp(56px,8vh,100px);border:1px solid var(--line);background:var(--surface-2) var(--hatch)}
+.band img{width:100%;aspect-ratio:21/9;object-fit:cover;filter:grayscale(.2)}
+.band__cap{padding:26px clamp(20px,3vw,36px);border-top:1px solid var(--line);background:var(--surface)}
+.band__cap h3{margin-bottom:12px}
+@media (max-width:700px){.band img{aspect-ratio:16/10}}
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropbtn {
-            color: #fff;
-            margin: 0 25px;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 400;
-            font-size: 1.5rem;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-        .dropdown[aria-expanded="true"] .dropdown-content {
-            display: block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #111;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: #fff;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            margin: 0;
-            font-size: 1.3rem;
-        }
-        .dropdown-content a:hover {
-            background-color: #222;
-            color: #ff0000;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown:hover .dropbtn {
-            color: #ff0000;
-        }
-        @media (max-width: 768px) {
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                background: rgba(34, 34, 34, 0.9);
-                border-radius: 8px;
-                margin-top: 5px;
-            }
-            .dropdown-content a {
-                font-size: 1.1rem;
-                padding: 10px 15px;
-            }
-        }
+/* closing full-bleed call to action */
+.closer{
+  position:relative;
+  margin-top:clamp(64px,9vh,110px);
+  min-height:min(72vh,640px);
+  display:flex;align-items:flex-end;
+  background:#000 var(--closer-img) no-repeat center center/cover;
+  border-top:1px solid var(--line);
+}
+.closer::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(8,9,10,.55) 0%,rgba(8,9,10,.2) 40%,rgba(8,9,10,.94) 100%);
+}
+.closer__inner{
+  position:relative;z-index:2;width:100%;max-width:var(--maxw);
+  margin:0 auto;padding:0 var(--pad) clamp(40px,7vh,72px);
+}
+.closer h3{color:#fff;font-size:clamp(1.6rem,4vw,2.6rem);margin-bottom:14px}
+.closer p{color:rgba(244,246,248,.8);margin-bottom:26px;max-width:48ch}
 
-        /* ===== Bottom hero ===== */
-        .bottom-hero {
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            width: 100vw;
-            height: min(85vh, 900px);
-            background: url('images/Screenshot 2025-09-26 134848.png') no-repeat center center/cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .bottom-hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(0,0,0,0.25) 0%,
-                rgba(0,0,0,0.35) 60%,
-                rgba(0,0,0,0.5) 100%
-            );
-            pointer-events: none;
-        }
-        .bottom-hero #contact-bottom {
-            position: relative;
-            z-index: 1;
-            transform: translateY(-6vh);
-            padding: 0 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .bottom-hero #contact-bottom h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            margin: 0 0 12px 0;
-        }
-        .bottom-hero #contact-bottom p {
-            color: #fff;
-            font-size: clamp(1rem, 2.2vw, 1.25rem);
-            font-weight: 600;
-            margin: 0 0 18px 0;
-        }
-        @media (max-width: 600px) {
-            .bottom-hero #contact-bottom {
-                transform: translateY(-3vh);
-            }
-            .bottom-hero {
-                height: 70vh;
-            }
-        }
+.cta{
+  margin-top:clamp(56px,8vh,100px);border:1px solid var(--line);
+  background:var(--surface);padding:clamp(32px,5vw,60px);
+  display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;
+}
+.cta h3{margin-bottom:10px}
+.cta p{margin:0;max-width:52ch}
 
-        .sponsor-cta {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .sponsor-cta .download-btn {
-            display: block;
-            margin: 0 auto 20px;
-        }
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  appearance:none;cursor:pointer;background:transparent;
+  border:1px solid var(--line-2);color:var(--ink);
+  font-family:var(--display);font-size:.75rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;
+  padding:16px 30px;text-decoration:none;
+  transition:background .25s ease,border-color .25s ease,color .25s ease;
+}
+.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--void)}
+.btn--flame{border-color:var(--flame);color:#fff;background:var(--flame)}
+.btn--flame:hover{background:#a50d26;border-color:#a50d26;color:#fff}
+.btn::after{content:'→';font-family:var(--body);font-size:1rem;line-height:1}
 
-        /* Sponsor Table Styling */
-        .sponsors-table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        table {
-            width: 100%;
-            min-width: 600px;
-            border-collapse: collapse;
-            background: rgba(34, 34, 34, 0.9);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-            white-space: nowrap;
-        }
-        th {
-            background: #222;
-            color: #fff;
-            font-family: 'Orbitron', sans-serif;
-        }
-        tr:nth-child(even) {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        tr:hover {
-            background: rgba(255, 0, 0, 0.1);
-        }
-        @media (max-width: 768px) {
-            th, td {
-                padding: 8px 6px;
-                font-size: 0.9rem;
-            }
-        }
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.flight{
+  display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
+  gap:clamp(28px,5vw,64px);padding:clamp(36px,5vh,56px) 0;
+  border-top:1px solid var(--line);align-items:start;
+}
+.flight:last-child{border-bottom:1px solid var(--line)}
 
-        /* Styling for the simple Contact Box */
-        .contact-box-simple {
-            background: rgba(34, 34, 34, 0.9);
-            border: 1px solid #444;
-            border-radius: 12px;
-            padding: 40px;
-            max-width: 800px;
-            margin: 30px auto 0;
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-        .contact-box-simple h3 {
-            font-family: 'Orbitron', sans-serif;
-            color: #fff;
-            font-size: 2rem;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
-        .email-link-highlight {
-            color: #ff0000;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-        .email-link-highlight:hover {
-            color: #cc0000;
-            text-decoration: underline;
-        }
+.flight__year{
+  font-family:var(--data);font-size:.75rem;letter-spacing:.22em;
+  color:var(--flame);margin-bottom:14px;display:block;
+}
+.flight__name{margin-bottom:20px;font-size:clamp(1.5rem,3.2vw,2.4rem);letter-spacing:.01em}
 
-        section p {
-            font-size: 1.45rem;
-            line-height: 1.7;
-            max-width: 90ch;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.specs{display:flex;flex-wrap:wrap;gap:0;margin:0 0 22px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.spec{flex:1 1 130px;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.spec dt{font-family:var(--data);font-size:.5625rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.spec dd{margin:0;font-family:var(--display);font-size:1rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--ink)}
 
-        section h2 {
-            font-size: 3.6rem;
-        }
+.flight__media{border:1px solid var(--line);background:var(--surface-2) var(--hatch)}
+.flight__media img{width:100%;aspect-ratio:4/3;object-fit:contain;padding:14px}
+.flight__media--photo img{object-fit:cover;padding:0;filter:grayscale(.2)}
 
-        section h3 {
-            font-size: 2.2rem;
-        }
+/* designed "no image yet" panel — reads as classified, not broken */
+.classified{
+  aspect-ratio:4/3;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;
+}
+.classified__mark{font-family:var(--display);font-size:clamp(2.6rem,6vw,4.2rem);color:var(--ink-2);line-height:1}
+.classified__note{font-family:var(--data);font-size:.5625rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-3)}
 
-        section {
-            padding: 100px 60px;
-            max-width: 1800px;
-        }
+@media (max-width:900px){
+  .flight{grid-template-columns:1fr}
+  .flight__media{order:-1}
+}
 
-        #images-section > p {
-            max-width: 100ch;
-            font-size: 1.5rem;
-            margin: 0 auto 40px auto;
-        }
+/* ============================================================
+   PEOPLE
+   ============================================================ */
+.grid-people{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin-bottom:clamp(48px,7vh,84px);
+}
+.person{background:var(--surface);padding:0 0 26px;display:flex;flex-direction:column}
+.person__photo{
+  width:100%;aspect-ratio:1/1;object-fit:cover;
+  filter:grayscale(1) contrast(1.06);transition:filter .45s ease;
+  background:var(--surface-2) var(--hatch);
+}
+.person:hover .person__photo{filter:grayscale(0)}
 
-        .project-text p {
-            font-size: 1.35rem;
-            line-height: 1.65;
-        }
+/* monogram tile for members without a headshot */
+.person__tile{
+  width:100%;aspect-ratio:1/1;position:relative;
+  background:var(--surface-2) var(--hatch);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+}
+.person__tile b{
+  font-family:var(--display);font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:600;letter-spacing:.08em;color:var(--ink-2);line-height:1;
+}
+.person__tile span{
+  font-family:var(--data);font-size:.5625rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.person__tile::before{
+  content:'';position:absolute;left:50%;top:14px;bottom:14px;width:1px;
+  background:var(--line);transform:translateX(-50%);
+}
+.person__tile b,.person__tile span{position:relative;z-index:1}
+.person__tile b{background:var(--surface-2);padding:0 12px}
+.person__tile span{background:var(--surface-2);padding:0 10px}
 
-        .member p {
-            font-size: 1.25rem;
-            line-height: 1.55;
-        }
+.person__body{padding:24px 22px 0}
+.person h4{margin-bottom:8px;font-size:1.15rem;letter-spacing:.03em}
+.person__role{
+  font-family:var(--data);font-size:.625rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--flame);margin-bottom:16px;
+}
+.person__quote{
+  font-style:italic;color:var(--ink-2);border-left:1px solid var(--line-2);
+  padding-left:14px;margin-bottom:16px;font-size:.9375rem;line-height:1.6;
+}
+.person__bio{font-size:.9375rem;line-height:1.68;color:var(--ink-3)}
 
-        .subteam p {
-            font-size: 1.3rem;
-            line-height: 1.6;
-        }
+.subhead{display:flex;align-items:baseline;gap:16px;margin:0 0 26px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.subhead h3{flex:none}
+.subhead span{font-family:var(--data);font-size:.625rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
 
-        #sponsors p {
-            font-size: 1.4rem;
-            line-height: 1.65;
-        }
+.roster{margin-bottom:44px}
+.roster__rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:0 40px}
+.roster__row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line)}
+.roster__row b{font-family:var(--display);font-weight:500;font-size:.95rem;color:var(--ink);letter-spacing:.02em;text-transform:none}
+.roster__row span{font-family:var(--data);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:right}
 
-        @media (max-width: 768px) {
-            section {
-                padding: 70px 25px;
-            }
+/* ============================================================
+   SUBSYSTEMS
+   ============================================================ */
+.grid-units{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.unit{background:var(--surface);padding:30px 26px 32px}
+.unit__code{font-family:var(--data);font-size:.625rem;letter-spacing:.22em;color:var(--flame);display:block;margin-bottom:14px}
+.unit h3{margin-bottom:14px;font-size:1.2rem}
+.unit p{font-size:.9375rem;line-height:1.68;color:var(--ink-3)}
 
-            section p {
-                font-size: 1.2rem;
-            }
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.split{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(28px,5vw,64px);align-items:center;
+  padding:clamp(36px,6vh,64px) 0;border-top:1px solid var(--line);
+}
+.split:last-child{border-bottom:1px solid var(--line)}
+.split img{width:100%;aspect-ratio:3/2;object-fit:cover;border:1px solid var(--line);background:var(--surface-2) var(--hatch)}
+.split h3{margin-bottom:18px}
+@media (max-width:820px){
+  .split{grid-template-columns:1fr}
+  .split--flip img{order:-1}
+}
 
-            section h2 {
-                font-size: 2.4rem;
-            }
+/* ============================================================
+   SPONSORS
+   ============================================================ */
+.tiers{overflow-x:auto;border:1px solid var(--line);margin-bottom:44px}
+table{width:100%;min-width:680px;border-collapse:collapse;background:var(--surface)}
+th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:.9rem}
+thead th{
+  background:var(--surface-2);font-family:var(--data);font-size:.625rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:500;
+  border-bottom:1px solid var(--line-2);white-space:nowrap;
+}
+tbody th{font-family:var(--body);font-weight:400;color:var(--ink-2);font-size:.9rem}
+tbody td{text-align:center;width:130px;color:var(--flame);font-size:.95rem}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:rgba(255,255,255,.025)}
 
-            section h3 {
-                font-size: 1.6rem;
-            }
-        }
+.logos{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.logos div{background:var(--surface);padding:32px 26px;display:flex;align-items:center;justify-content:center;min-height:130px}
+.logos img{max-height:56px;width:auto;object-fit:contain;filter:grayscale(1) brightness(1.5);opacity:.7;transition:opacity .35s ease,filter .35s ease}
+.logos div:hover img{opacity:1;filter:none}
 
-        #home {
-          padding-top: min(100svh, 100vh) !important;
-        }
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact{
+  border:1px solid var(--line);background:var(--surface);
+  padding:clamp(32px,5vw,56px);display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px;
+}
+.contact__item .eyebrow{margin-bottom:12px}
+.contact__item a{
+  font-family:var(--display);font-size:clamp(1rem,1.9vw,1.4rem);
+  font-weight:500;letter-spacing:.02em;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--flame);padding-bottom:3px;
+  transition:color .25s ease;overflow-wrap:anywhere;
+}
+.contact__item a:hover{color:var(--flame)}
+.contact__item p{color:var(--ink-2);font-size:.95rem;margin:0}
 
-        @supports (height: 100dvh) {
-          .hero-section { height: 100dvh; }
-          #home { padding-top: 100dvh !important; }
-        }
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal{
+  position:fixed;inset:0;z-index:400;display:none;
+  align-items:center;justify-content:center;padding:24px;
+  background:rgba(4,5,6,.82);backdrop-filter:blur(6px);
+}
+.modal.is-open{display:flex}
+.modal__card{width:100%;max-width:420px;background:var(--surface);border:1px solid var(--line-2);padding:34px 30px 30px}
+.modal__card h3{margin-bottom:12px;font-size:1.2rem}
+.modal__card p{font-size:.9rem;color:var(--ink-3);margin-bottom:22px}
+.modal input{
+  width:100%;background:var(--void);border:1px solid var(--line);color:var(--ink);
+  font-family:var(--data);font-size:1.1rem;letter-spacing:.4em;padding:14px 16px;margin-bottom:8px;
+}
+.modal input:focus{border-color:var(--flame);outline:none}
+.modal__err{font-family:var(--data);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:var(--flame);min-height:18px;margin-bottom:16px}
+.modal__actions{display:flex;gap:10px;flex-wrap:wrap}
+.modal__actions .btn{flex:1 1 130px;justify-content:center;padding:14px 20px}
+.modal__actions .btn--ghost::after{content:''}
 
-        @media (max-width: 768px) {
-          #home { padding-top: min(100svh, 100vh) !important; }
-        }
-        @media (max-width: 480px) {
-          #home { padding-top: min(100svh, 100vh) !important; }
-        }
-        @media (max-width: 360px) {
-          #home { padding-top: min(100svh, 100vh) !important; }
-        }
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--line);background:var(--void)}
+.foot{
+  max-width:var(--maxw);margin:0 auto;padding:34px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  font-family:var(--data);font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+}
 
-        section {
-          margin-top: 0 !important;
-        }
-
-        .grey-divider {
-          display: none !important;
-        }
-    </style>
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
+  }
+  .reveal{opacity:1;transform:none}
+  .bar::before{transform:scaleX(1)}
+}
+</style>
 </head>
 <body>
-    <nav>
-        <img src="images/logo.png" alt="Liberty University Rocketry Logo" class="logo-placeholder" loading="lazy" />
-        <span class="hamburger" onclick="toggleMobileMenu()">☰</span>
-        <div class="nav-links" id="navLinks">
-            <a href="#home" onclick="showSection('home'); closeMobileMenu()">Home</a>
-            <a href="#projects" onclick="showSection('projects'); closeMobileMenu()">Projects</a>
-            <div class="dropdown" role="button" aria-expanded="false" tabindex="0" onclick="toggleDropdown(this)">
-                <a href="#" class="dropbtn" aria-haspopup="true">Team</a>
-                <div class="dropdown-content">
-                    <a href="#members" onclick="showSection('members'); toggleDropdown(); closeMobileMenu()">Members</a>
-                    <a href="#subteams" onclick="showSection('subteams'); toggleDropdown(); closeMobileMenu()">Subteams</a>
-                    <a href="#hall-of-fame" onclick="showSection('hall-of-fame'); toggleDropdown(); closeMobileMenu()">Hall of Fame</a>
-                    <a href="#about" onclick="showSection('about'); toggleDropdown(); closeMobileMenu()">About</a>
-                </div>
-            </div>
-            <a href="#sponsors" onclick="showSection('sponsors'); closeMobileMenu()">Sponsors</a>
-            <a href="#" onclick="openMerchStore(event, 'https://liberty-rocketry-shop.fourthwall.com'); closeMobileMenu()">Merchandise</a>
-            <a href="#contact" onclick="showSection('contact'); closeMobileMenu()">Contact</a>
-        </div>
-    </nav>
 
-    <div class="hero-section">
-        <div class="hero-content">
-            <h1>Liberty University Rocketry</h1>
-            <div class="quote">"Pushing the boundaries of innovation, one launch at a time."</div>
-            
-            <div id="countdown" class="countdown-container">
-                <div class="countdown-item">
-                    <span id="days" class="countdown-number">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span id="hours" class="countdown-number">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span id="minutes" class="countdown-number">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-item">
-                    <span id="seconds" class="countdown-number">00</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
-            </div>
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" data-section="home" aria-label="Liberty University Rocketry — home">
+      <img src="images/logo.png" alt="Liberty University Rocketry" />
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+
+    <nav class="nav__menu" id="navMenu" aria-label="Primary">
+      <a class="nav__link" href="#home" data-section="home">Home</a>
+      <a class="nav__link" href="#projects" data-section="projects">Projects</a>
+
+      <div class="nav__group" id="teamGroup">
+        <button class="nav__link" id="teamBtn" aria-expanded="false" aria-controls="teamDrop">Team</button>
+        <div class="nav__drop" id="teamDrop">
+          <a class="nav__link" href="#members" data-section="members">Members</a>
+          <a class="nav__link" href="#subteams" data-section="subteams">Subsystems</a>
+          <a class="nav__link" href="#hall-of-fame" data-section="hall-of-fame">Hall of Fame</a>
+          <a class="nav__link" href="#about" data-section="about">About</a>
         </div>
+      </div>
+
+      <a class="nav__link" href="#sponsors" data-section="sponsors">Sponsors</a>
+      <a class="nav__link" href="#merchandise" data-section="merchandise">Store</a>
+      <a class="nav__link" href="#contact" data-section="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero" id="hero">
+  <div class="hero__content">
+    <span class="eyebrow">Lynchburg, Virginia · ESRA IREC</span>
+    <h1>Liberty University Rocketry</h1>
+    <p class="hero__sub">Pushing the boundaries of innovation, one launch at a time.</p>
+  </div>
+
+  <div class="bar">
+    <div class="bar__inner">
+      <div class="bar__label">
+        <span class="eyebrow">Next launch window</span>
+        <strong>IREC 2027 · Midland, Texas</strong>
+      </div>
+
+      <div class="clock" id="clock" data-target="2027-06-14T08:00:00" role="timer" aria-label="Time until next launch window">
+        <div class="clock__unit"><span class="clock__num" id="cd-d">000</span><span class="clock__lab">Days</span></div>
+        <div class="clock__unit"><span class="clock__num" id="cd-h">00</span><span class="clock__lab">Hrs</span></div>
+        <div class="clock__unit"><span class="clock__num" id="cd-m">00</span><span class="clock__lab">Min</span></div>
+        <div class="clock__unit"><span class="clock__num" id="cd-s">00</span><span class="clock__lab">Sec</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ===================== HOME ===================== -->
+<section class="sec" id="home">
+
+  <div class="intro">
+    <div class="reveal">
+      <span class="eyebrow">Design. Launch. Repeat.</span>
+      <h2>The largest intercollegiate rocketry competition in the world</h2>
+      <p>Liberty Rocketry competes annually in ESRA's International Rocket Engineering Competition. Every June, more than 150 student-led teams from around the world meet in Midland, Texas to design, manufacture, and launch the most stable, most accurate, and most efficient high-powered rocket system possible.</p>
     </div>
 
-    <section id="home">
-        <div id="images-section">
+    <div class="stats reveal">
+      <div class="stat"><b>4</b><span>Vehicles flown</span></div>
+      <div class="stat"><b>55</b><span>Team members</span></div>
+      <div class="stat"><b>8</b><span>Subsystems</span></div>
+      <div class="stat"><b>18<i>/141</i></b><span>IREC 2026 finish</span></div>
+    </div>
+  </div>
 
-            <div class="dlr-card">
-                <h2>Design. Launch. Repeat.</h2>
-                <p>
-                    Liberty Rocketry competes annually in ESRA's International Rocket Engineering Competition - the largest intercollegiate rocketry competition in the world. Every June, over 150 student-led teams from around the world meet in Midland, Texas to pit their wits and engineering prowess against each other in a struggle to design, manufacture, and launch the most stable, most accurate, and most efficient high-powered rocket system possible.
-                </p>
-            </div>
+  <div class="gallery reveal">
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-29%20174112.png" alt="Team members setting up the IREC showcase" loading="lazy" />
+      <figcaption>Setting up the IREC showcase</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203220.png" alt="Propulsion members manufacturing their L2 certification rockets" loading="lazy" />
+      <figcaption>Propulsion — L2 certification builds</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203229.png" alt="Team members developing an airframe design" loading="lazy" />
+      <figcaption>Airframe design review</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203250.png" alt="Team meeting opened by the Chief Engineer" loading="lazy" />
+      <figcaption>Meeting opened by the Chief Engineer</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203314.png" alt="Team preparing to launch" loading="lazy" />
+      <figcaption>Pre-launch preparation</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203321.png" alt="Team collaborating during a build session" loading="lazy" />
+      <figcaption>Build session</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203207.png" alt="Liberty Rocketry team activity" loading="lazy" />
+      <figcaption>In the shop</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203213.png" alt="Liberty Rocketry team activity" loading="lazy" />
+      <figcaption>Component fabrication</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203236.png" alt="Liberty Rocketry team activity" loading="lazy" />
+      <figcaption>Subsystem work</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203243.png" alt="Liberty Rocketry team activity" loading="lazy" />
+      <figcaption>Assembly and fit checks</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203302.png" alt="Liberty Rocketry team activity" loading="lazy" />
+      <figcaption>Testing and validation</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="images/Screenshot%202025-10-02%20203331.png" alt="Liberty Rocketry team activity" loading="lazy" />
+      <figcaption>On the range</figcaption>
+    </figure>
+  </div>
 
-            <div class="images-grid">
-                <div>
-                    <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-29 174112.png" alt="Team members setting up their IREC 2025 showcase." loading="lazy" />
-                    </div>
-                    <p class="image-desc">Team members setting up their IREC 2025 showcase.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203220.png" alt="Propulsion members manufacturing their L2 Certification Rockets" loading="lazy" />
-                    </div>
-                    <p class="image-desc">Propulsion members manufacturing their L2 Certification Rockets</p>
-                </div>
-                <div>
-                    <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203229.png" alt="Team members working diligently on developing a cutting-edge frame design." loading="lazy" />
-                    </div>
-                    <p class="image-desc">Team members working diligently on developing a cutting-edge frame design.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203250.png" alt="Opening of team meetings led by the Chief Engineer." loading="lazy" />
-                    </div>
-                    <p class="image-desc">Opening of team meetings led by the Chief Engineer.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203314.png" alt="Team prepping to launch." loading="lazy" />
-                    </div>
-                    <p class="image-desc">Team prepping to launch.</p>
-                </div>
-                <div>
-                    <div class="image-placeholder" style="border: none; background: none;">
-                        <img src="images/Screenshot 2025-10-02 203321.png" alt="Team collaborating while having fun." loading="lazy" />
-                    </div>
-                    <p class="image-desc">Team collaborating while having fun.</p>
-                </div>
-            </div>
-        </div>
+  <div class="band reveal">
+    <img src="images/Screenshot%202025-09-28%20090938.png" alt="Liberty University Rocketry team photo" loading="lazy" />
+    <div class="band__cap">
+      <span class="eyebrow">Our mission</span>
+      <h3>Engineering for the glory of God</h3>
+      <p>Liberty Rocketry is a student-led engineering competition team of over 50 undergraduates from 7 different majors. Through determination and relentless innovation, our engineers push the limits of collegiate rocketry design far beyond its traditional norms, developing Christ-centered men and women with the values, knowledge, and skills to impact the world for the glory of God.</p>
+    </div>
+  </div>
 
-        <div id="about-section">
-            <img src="images/Screenshot 2025-09-28 090938.png" alt="Team Photo" class="team-photo-placeholder" loading="lazy" />
-            <h2>About Us</h2>
-            <h3>Our Mission</h3>
-            <p>Liberty Rocketry is a competitive student-led engineering competition team composed of over 50 undergraduate students from 7 different majors and areas of study. Through determination and relentless innovation, our team of passionate, creative, and hard-working engineers is dedicated to pushing the limits of collegiate rocketry design far beyond its traditional norms, all while developing Christ-centered men and women with the values, knowledge, and skills essential to impact the world for the glory of God.</p>
-        </div>
+  <div class="closer bleed reveal" style="--closer-img:url('images/Screenshot%202025-09-26%20134848.png')">
+    <div class="closer__inner">
+      <span class="eyebrow">Get involved</span>
+      <h3>Questions, sponsorship, or membership</h3>
+      <p>Reach the team directly and we'll get back to you.</p>
+      <button class="btn btn--flame" data-section="contact">Contact the team</button>
+    </div>
+  </div>
 
-        <div class="bottom-hero">
-            <div id="contact-bottom">
-                <h2>Contact Us</h2>
-                <p>Have questions or want to get involved? Reach out today!</p>
-                <button onclick="showSection('contact'); closeMobileMenu()">Get in Touch</button>
-            </div>
-        </div>
-    </section>
+</section>
 
-    <section id="projects">
-        <h2>Current Projects</h2>
-        <p>Browse our collection of current and past projects.</p>
+<!-- ===================== PROJECTS ===================== -->
+<section class="sec sec--interior" id="projects">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Flight log</span>
+    <h2>Projects</h2>
+    <p class="lede">Four vehicles, four competitions, one trajectory. Every season builds on the data from the last.</p>
+  </div>
 
-        <div class="project-box">
-            <img
-                src="images/Genesis Photo.png"
-                alt="Project Genesis"
-                class="project-image"
-                loading="lazy"
-                decoding="async"
-            />
-            <div class="project-text">
-                <h3>Project Genesis</h3>
-                <p>In 2023, Liberty Rocketry competed for the first time and placed 39th out of the 158 teams, impressing judges and industry leaders alike as the highest-placing first-year team. Performing phenomenally as our first entry in the Spaceport America Cup, Genesis provided our team exceptional experience and a solid foundation to begin our legacy of engineering excellence.</p>
-            </div>
-        </div>
+  <figure class="banner bleed reveal">
+    <img src="images/20240319_5877KT.jpg" alt="Liberty Rocketry launch operations" loading="lazy" />
+    <figcaption>Launch operations</figcaption>
+  </figure>
 
-        <div class="project-box">
-            <img
-                src="images/Waymaker Photo.png"
-                alt="Project Waymaker"
-                class="project-image"
-                loading="lazy"
-                decoding="async"
-            />
-            <div class="project-text">
-                <h3>Project Waymaker</h3>
-                <p>In 2024, Liberty Rocketry took the competition by storm, placing 9th overall, 5th in our division, and 4th in the country, placing above some the biggest names in engineering like Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&amp;M, Rice, and Embry-Riddle, becoming one of the most elite collegiate rocketry teams in the world in only our second year competing.</p>
-            </div>
-        </div>
+  <article class="flight reveal">
+    <div>
+      <span class="flight__year">2023 · Spaceport America Cup</span>
+      <h3 class="flight__name">Project Genesis</h3>
+      <dl class="specs">
+        <div class="spec"><dt>Placement</dt><dd>39 / 158</dd></div>
+        <div class="spec"><dt>Distinction</dt><dd>Top rookie</dd></div>
+        <div class="spec"><dt>Status</dt><dd>Flown</dd></div>
+      </dl>
+      <p>Liberty Rocketry's first entry. Genesis placed 39th out of 158 teams and impressed judges and industry leaders as the highest-placing first-year team, giving the program exceptional experience and a foundation for its legacy of engineering excellence.</p>
+    </div>
+    <div class="flight__media">
+      <img src="images/Genesis%20Photo.png" alt="Project Genesis" loading="lazy" decoding="async" />
+    </div>
+  </article>
 
-        <div class="project-box">
-            <img
-                src="images/Trinity Onshape.png"
-                alt="Project Trinity"
-                class="project-image"
-                loading="lazy"
-                decoding="async"
-            />
-            <div class="project-text">
-                <h3>Project Trinity</h3>
-                <p>In 2025, Liberty Rocketry competed for the third time, placing 9th in technical performance and launch results, staying consistent through a quickly evolving high-powered-rocketry competition. Due to a late technical report, the official standing for Trinity unfortunately dropped down to 57th internationally. This has led to improved team structure changes, management improvements across the board, in an effort to solve the administrative issues holding us back from a top 10 placement.</p>
-            </div>
-        </div>
+  <article class="flight reveal">
+    <div>
+      <span class="flight__year">2024 · Spaceport America Cup</span>
+      <h3 class="flight__name">Project Waymaker</h3>
+      <dl class="specs">
+        <div class="spec"><dt>Overall</dt><dd>9th</dd></div>
+        <div class="spec"><dt>Division</dt><dd>5th</dd></div>
+        <div class="spec"><dt>National</dt><dd>4th</dd></div>
+      </dl>
+      <p>Waymaker took the competition by storm, finishing 9th overall, 5th in division, and 4th in the country — ahead of Stanford, Cornell, Georgia Tech, Purdue, Princeton, Texas Tech, Texas A&amp;M, Rice, and Embry-Riddle. In only its second year, the team had become one of the most elite collegiate rocketry programs in the world.</p>
+    </div>
+    <div class="flight__media">
+      <img src="images/Waymaker%20Photo.png" alt="Project Waymaker" loading="lazy" decoding="async" />
+    </div>
+  </article>
 
-        <div class="project-box">
-            <div class="project-image-placeholder" style="font-size: 4rem; color: #fff;">Ω</div>
-            <div class="project-text">
-                <h3>Project Omega</h3>
-                <p>In 2026, Liberty Rocketry returned to the international stage stronger than ever with our fourth rocket, Omega. Building on a flawless second test launch that achieved less than one percent simulation error, the team brought an exceptionally tuned vehicle to the International Rocket Engineering Competition. Honored with a selection for the prestigious Sunrise Salvo, Omega demonstrated unmatched engineering rigor by becoming only the second rocket in the entire competition to achieve a perfect recovery score, touching down a mere 200 feet from the pad while flawlessly operating a custom active laser engraver payload mid flight. Despite clean telemetry showing no in flight anomalies, the team experienced the heartbreak of underperforming apogee by 800 feet for unidentifiable real world environmental reasons. Nevertheless, Omega earned an elite 18th place finish out of 141 international entries and placed 12th in the highly competitive 10k COTS division, proving that Liberty Rocketry continues to set new standards for collegiate aerospace performance.</p>
-            </div>
-        </div>
-        
-        <div class="project-box">
-            <div class="project-image-placeholder" style="font-size: 4rem; color: #fff;">🚀</div>
-            <div class="project-text">
-                <h3>Revealing Our Next Rocket Soon!</h3>
-                <p>Building on the operational excellence and technical milestones of past seasons, our next project represents our most ambitious engineering endeavor yet. Designed to showcase advanced manufacturing, active drag control systems, and complex payload integration, we are preparing to push the limits of student led rocketry innovation for the 2027 season. Stay tuned!</p>
-            </div>
-        </div>
-    </section>
+  <article class="flight reveal">
+    <div>
+      <span class="flight__year">2025 · IREC</span>
+      <h3 class="flight__name">Project Trinity</h3>
+      <dl class="specs">
+        <div class="spec"><dt>Technical &amp; launch</dt><dd>9th</dd></div>
+        <div class="spec"><dt>Official</dt><dd>57th</dd></div>
+        <div class="spec"><dt>Apogee error</dt><dd>&lt; 3%</dd></div>
+      </dl>
+      <p>Trinity placed 9th in technical performance and launch results, holding consistent through a rapidly evolving competition. A late technical report dropped the official standing to 57th internationally — a result that drove sweeping structural and management reform to eliminate the administrative failures holding the team back from a top-ten finish.</p>
+    </div>
+    <div class="flight__media">
+      <img src="images/Trinity%20Onshape.png" alt="Project Trinity CAD model" loading="lazy" decoding="async" />
+    </div>
+  </article>
 
-    <section id="members">
-        <h2>Our Team of Innovators</h2>
-        <p>Meet the dedicated students and faculty pushing the boundaries of rocketry.</p>
-        <h3>Executive Leadership</h3>
-        <div class="members-grid" id="executive-leadership">
-            <div class="member">
-                <div class="subteam-image-placeholder" style="font-size: 3rem; color: #fff; border-radius: 50%; width: 250px; height: 250px;">?</div>
-                <h4>To Be Revealed</h4>
-                <p>Chief Engineer</p>
-                <p>"Leading the next era of engineering excellence."</p>
-                <p>The Chief Engineer oversees all engineering decisions, simulations, calculations, and technical subteam integrations across the entire vehicle architecture.</p>
-            </div>
-            <div class="member">
-                <div class="subteam-image-placeholder" style="font-size: 3rem; color: #fff; border-radius: 50%; width: 250px; height: 250px;">?</div>
-                <h4>To Be Revealed</h4>
-                <p>Project Manager</p>
-                <p>"Driving operational innovation."</p>
-                <p>The Project Manager directs team logistics, financial planning, timeline management, process optimization, and corporate partner development.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-09-26 082656.png" alt="Judah Finely" loading="lazy" />
-                <h4>Judah Finely</h4>
-                <p>Lead Manufacturer</p>
-                <p>"The first rule is to have fun. The second rule is safety first."</p>
-                <p>I oversee the manufacturing and production of Liberty Rocketry's high-power rockets for our team of 55 members. As manufacturing lead, I outline design processes for all components and approve plans developed by sub teams. It is my job to enforce all team and university safety standards with final say on all manufacturing methods and procedures.</p>
-            </div>
-        </div>
+  <article class="flight reveal">
+    <div>
+      <span class="flight__year">2026 · IREC</span>
+      <h3 class="flight__name">Project Omega</h3>
+      <dl class="specs">
+        <div class="spec"><dt>Overall</dt><dd>18 / 141</dd></div>
+        <div class="spec"><dt>10K COTS</dt><dd>12th</dd></div>
+        <div class="spec"><dt>Recovery</dt><dd>Perfect</dd></div>
+        <div class="spec"><dt>Landing</dt><dd>200 ft</dd></div>
+      </dl>
+      <p>Omega returned to the international stage stronger than ever. Building on a second test launch with under one percent simulation error, the team brought an exceptionally tuned vehicle to Midland and earned selection for the prestigious Sunrise Salvo. Omega became only the second rocket in the entire competition to achieve a perfect recovery score, touching down 200 feet from the pad while flying a custom active laser engraver payload. Despite clean telemetry showing no in-flight anomalies, apogee came in 800 feet under target for environmental reasons that remain unidentified — and Omega still finished 18th of 141 international entries and 12th in the highly competitive 10K COTS division.</p>
+    </div>
+    <div class="flight__media flight__media--photo">
+      <img src="images/DSC_7520.JPG" alt="Project Omega at competition" loading="lazy" decoding="async" />
+    </div>
+  </article>
 
-        <h3>Subteam Leadership</h3>
-        <div class="members-grid" id="subteam-leadership">
-            <div class="member">
-                <img src="images/Screenshot 2025-10-04 125457.png" alt="Zizai Liu" loading="lazy" />
-                <h4>Zizai Liu</h4>
-                <p>Aerodynamics Lead</p>
-                <p>“Failure to launch” isn’t a rom-com. It’s Tuesday at the test stand."</p>
-                <p>This year, the Aerodynamics Sub-Team is focusing on researching experimental aerodynamic components while improving our manufacturing processes. My goal is to ensure every member develops strong technical skills in rocket performance analysis and gains hands-on experience in manufacturing. By combining innovative design with practical training, we are building a team prepared to advance Liberty Rocketry’s mission and success at competition.</p>
-            </div>
-            <div class="member">
-                 <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22250%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22250%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-family%3D%22sans-serif%22%3ESteele%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Steele Fritche" loading="lazy" />
-                <h4>Steele Fritche</h4>
-                <p>Avionics Lead</p>
-                <p>"Precision is key."</p>
-                <p>Leading the Avionics subteam, focusing on system integration and ensuring reliable data acquisition during flight. My role involves overseeing the implementation of custom PCB designs and rigorous software testing to guarantee optimal performance under launch conditions.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-10-04 125914.png" alt="Caden Solle" loading="lazy" />
-                <h4>Caden Solle</h4>
-                <p>Payload Lead</p>
-                <p>"A person who thinks all the time has nothing to think about except thoughts."</p>
-                <p>The Payload subteam focuses on designing, building, and testing the competition payload for our IREC rocket. This part of the rocket is open to a lot of creative freedom, and this year our project of choice is creating a galvanometric laser engraver. The laser engraver integrates mechanical, electrical, and computer engineering to demonstrate precision manufacturing in a compact form. Our goal is to deliver a fully functional payload that showcases engineering innovation while meeting the IREC technical requirements.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-10-07 155842.png" alt="Joshua Blottenberger, Propulsion Lead" loading="lazy" />
-                <h4>Joshua Blottenberger</h4>
-                <p>Propulsion Lead</p>
-                <p>"Leading Propulsion, fueling innovation"</p>
-                <p>The Propulsion Sub-team is responsible for selecting motors for both subscale and full-scale launches, integrating them into the rocket, and managing related components such as connecting the boattail to the vehicle. We work closely with other sub-teams to ensure propulsion requirements align with overall mission goals, including achieving target altitudes. Our primary focus is the development of SRAD (Student Researched and Developed) solid motors. Currently, we are designing J-class motor casings and working toward approval to begin initial fuel mixing, paving the way for M-class motors and more advanced propellants in future competitions.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-10-07 162231.png" alt="Owen Offman, Recovery Lead" loading="lazy" />
-                <h4>Owen Offman</h4>
-                <p>Recovery Lead</p>
-                <p>"...every day above ground is a great day. Remember that" - Mr. Worldwide</p>
-                <p>Recovery is a dedicated subteam within Liberty Rocketry focused on the recovery systems of our rockets, ensuring safe and controlled descents after launches. We design, fabricate, and test parachute deployment mechanisms, shock cords, and other recovery components critical for preserving rocket integrity during landing. Our responsibilities include thorough testing of recovery systems under various conditions to guarantee reliability and performance in actual launch scenarios. As a pivotal part of the rocket design process, we collaborate closely with other subteams to integrate our systems seamlessly into the overall rocket architecture.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-10-07 160621.png" alt="Caden Palmer, Media Manager" loading="lazy" />
-                <h4>Caden Palmer</h4>
-                <p>Media Manager</p>
-                <p>"The Team has a story to be told, we're just the ones with the camera."</p>
-                <p>The Media Team is responsible for any digital and graphic needs of the team, as well as team documentation. The culminating task of this team is to produce Liberty Rocketry's IREC competition video which encompasses the entire year of the team's rocket building process, from conception to final launch.</p>
-            </div>
-        </div>
+  <article class="flight reveal">
+    <div>
+      <span class="flight__year">2027 · In development</span>
+      <h3 class="flight__name">Next vehicle — reveal pending</h3>
+      <dl class="specs">
+        <div class="spec"><dt>Airframe</dt><dd>Undisclosed</dd></div>
+        <div class="spec"><dt>Control</dt><dd>Active drag</dd></div>
+        <div class="spec"><dt>Payload</dt><dd>Integrated</dd></div>
+      </dl>
+      <p>Building on the operational excellence and technical milestones of past seasons, our next project is our most ambitious engineering endeavor yet — designed to showcase advanced manufacturing, active drag control, and complex payload integration for the 2027 season.</p>
+    </div>
+    <div class="flight__media">
+      <div class="classified">
+        <span class="classified__mark">▲</span>
+        <span class="classified__note">Reveal pending</span>
+      </div>
+    </div>
+  </article>
+</section>
 
-        <h3>General Team Members</h3>
-        <div class="general-members-container">
+<!-- ===================== MEMBERS ===================== -->
+<section class="sec sec--interior" id="members">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Personnel</span>
+    <h2>Our team of innovators</h2>
+    <p class="lede">The students and faculty pushing the boundaries of collegiate rocketry.</p>
+  </div>
 
-            <div class="general-members-group">
-                <h4>Project Management</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">Gerald Weaver</span>
-                        <span class="member-role">Assistant Project Manager</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Nicholas Hansing</span>
-                        <span class="member-role">Administrative Coordinator</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Juan Vasco</span>
-                        <span class="member-role">Administrative Coordinator</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Ben Parker</span>
-                        <span class="member-role">Administrative Coordinator</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Jeremiah Robles</span>
-                        <span class="member-role">Administrative Coordinator</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="general-members-group">
-                <h4>Media</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">Devon Gregory</span>
-                        <span class="member-role">Videographer/Video Editor</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Malcolm Beal</span>
-                        <span class="member-role">Graphic Designer</span>
-                    </div>
-                </div>
-            </div>
+  <figure class="banner bleed reveal">
+    <img src="images/teamphoto1.png" alt="Liberty Rocketry team" loading="lazy" />
+    <figcaption>The 2025–26 team</figcaption>
+  </figure>
 
-            <div class="general-members-group">
-                <h4>Aerodynamics</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">Andy Keathley</span>
-                        <span class="member-role">Assistant Aerodynamics Lead</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Matthew Cook</span>
-                        <span class="member-role">Fluid Dynamics Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Jason Hultgren</span>
-                        <span class="member-role">Lower Airframe Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Preston Plyler</span>
-                        <span class="member-role">Airframe Research Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Joseph Holt</span>
-                        <span class="member-role">Structural Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Sam Worthington</span>
-                        <span class="member-role">Senior Airbrakes Engineer</span>
-                    </div>
-                </div>
-            </div>
+  <div class="subhead reveal"><h3>Executive Leadership</h3><span>Command</span></div>
+  <div class="grid-people reveal">
+    <article class="person">
+      <div class="person__tile"><b>CE</b><span>To be revealed</span></div>
+      <div class="person__body">
+        <h4>To be revealed</h4>
+        <div class="person__role">Chief Engineer</div>
+        <p class="person__quote">Leading the next era of engineering excellence.</p>
+        <p class="person__bio">The Chief Engineer oversees all engineering decisions, simulations, calculations, and technical subsystem integration across the entire vehicle architecture.</p>
+      </div>
+    </article>
 
-            <div class="general-members-group">
-                <h4>Payload</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">Noah Liscom</span>
-                        <span class="member-role">Vibration Energy Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Joshua DeLoach</span>
-                        <span class="member-role">Data Acquisition &amp; Power Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Andrew Hollo</span>
-                        <span class="member-role">Payload Integration Engineer</span>
-                    </div>
-                </div>
-            </div>
+    <article class="person">
+      <div class="person__tile"><b>PM</b><span>To be revealed</span></div>
+      <div class="person__body">
+        <h4>To be revealed</h4>
+        <div class="person__role">Project Manager</div>
+        <p class="person__quote">Driving operational innovation.</p>
+        <p class="person__bio">The Project Manager directs team logistics, financial planning, timeline management, process optimization, and corporate partner development.</p>
+      </div>
+    </article>
 
-            <div class="general-members-group">
-                <h4>Propulsion</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">Collin Quirke</span>
-                        <span class="member-role">Assistant Propulsion Lead</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Nathan Daley</span>
-                        <span class="member-role">Energetics Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Brycen Vann</span>
-                        <span class="member-role">Casing Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Aiden Walter</span>
-                        <span class="member-role">Senior Technical Operations Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">John Moody</span>
-                        <span class="member-role">Senior Energetics Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Inara Redinger</span>
-                        <span class="member-role">Senior Technical Operations Engineer</span>
-                    </div>
-                </div>
-            </div>
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-09-26%20082656.png" alt="Judah Finely" loading="lazy" />
+      <div class="person__body">
+        <h4>Judah Finely</h4>
+        <div class="person__role">Lead Manufacturer</div>
+        <p class="person__quote">The first rule is to have fun. The second rule is safety first.</p>
+        <p class="person__bio">I oversee the manufacturing and production of Liberty Rocketry's high-power rockets for our team of 55 members. As manufacturing lead, I outline design processes for all components and approve plans developed by subteams, and I enforce all team and university safety standards with final say on manufacturing methods and procedures.</p>
+      </div>
+    </article>
+  </div>
 
-            <div class="general-members-group">
-                <h4>Recovery</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">Jacob Ekstrom</span>
-                        <span class="member-role">Assistant Recovery Lead</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Aaron Earwood</span>
-                        <span class="member-role">Modeling &amp; Simulation Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Jordan Steele</span>
-                        <span class="member-role">Mathematical Analysis Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Preston Van Schaik</span>
-                        <span class="member-role">Recovery Research Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Josiah Stein</span>
-                        <span class="member-role">Mathematical Analysis Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Zixuan Chen</span>
-                        <span class="member-role">Recovery Research Engineer</span>
-                    </div>
-                </div>
-            </div>
+  <div class="subhead reveal"><h3>Subsystem Leadership</h3><span>Technical leads</span></div>
+  <div class="grid-people reveal">
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-10-04%20125457.png" alt="Zizai Liu" loading="lazy" />
+      <div class="person__body">
+        <h4>Zizai Liu</h4>
+        <div class="person__role">Aerodynamics Lead</div>
+        <p class="person__quote">"Failure to launch" isn't a rom-com. It's Tuesday at the test stand.</p>
+        <p class="person__bio">This year the Aerodynamics subteam is researching experimental aerodynamic components while improving our manufacturing processes. My goal is for every member to develop strong technical skills in rocket performance analysis and gain hands-on manufacturing experience.</p>
+      </div>
+    </article>
 
-            <div class="general-members-group">
-                <h4>Avionics</h4>
-                <div class="general-members-list">
-                    <div class="general-member-item">
-                        <span class="member-name">David Bantseev</span>
-                        <span class="member-role">Radio Frequency Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Micah Baxter</span>
-                        <span class="member-role">Avionics Design Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Ariel Brandt</span>
-                        <span class="member-role">Flight Computer Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Nathan Bruckner</span>
-                        <span class="member-role">Live Video Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Bradley Campbell</span>
-                        <span class="member-role">Flight Computer Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Megan Hedrick</span>
-                        <span class="member-role">Avionics Design Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Jack Harris</span>
-                        <span class="member-role">Live Video Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Sarah Hilliard</span>
-                        <span class="member-role">Senior Design Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Jonathan Labruto</span>
-                        <span class="member-role">Flight Computer Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Brook Ledford</span>
-                        <span class="member-role">Ground Station Engineer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Owen Sabold</span>
-                        <span class="member-role">Avionics Software Developer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Sawyer Salvigsen</span>
-                        <span class="member-role">Avionics Software Developer</span>
-                    </div>
-                    <div class="general-member-item">
-                        <span class="member-name">Ruben Wahrenburger</span>
-                        <span class="member-role">Live Video Engineer</span>
-                    </div>
-                </div>
-            </div>
+    <article class="person">
+      <div class="person__tile"><b>SF</b><span>Photo pending</span></div>
+      <div class="person__body">
+        <h4>Steele Fritche</h4>
+        <div class="person__role">Avionics Lead</div>
+        <p class="person__quote">Precision is key.</p>
+        <p class="person__bio">Leading the Avionics subteam with a focus on system integration and reliable data acquisition during flight. My role covers custom PCB design implementation and rigorous software testing to guarantee performance under launch conditions.</p>
+      </div>
+    </article>
 
-        </div>
-    </section>
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-10-04%20125914.png" alt="Caden Solle" loading="lazy" />
+      <div class="person__body">
+        <h4>Caden Solle</h4>
+        <div class="person__role">Payload Lead</div>
+        <p class="person__quote">A person who thinks all the time has nothing to think about except thoughts.</p>
+        <p class="person__bio">Payload designs, builds, and tests the competition payload for our IREC rocket. This year's project is a galvanometric laser engraver, integrating mechanical, electrical, and computer engineering to demonstrate precision manufacturing in a compact form.</p>
+      </div>
+    </article>
 
-    <section id="subteams">
-        <h2>Our Subteams</h2>
-        <p>Our team is divided into eight technical teams: aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media.</p>
-        <div class="subteams-grid">
-            <div class="subteam">
-                <h3>Aerodynamics</h3>
-                <p>The Aerodynamics team focuses on designing and optimizing the rocket’s aerostructures for stability and efficiency. They validate and test airframe materials to ensure compliance with competition requirements. The team collaborates on manufacturing processes to realize their designs.</p>
-            </div>
-            <div class="subteam">
-                <h3>Avionics</h3>
-                <p>The Avionics team designs the rocket’s electronic systems and experimental payload. They validate and test components for reliability under flight conditions. The team coordinates with other sub-systems for seamless integration.</p>
-            </div>
-            <div class="subteam">
-                <h3>Payload</h3>
-                <p>The Payload team develops the experimental payload for the rocket. They focus on validation and testing to ensure functionality. The team works to integrate the payload with overall rocket systems.</p>
-            </div>
-            <div class="subteam">
-                <h3>Propulsion</h3>
-                <p>The Propulsion team selects and validates the rocket’s motor for optimal performance. They document decisions and ensure rule compliance. The team collaborates on motor integration manufacturing.</p>
-            </div>
-            <div class="subteam">
-                <h3>Recovery</h3>
-                <p>The Recovery team designs systems for safe rocket retrieval post-launch. They validate and test components for reliability. The team cooperates on manufacturing recovery elements.</p>
-            </div>
-            <div class="subteam">
-                <h3>Manufacturing</h3>
-                <p>The Manufacturing team manages production processes and lab safety. They develop component fabrication plans and organize assembly. The team handles facility access and safety compliance.</p>
-            </div>
-            <div class="subteam">
-                <h3>Project Management</h3>
-                <p>The Project Management team oversees logistics, budgets, and deadlines. They compile reports and coordinate travel and events. The team tracks progress and manages media.</p>
-            </div>
-            <div class="subteam">
-                <h3>Media</h3>
-                <p>The Media team handles media and public relations. They create content showcasing team activities. The team organizes community outreach to promote the mission.</p>
-            </div>
-        </div>
-    </section>
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-10-07%20155842.png" alt="Joshua Blottenberger" loading="lazy" />
+      <div class="person__body">
+        <h4>Joshua Blottenberger</h4>
+        <div class="person__role">Propulsion Lead</div>
+        <p class="person__quote">Leading propulsion, fueling innovation.</p>
+        <p class="person__bio">Propulsion selects motors for subscale and full-scale launches, integrates them into the vehicle, and manages related components. Our primary focus is student-researched and developed solid motors — currently J-class casings, working toward approval for initial fuel mixing and, eventually, M-class motors.</p>
+      </div>
+    </article>
 
-    <section id="hall-of-fame">
-        <h2>Hall of Fame</h2>
-        <p>Honoring our past members and achievements.</p>
-        <div class="members-grid">
-            <div class="member">
-                <img src="images/LukeKrickHeadshot.jpeg" alt="Luke Krick" loading="lazy" />
-                <h4>Luke Krick</h4>
-                <p>Mechanical Engineering, Spring 2026</p>
-                <p>"You are going to have to help me on what you are looking for here"</p>
-                <p><strong>Major Achievements:</strong> Trinity achieved an under 3% accuracy during competition, led the largest team Liberty Rocketry has had, team achieved the highest technical score we have had.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-09-27 202409.png" alt="Joshua Cowell" loading="lazy" />
-                <h4>Joshua Cowell</h4>
-                <p>Chief Engineer, Project Omega (2025–2026)</p>
-                <p>"Just keep swimming"</p>
-                <p><strong>Major Achievements:</strong> Spearheaded total technical design and flight calculations for Project Omega, leading the team to a Top 20 international placement, 12th in the 10k COTS division, and a perfect recovery score at IREC 2026.</p>
-            </div>
-            <div class="member">
-                <img src="images/Screenshot 2025-10-04 124339.png" alt="Kaden Newsome" style="object-position: center top;" loading="lazy" />
-                <h4>Kaden Newsome</h4>
-                <p>Project Manager, Project Omega (2025–2026)</p>
-                <p>"Stay curious."</p>
-                <p><strong>Major Achievements:</strong> Oversaw comprehensive operational restructuring, budgeting, and administrative overhauls, solving legacy submission issues and delivering a top-tier technical report score of 187.33/200.</p>
-            </div>
-            <div class="member">
-                <img src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22250%22%20height%3D%22250%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22250%22%20height%3D%22250%22%20fill%3D%22%23333%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%20dy%3D%22.3em%22%20font-family%3D%22sans-serif%22%3EPrice%3C%2Ftext%3E%3C%2Fsvg%3E" alt="Price Drawdy" loading="lazy" />
-                <h4>Price Drawdy</h4>
-                <p>Avionics Lead, Project Omega (2025–2026)</p>
-                <p>"Innovation in every circuit."</p>
-                <p><strong>Major Achievements:</strong> Co-led the Avionics subteam in developing redundant flight computers, custom PCB designs, and live ground station telemetry, contributing to an elite Top 20 international finish and special judge recognition at IREC 2026.</p>
-            </div>
-        </div>
-    </section>
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-10-07%20162231.png" alt="Owen Offman" loading="lazy" />
+      <div class="person__body">
+        <h4>Owen Offman</h4>
+        <div class="person__role">Recovery Lead</div>
+        <p class="person__quote">Every day above ground is a great day.</p>
+        <p class="person__bio">Recovery focuses on safe, controlled descent after launch. We design, fabricate, and test parachute deployment mechanisms, shock cords, and other components critical to preserving vehicle integrity at landing, then verify them under a range of conditions.</p>
+      </div>
+    </article>
 
-    <section id="about">
-        <h2>Who We Are</h2>
-        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px;">
-            <div style="flex: 1; display: flex; flex-direction: column;">
-                <h3>Engineering Extraordinaire</h3>
-                <p>Our near-completely student-led and student-started team works together to honor God in engineering by pursuing excellence in every aspect of our rocketry projects. From design and build to launch, we collaborate across disciplines, fostering hands-on experience and skill development that prepares us for future careers while glorifying God through our dedication and innovation.</p>
-            </div>
-            <img src="images/Screenshot 2025-09-26 134824.png" alt="Liberty Rocketry Team" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;" loading="lazy" />
-        </div>
-        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-top: 40px;">
-            <img src="images/Screenshot 2025-09-27 232845.png" alt="Liberty Rocketry Team 2" style="flex: 1; max-width: 50%; height: auto; border-radius: 8px;" loading="lazy" />
-            <div style="flex: 1; display: flex; flex-direction: column;">
-                <h3>God &amp; Goals</h3>
-                <p>As a Christian university, we seek to do God's will and fulfill the Great Commission by spreading the gospel through our work in rocketry, bringing glory to God's name. We show our love for Christ by spending time with the Lord at the beginning of every event and meeting, keeping Christ at the center of it all. Our team, divided into eight technical teams - aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media - collaborates to design, build, and launch rockets, providing hands-on experience and skill training for future careers. In just three years, we've grown from a small group to one of the world's top aerospace competition teams.</p>
-            </div>
-        </div>
-    </section>
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-10-07%20160621.png" alt="Caden Palmer" loading="lazy" />
+      <div class="person__body">
+        <h4>Caden Palmer</h4>
+        <div class="person__role">Media Manager</div>
+        <p class="person__quote">The team has a story to be told. We're just the ones with the camera.</p>
+        <p class="person__bio">Media handles the team's digital and graphic needs as well as documentation. Our culminating task is Liberty Rocketry's IREC competition video, covering the full year of the build from conception to final launch.</p>
+      </div>
+    </article>
+  </div>
 
-    <section id="sponsors">
-        <h2>Our Partners in Exploration</h2>
-        <p>Thanks to our sponsors for fueling our journey. Join them in supporting the next generation of space engineers.</p>
-        <p>All donations go directly towards enabling Liberty Rocketry to become the best collegiate rocketry team in the world. By supporting us, sponsors will gain direct exposure to some of the most dedicated and promising students in engineering as well as widespread visibility through our international competitions! All donations to the team are tax deductible.</p>
-        <h3>Sponsor Tiers</h3>
-        <div class="sponsors-table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Benefit</th>
-                        <th>Bronze ($500+)</th>
-                        <th>Silver ($1,000+)</th>
-                        <th>Gold ($2,500+)</th>
-                        <th>Platinum ($5,000+)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Sponsor logo featured on team website</td>
-                        <td>✓</td><td>✓</td><td>✓</td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Access to team resume book</td>
-                        <td>✓</td><td>✓</td><td>✓</td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Sponsor logo featured on team apparel</td>
-                        <td></td><td>✓</td><td>✓</td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Design and competition progress updates</td>
-                        <td></td><td></td><td>✓</td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Social media recognition</td>
-                        <td></td><td></td><td>✓</td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Access to team designs and technical report</td>
-                        <td></td><td></td><td></td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Large logo and prime location on team merchandise</td>
-                        <td></td><td></td><td></td><td>✓</td>
-                    </tr>
-                    <tr>
-                        <td>Company photo launched and recovered at competition</td>
-                        <td></td><td></td><td></td><td>✓</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="sponsor-cta">
-            <a href="downloads/4 Liberty Rocketry Sponsorship Packet.pdf" class="download-btn" download>Download Our Sponsor Pack</a>
-            <p>Interested in becoming a sponsor? Check out our sponsor packet! Contact us at libertyrocketry@gmail.com or oshobayo@liberty.edu.</p>
-        </div>
-        <p>Thank you to our sponsors for supporting our goals!</p>
-        <div class="sponsors" id="sponsors-container">
-            <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180250.png" alt="Deep Earth Logic Logo" loading="lazy" />
-            </div>
-            <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180241.png" alt="North Georgia Truss Systems Logo" loading="lazy" />
-            </div>
-            <div class="sponsor">
-                <img src="images/ansyslogowhite.png" alt="Ansys Logo" loading="lazy" />
-            </div>
-            <div class="sponsor">
-                <img src="images/Screenshot 2025-10-29 180157.png" alt="Onshape Logo" loading="lazy" />
-            </div>
-            <div class="sponsor">
-                <img src="images/3dconnexion-logo-3078880038.png" alt="3Dconnexion Logo" loading="lazy" />
-            </div>
-            <div class="sponsor">
-                <img src="images/bwxt logo.png" alt="BWXT Logo" loading="lazy" />
-            </div>
-        </div>
-    </section>
+  <div class="subhead reveal"><h3>Team Roster</h3><span>Active members</span></div>
 
-    <section id="merchandise">
-        <h2>Merchandise Store</h2>
-        <p>Rep the team and support our journey to the International Rocket Engineering Competition. Every purchase directly funds our research, manufacturing, and launch operations!</p>
-        
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="#" onclick="openMerchStore(event, 'https://liberty-rocketry-shop.fourthwall.com')" class="download-btn" style="font-size: 1.5rem; padding: 15px 40px; display: inline-block;">
-                Shop Official Gear
-            </a>
-        </div>
-    </section>
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Project Management</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>Gerald Weaver</b><span>Assistant Project Manager</span></div>
+      <div class="roster__row"><b>Nicholas Hansing</b><span>Administrative Coordinator</span></div>
+      <div class="roster__row"><b>Juan Vasco</b><span>Administrative Coordinator</span></div>
+      <div class="roster__row"><b>Ben Parker</b><span>Administrative Coordinator</span></div>
+      <div class="roster__row"><b>Jeremiah Robles</b><span>Administrative Coordinator</span></div>
+    </div>
+  </div>
 
-    <!-- CONTACT SECTION (DIRECT EMAIL ONLY) -->
-    <section id="contact">
-        <h2>Get in Touch</h2>
-        <p>Reach out for sponsorships, membership, or collaborations.</p>
-        <p>Address: Liberty University, Lynchburg, VA</p>
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Media</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>Devon Gregory</b><span>Videographer / Editor</span></div>
+      <div class="roster__row"><b>Malcolm Beal</b><span>Graphic Designer</span></div>
+    </div>
+  </div>
 
-        <div class="contact-box-simple">
-            <h3>Contact Us Directly</h3>
-            <p>For any inquiries, please reach out to us via email at:</p>
-            <p style="font-size: 1.8rem; margin-top: 15px;">
-                <a href="mailto:libertyrocketry@gmail.com" class="email-link-highlight">libertyrocketry@gmail.com</a>
-            </p>
-        </div>
-    </section>
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Aerodynamics</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>Andy Keathley</b><span>Assistant Aerodynamics Lead</span></div>
+      <div class="roster__row"><b>Matthew Cook</b><span>Fluid Dynamics Engineer</span></div>
+      <div class="roster__row"><b>Jason Hultgren</b><span>Lower Airframe Engineer</span></div>
+      <div class="roster__row"><b>Preston Plyler</b><span>Airframe Research Engineer</span></div>
+      <div class="roster__row"><b>Joseph Holt</b><span>Structural Engineer</span></div>
+      <div class="roster__row"><b>Sam Worthington</b><span>Senior Airbrakes Engineer</span></div>
+    </div>
+  </div>
 
-    <footer>
-        &copy; 2025 Liberty University Rocketry | Established 2023
-    </footer>
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Payload</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>Noah Liscom</b><span>Vibration Energy Engineer</span></div>
+      <div class="roster__row"><b>Joshua DeLoach</b><span>Data Acquisition &amp; Power</span></div>
+      <div class="roster__row"><b>Andrew Hollo</b><span>Payload Integration Engineer</span></div>
+    </div>
+  </div>
 
-    <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('section').forEach(sec => {
-                sec.style.display = 'none';
-            });
-            document.getElementById(sectionId).style.display = 'block';
-            setTimeout(() => {
-                document.getElementById(sectionId).classList.add('visible');
-            }, 100);
-            const hero = document.querySelector('.hero-section');
-            hero.style.display = (sectionId === 'home' ? 'flex' : 'none');
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Propulsion</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>Collin Quirke</b><span>Assistant Propulsion Lead</span></div>
+      <div class="roster__row"><b>Nathan Daley</b><span>Energetics Engineer</span></div>
+      <div class="roster__row"><b>Brycen Vann</b><span>Casing Engineer</span></div>
+      <div class="roster__row"><b>Aiden Walter</b><span>Senior Technical Operations</span></div>
+      <div class="roster__row"><b>John Moody</b><span>Senior Energetics Engineer</span></div>
+      <div class="roster__row"><b>Inara Redinger</b><span>Senior Technical Operations</span></div>
+    </div>
+  </div>
+
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Recovery</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>Jacob Ekstrom</b><span>Assistant Recovery Lead</span></div>
+      <div class="roster__row"><b>Aaron Earwood</b><span>Modeling &amp; Simulation Engineer</span></div>
+      <div class="roster__row"><b>Jordan Steele</b><span>Mathematical Analysis Engineer</span></div>
+      <div class="roster__row"><b>Preston Van Schaik</b><span>Recovery Research Engineer</span></div>
+      <div class="roster__row"><b>Josiah Stein</b><span>Mathematical Analysis Engineer</span></div>
+      <div class="roster__row"><b>Zixuan Chen</b><span>Recovery Research Engineer</span></div>
+    </div>
+  </div>
+
+  <div class="roster reveal">
+    <div class="subhead" style="border-bottom-color:var(--line-2)"><h3 style="font-size:1rem">Avionics</h3></div>
+    <div class="roster__rows">
+      <div class="roster__row"><b>David Bantseev</b><span>Radio Frequency Engineer</span></div>
+      <div class="roster__row"><b>Micah Baxter</b><span>Avionics Design Engineer</span></div>
+      <div class="roster__row"><b>Ariel Brandt</b><span>Flight Computer Engineer</span></div>
+      <div class="roster__row"><b>Nathan Bruckner</b><span>Live Video Engineer</span></div>
+      <div class="roster__row"><b>Bradley Campbell</b><span>Flight Computer Engineer</span></div>
+      <div class="roster__row"><b>Megan Hedrick</b><span>Avionics Design Engineer</span></div>
+      <div class="roster__row"><b>Jack Harris</b><span>Live Video Engineer</span></div>
+      <div class="roster__row"><b>Sarah Hilliard</b><span>Senior Design Engineer</span></div>
+      <div class="roster__row"><b>Jonathan Labruto</b><span>Flight Computer Engineer</span></div>
+      <div class="roster__row"><b>Brook Ledford</b><span>Ground Station Engineer</span></div>
+      <div class="roster__row"><b>Owen Sabold</b><span>Avionics Software Developer</span></div>
+      <div class="roster__row"><b>Sawyer Salvigsen</b><span>Avionics Software Developer</span></div>
+      <div class="roster__row"><b>Ruben Wahrenburger</b><span>Live Video Engineer</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SUBSYSTEMS ===================== -->
+<section class="sec sec--interior" id="subteams">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Organization</span>
+    <h2>Subsystems</h2>
+    <p class="lede">The team is divided into eight technical groups. Each owns its hardware end to end — design, validation, manufacture, and integration.</p>
+  </div>
+
+  <figure class="banner bleed reveal">
+    <img src="images/Screenshot%202025-09-28%20090949.png" alt="Liberty Rocketry subsystem work" loading="lazy" />
+    <figcaption>Eight subsystems, one vehicle</figcaption>
+  </figure>
+
+  <div class="grid-units reveal">
+    <div class="unit">
+      <span class="unit__code">AERO</span>
+      <h3>Aerodynamics</h3>
+      <p>Designs and optimizes the rocket's aerostructures for stability and efficiency, validates and tests airframe materials against competition requirements, and works with manufacturing to realize those designs.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">AVI</span>
+      <h3>Avionics</h3>
+      <p>Designs the vehicle's electronic systems and flight computers, validates components for reliability under flight conditions, and coordinates with every other subsystem for clean integration.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">PAY</span>
+      <h3>Payload</h3>
+      <p>Develops the experimental payload, focusing on validation and testing to prove functionality, then integrates it with the overall vehicle.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">PROP</span>
+      <h3>Propulsion</h3>
+      <p>Selects and validates the motor for optimal performance, documents decisions for rule compliance, and collaborates on motor integration and manufacture.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">REC</span>
+      <h3>Recovery</h3>
+      <p>Designs the systems that bring the vehicle back safely, validates and tests every component for reliability, and manufactures the recovery hardware.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">MFG</span>
+      <h3>Manufacturing</h3>
+      <p>Manages production processes and lab safety, develops component fabrication plans, organizes assembly, and handles facility access and safety compliance.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">PM</span>
+      <h3>Project Management</h3>
+      <p>Oversees logistics, budgets, and deadlines. Compiles reports, coordinates travel and events, and tracks progress across the program.</p>
+    </div>
+    <div class="unit">
+      <span class="unit__code">MEDIA</span>
+      <h3>Media</h3>
+      <p>Handles media and public relations, creates content showcasing team activities, and organizes community outreach to promote the mission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HALL OF FAME ===================== -->
+<section class="sec sec--interior" id="hall-of-fame">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Alumni</span>
+    <h2>Hall of Fame</h2>
+    <p class="lede">Honoring the members whose work set the standard the current team builds on.</p>
+  </div>
+
+  <div class="grid-people reveal">
+    <article class="person">
+      <img class="person__photo" src="images/LukeKrickHeadshot.jpeg" alt="Luke Krick" loading="lazy" />
+      <div class="person__body">
+        <h4>Luke Krick</h4>
+        <div class="person__role">Mechanical Engineering · Spring 2026</div>
+        <p class="person__bio">Led the largest team Liberty Rocketry has fielded and drove Trinity to under 3% apogee accuracy at competition alongside the highest technical score in program history.</p>
+      </div>
+    </article>
+
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-09-27%20202409.png" alt="Joshua Cowell" loading="lazy" />
+      <div class="person__body">
+        <h4>Joshua Cowell</h4>
+        <div class="person__role">Chief Engineer · Omega 2025–26</div>
+        <p class="person__quote">Just keep swimming.</p>
+        <p class="person__bio">Spearheaded the technical design and flight calculations for Project Omega, leading the team to a top-20 international placement, 12th in the 10K COTS division, and a perfect recovery score at IREC 2026.</p>
+      </div>
+    </article>
+
+    <article class="person">
+      <img class="person__photo" src="images/Screenshot%202025-10-04%20124339.png" alt="Kaden Newsome" style="object-position:center top" loading="lazy" />
+      <div class="person__body">
+        <h4>Kaden Newsome</h4>
+        <div class="person__role">Project Manager · Omega 2025–26</div>
+        <p class="person__quote">Stay curious.</p>
+        <p class="person__bio">Oversaw comprehensive operational restructuring, budgeting, and administrative overhaul — solving legacy submission failures and delivering a technical report score of 187.33 out of 200.</p>
+      </div>
+    </article>
+
+    <article class="person">
+      <div class="person__tile"><b>PD</b><span>Photo pending</span></div>
+      <div class="person__body">
+        <h4>Price Drawdy</h4>
+        <div class="person__role">Avionics Lead · Omega 2025–26</div>
+        <p class="person__quote">Innovation in every circuit.</p>
+        <p class="person__bio">Co-led Avionics in developing redundant flight computers, custom PCB designs, and live ground station telemetry, contributing to a top-20 international finish and special judge recognition at IREC 2026.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="sec sec--interior" id="about">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Who we are</span>
+    <h2>Student-led. Student-started.</h2>
+  </div>
+
+  <div class="split reveal">
+    <div>
+      <h3>Engineering extraordinaire</h3>
+      <p>Our near-completely student-led and student-started team works together to honor God in engineering by pursuing excellence in every aspect of our rocketry projects. From design and build to launch, we collaborate across disciplines, building the hands-on experience and skill that prepares us for our careers.</p>
+    </div>
+    <img src="images/Screenshot%202025-09-26%20134824.png" alt="Liberty Rocketry team at work" loading="lazy" />
+  </div>
+
+  <div class="split split--flip reveal">
+    <img src="images/Screenshot%202025-09-27%20232845.png" alt="Liberty Rocketry team at the launch site" loading="lazy" />
+    <div>
+      <h3>God and goals</h3>
+      <p>As a Christian university, we seek to do God's will and fulfill the Great Commission by spreading the gospel through our work in rocketry. We spend time with the Lord at the beginning of every event and meeting, keeping Christ at the center of it all. In just three years, we've grown from a small group to one of the world's top aerospace competition teams.</p>
+    </div>
+  </div>
+
+  <div class="split reveal">
+    <div>
+      <h3>Eight teams, one vehicle</h3>
+      <p>Aerodynamics, avionics, payload, propulsion, recovery, manufacturing, project management, and media collaborate to design, build, and launch each year's rocket — providing hands-on experience and skill training that carries directly into our members' careers.</p>
+    </div>
+    <img src="images/Screenshot%202025-09-28%20091012.png" alt="Liberty Rocketry team collaborating" loading="lazy" />
+  </div>
+</section>
+
+<!-- ===================== SPONSORS ===================== -->
+<section class="sec sec--interior" id="sponsors">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Partnership</span>
+    <h2>Our partners in exploration</h2>
+    <p class="lede">Every donation goes directly toward making Liberty Rocketry the best collegiate rocketry team in the world. Sponsors gain direct access to some of the most dedicated engineering students in the country and visibility at international competition. All donations are tax deductible.</p>
+  </div>
+
+  <figure class="banner bleed reveal">
+    <img src="images/team1.png" alt="Liberty Rocketry team at competition" loading="lazy" />
+    <figcaption>Supported by our partners</figcaption>
+  </figure>
+
+  <div class="subhead reveal"><h3>Sponsor Tiers</h3><span>Benefits by level</span></div>
+
+  <div class="tiers reveal">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Benefit</th>
+          <th scope="col">Bronze $500+</th>
+          <th scope="col">Silver $1,000+</th>
+          <th scope="col">Gold $2,500+</th>
+          <th scope="col">Platinum $5,000+</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Logo on team website</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><th scope="row">Access to team resume book</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><th scope="row">Logo on team apparel</th><td></td><td>✓</td><td>✓</td><td>✓</td></tr>
+        <tr><th scope="row">Design and competition updates</th><td></td><td></td><td>✓</td><td>✓</td></tr>
+        <tr><th scope="row">Social media recognition</th><td></td><td></td><td>✓</td><td>✓</td></tr>
+        <tr><th scope="row">Access to designs and technical report</th><td></td><td></td><td></td><td>✓</td></tr>
+        <tr><th scope="row">Large logo, prime placement on merchandise</th><td></td><td></td><td></td><td>✓</td></tr>
+        <tr><th scope="row">Company photo launched and recovered at competition</th><td></td><td></td><td></td><td>✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cta reveal">
+    <div>
+      <span class="eyebrow">Become a sponsor</span>
+      <h3>Sponsorship packet</h3>
+      <p>Full tier details and contact information. Questions go to libertyrocketry@gmail.com or oshobayo@liberty.edu.</p>
+    </div>
+    <a class="btn btn--flame" href="downloads/4%20Liberty%20Rocketry%20Sponsorship%20Packet.pdf" download>Download the packet</a>
+  </div>
+
+  <div class="subhead reveal" style="margin-top:64px"><h3>Current Sponsors</h3><span>Thank you</span></div>
+
+  <div class="logos reveal">
+    <div><img src="images/Screenshot%202025-10-29%20180250.png" alt="Deep Earth Logic" loading="lazy" /></div>
+    <div><img src="images/Screenshot%202025-10-29%20180241.png" alt="North Georgia Truss Systems" loading="lazy" /></div>
+    <div><img src="images/ansyslogowhite.png" alt="Ansys" loading="lazy" /></div>
+    <div><img src="images/Screenshot%202025-10-29%20180157.png" alt="Onshape" loading="lazy" /></div>
+    <div><img src="images/3dconnexion-logo-3078880038.png" alt="3Dconnexion" loading="lazy" /></div>
+    <div><img src="images/bwxt%20logo.png" alt="BWXT" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- ===================== MERCHANDISE ===================== -->
+<section class="sec sec--interior" id="merchandise">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Store</span>
+    <h2>Team merchandise</h2>
+    <p class="lede">Rep the team and support the journey to the International Rocket Engineering Competition. Every purchase funds research, manufacturing, and launch operations.</p>
+  </div>
+
+  <figure class="banner bleed reveal">
+    <img src="images/Screenshot%202025-09-25%20200245.png" alt="Liberty Rocketry team" loading="lazy" />
+    <figcaption>Official team gear</figcaption>
+  </figure>
+
+  <div class="cta reveal">
+    <div>
+      <span class="eyebrow">Officer access</span>
+      <h3>Shop official gear</h3>
+      <p>The storefront is currently limited to team officers.</p>
+    </div>
+    <button class="btn btn--flame" data-store>Open the store</button>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="sec sec--interior" id="contact">
+  <div class="sec__head reveal">
+    <span class="eyebrow">Contact</span>
+    <h2>Get in touch</h2>
+    <p class="lede">Sponsorships, membership, media requests, or collaboration — send us a note and we'll respond.</p>
+  </div>
+
+  <div class="contact reveal">
+    <div class="contact__item">
+      <span class="eyebrow">Email</span>
+      <a href="mailto:libertyrocketry@gmail.com">libertyrocketry@gmail.com</a>
+    </div>
+    <div class="contact__item">
+      <span class="eyebrow">Sponsorship</span>
+      <a href="mailto:oshobayo@liberty.edu">oshobayo@liberty.edu</a>
+    </div>
+    <div class="contact__item">
+      <span class="eyebrow">Location</span>
+      <p>Liberty University<br />Lynchburg, Virginia</p>
+    </div>
+  </div>
+
+  <figure class="banner bleed reveal" style="margin-top:clamp(48px,7vh,88px);margin-bottom:0">
+    <img src="images/Screenshot%202025-10-02%20203331.png" alt="Liberty Rocketry team" loading="lazy" />
+    <figcaption>Liberty University · Lynchburg, Virginia</figcaption>
+  </figure>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <span>&copy; 2026 Liberty University Rocketry</span>
+    <span>Established 2023 · Lynchburg, VA</span>
+  </div>
+</footer>
+
+<!-- ===================== STORE ACCESS MODAL ===================== -->
+<div class="modal" id="storeModal" role="dialog" aria-modal="true" aria-labelledby="storeTitle">
+  <div class="modal__card">
+    <h3 id="storeTitle">Officer access</h3>
+    <p>The store is limited to team officers. Enter the six-digit access code.</p>
+    <label class="eyebrow" for="storeCode" style="margin-bottom:10px">Access code</label>
+    <input id="storeCode" type="text" inputmode="numeric" maxlength="6" autocomplete="off" placeholder="······" />
+    <div class="modal__err" id="storeErr"></div>
+    <div class="modal__actions">
+      <button class="btn btn--ghost" id="storeCancel">Cancel</button>
+      <button class="btn btn--flame" id="storeGo">Enter store</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- missing-image fallback ----------
+     Any <img> that 404s fades out, revealing the hatched panel behind it,
+     so a bad path never leaves a raw broken-image icon on the page.       */
+  document.addEventListener('error', function(e){
+    var t = e.target;
+    if(t && t.tagName === 'IMG'){
+      t.classList.add('is-failed');
+      console.warn('Image failed to load:', t.getAttribute('src'));
+    }
+  }, true);
+
+  /* ---------- section switching ---------- */
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.sec'));
+  var hero = document.getElementById('hero');
+  var routers = Array.prototype.slice.call(document.querySelectorAll('[data-section]'));
+
+  function showSection(id){
+    var target = document.getElementById(id);
+    if(!target || !target.classList.contains('sec')) return;
+    sections.forEach(function(s){ s.classList.remove('is-visible'); });
+    target.classList.add('is-visible');
+    hero.style.display = (id === 'home') ? 'flex' : 'none';
+
+    routers.forEach(function(l){
+      if(l.classList.contains('nav__link')){
+        l.classList.toggle('is-active', l.getAttribute('data-section') === id);
+      }
+    });
+
+    window.scrollTo({ top:0, behavior:'auto' });
+    observeReveals(target);
+    closeMenu();
+    closeDrop();
+  }
+
+  routers.forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = el.getAttribute('data-section');
+      showSection(id);
+      if(history.replaceState) history.replaceState(null,'','#'+id);
+    });
+  });
+
+  /* ---------- mobile menu ---------- */
+  var menu = document.getElementById('navMenu');
+  var toggle = document.getElementById('navToggle');
+  function closeMenu(){ menu.classList.remove('is-open'); toggle.setAttribute('aria-expanded','false'); }
+  toggle.addEventListener('click', function(){
+    var open = menu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  /* ---------- team dropdown ---------- */
+  var group = document.getElementById('teamGroup');
+  var teamBtn = document.getElementById('teamBtn');
+  function closeDrop(){ group.classList.remove('is-open'); teamBtn.setAttribute('aria-expanded','false'); }
+  teamBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    var open = group.classList.toggle('is-open');
+    teamBtn.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', function(e){
+    if(!group.contains(e.target)) closeDrop();
+    if(!document.getElementById('nav').contains(e.target)) closeMenu();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeDrop(); closeMenu(); closeModal(); }
+  });
+
+  /* ---------- nav background on scroll ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('is-solid', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* ---------- reveal on scroll ---------- */
+  var io = null;
+  if('IntersectionObserver' in window){
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
         }
+      });
+    }, { rootMargin:'0px 0px -8% 0px', threshold:0.05 });
+  }
+  function observeReveals(scope){
+    var items = (scope || document).querySelectorAll('.reveal:not(.is-in)');
+    Array.prototype.forEach.call(items, function(el){
+      if(io) io.observe(el); else el.classList.add('is-in');
+    });
+  }
 
-        function openMerchStore(e, url) {
-            if (e) e.preventDefault();
-            const password = prompt("Please enter the 6-digit officer password to access the store:");
-            if (password === "820638") {
-                window.open(url, "_blank");
-            } else if (password !== null) {
-                alert("Incorrect password. Access denied.");
-            }
-        }
+  /* ---------- countdown ---------- */
+  var clock = document.getElementById('clock');
+  var target = new Date(clock.getAttribute('data-target')).getTime();
+  function pad(n, len){ n = String(n); while(n.length < (len || 2)) n = '0' + n; return n; }
+  var timer;
 
-        function toggleDropdown(dropdown) {
-            const expanded = dropdown.getAttribute('aria-expanded') === 'true';
-            dropdown.setAttribute('aria-expanded', !expanded);
-        }
-        function toggleMobileMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('mobile-show');
-        }
-        function closeMobileMenu() {
-            document.getElementById('navLinks').classList.remove('mobile-show');
-        }
-        document.addEventListener('click', function(event) {
-            const nav = document.querySelector('nav');
-            if (!nav.contains(event.target)) {
-                closeMobileMenu();
-            }
-        });
-        showSection('home');
+  function tick(){
+    var diff = target - Date.now();
+    if(diff <= 0){
+      clock.classList.add('is-done');
+      clock.textContent = 'Launch window open';
+      clearInterval(timer);
+      return;
+    }
+    document.getElementById('cd-d').textContent = pad(Math.floor(diff / 86400000), 3);
+    document.getElementById('cd-h').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+    document.getElementById('cd-m').textContent = pad(Math.floor(diff % 3600000 / 60000));
+    document.getElementById('cd-s').textContent = pad(Math.floor(diff % 60000 / 1000));
+  }
+  tick();
+  timer = setInterval(tick, 1000);
 
-        (function() {
-            const targetDate = new Date("June 15, 2026 08:00:00").getTime();
+  /* ---------- store gate ---------- */
+  var STORE_URL = 'https://liberty-rocketry-shop.fourthwall.com';
+  var STORE_CODE = '820638';
+  var modal = document.getElementById('storeModal');
+  var codeInput = document.getElementById('storeCode');
+  var codeErr = document.getElementById('storeErr');
 
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
+  function openModal(){
+    modal.classList.add('is-open');
+    codeErr.textContent = '';
+    codeInput.value = '';
+    setTimeout(function(){ codeInput.focus(); }, 40);
+  }
+  function closeModal(){ modal.classList.remove('is-open'); }
 
-                if (distance < 0) {
-                    const container = document.getElementById("countdown");
-                    if (container) container.innerHTML = "<div class='countdown-number'>LAUNCHED</div>";
-                    return;
-                }
+  function submitCode(){
+    if(codeInput.value.trim() === STORE_CODE){
+      closeModal();
+      window.open(STORE_URL, '_blank', 'noopener');
+    } else {
+      codeErr.textContent = 'Incorrect code. Try again.';
+      codeInput.value = '';
+      codeInput.focus();
+    }
+  }
 
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  Array.prototype.forEach.call(document.querySelectorAll('[data-store]'), function(btn){
+    btn.addEventListener('click', function(e){ e.preventDefault(); openModal(); closeMenu(); });
+  });
+  document.getElementById('storeGo').addEventListener('click', submitCode);
+  document.getElementById('storeCancel').addEventListener('click', closeModal);
+  codeInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') submitCode(); });
+  modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
 
-                const dayEl = document.getElementById("days");
-                if (dayEl) {
-                    dayEl.innerText = days < 10 ? "0" + days : days;
-                    document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
-                    document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
-                    document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
-                }
-            }
+  /* ---------- boot ---------- */
+  var initial = (location.hash || '#home').replace('#','');
+  var el = document.getElementById(initial);
+  showSection(el && el.classList.contains('sec') ? initial : 'home');
 
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        })();
-    </script>
+})();
+</script>
 </body>
 </html>
